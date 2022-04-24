@@ -1,9 +1,12 @@
 library ant_design_flutter;
 
+export 'package:ant_design_flutter/enumeration/placement.dart';
+export 'package:ant_design_flutter/enumeration/size.dart';
+export 'package:ant_design_flutter/enumeration/theme.dart';
+export 'package:ant_design_flutter/enumeration/trigger.dart';
+
 export 'package:ant_design_flutter/style/color.dart';
 export 'package:ant_design_flutter/style/icon.dart';
-export 'package:ant_design_flutter/style/size.dart';
-export 'package:ant_design_flutter/style/theme.dart';
 
 export 'package:ant_design_flutter/widget/affix.dart';
 export 'package:ant_design_flutter/widget/app.dart';
@@ -25,6 +28,7 @@ export 'package:ant_design_flutter/widget/pagination.dart';
 export 'package:ant_design_flutter/widget/scaffold.dart';
 export 'package:ant_design_flutter/widget/space.dart';
 export 'package:ant_design_flutter/widget/step.dart';
+export 'package:ant_design_flutter/widget/tooltip.dart';
 export 'package:ant_design_flutter/widget/typography.dart';
 
 export 'package:flutter/widgets.dart';
