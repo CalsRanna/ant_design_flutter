@@ -86,7 +86,13 @@ class TypographyTitle extends StatefulWidget {
 class _TypographyTitleState extends State<TypographyTitle> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return DefaultTextStyle.merge(
+      child: Padding(
+        child: widget.child,
+        padding: const EdgeInsets.only(top: 8, bottom: 20),
+      ),
+      style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+    );
   }
 }
 

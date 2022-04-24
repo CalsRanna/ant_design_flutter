@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
-class AntApp extends StatefulWidget {
-  const AntApp({Key? key, this.home}) : super(key: key);
+class AntApp extends MaterialApp {
+  const AntApp({Widget? home, Key? key})
+      : super(
+          debugShowCheckedModeBanner: false,
+          home: home,
+          key: key,
+        );
 
-  final Widget? home;
-
-  @override
-  State<AntApp> createState() => _AntAppState();
-}
-
-class _AntAppState extends State<AntApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: widget.home,
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  const AntApp.router({
+    Key? key,
+    required RouteInformationParser<Object> routeInformationParser,
+    required RouterDelegate<Object> routerDelegate,
+  }) : super.router(
+          debugShowCheckedModeBanner: false,
+          key: key,
+          routeInformationParser: routeInformationParser,
+          routerDelegate: routerDelegate,
+        );
 }

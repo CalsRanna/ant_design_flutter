@@ -1,3 +1,4 @@
+import 'package:ant_design_flutter/style/color.dart';
 import 'package:flutter/widgets.dart';
 
 class Divider extends StatelessWidget {
@@ -22,7 +23,38 @@ class Divider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Row(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(color: Colors.gray_4),
+            ),
+          ),
+          width: 24,
+        ),
+        child == null
+            ? const SizedBox()
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: DefaultTextStyle.merge(
+                  child: child!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+        Expanded(
+          child: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: Colors.gray_4),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
   }
 }
 
