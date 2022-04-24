@@ -275,7 +275,7 @@ class MenuItemGroup extends StatelessWidget {
             ? Container(
                 child: DefaultTextStyle.merge(
                   child: label!,
-                  style: const TextStyle(color: Colors.gray_6),
+                  style: const TextStyle(color: Colors.gray_7),
                 ),
                 decoration: const BoxDecoration(
                   border: Border(

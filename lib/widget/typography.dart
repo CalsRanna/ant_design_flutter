@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
 class TypographyText extends StatefulWidget {
-  const TypographyText({
+  const TypographyText(
+    this.text, {
     Key? key,
-    required this.child,
     this.code = false,
     this.copyable,
     this.delete = false,
@@ -19,7 +19,6 @@ class TypographyText extends StatefulWidget {
     this.underline = false,
   }) : super(key: key);
 
-  final Widget child;
   final bool code;
   final TypographyCopyable? copyable;
   final bool delete;
@@ -31,6 +30,7 @@ class TypographyText extends StatefulWidget {
   final void Function()? onClick;
   final bool strong;
   final bool italic;
+  final String text;
   final TypographyType type;
   final bool underline;
 
@@ -46,9 +46,9 @@ class _TypographyTextState extends State<TypographyText> {
 }
 
 class TypographyTitle extends StatefulWidget {
-  const TypographyTitle({
+  const TypographyTitle(
+    this.title, {
     Key? key,
-    required this.child,
     this.code = false,
     this.copyable,
     this.delete = false,
@@ -64,7 +64,6 @@ class TypographyTitle extends StatefulWidget {
     this.underline = false,
   }) : super(key: key);
 
-  final Widget child;
   final bool code;
   final TypographyCopyable? copyable;
   final bool delete;
@@ -76,6 +75,7 @@ class TypographyTitle extends StatefulWidget {
   final void Function()? onClick;
   final bool strong;
   final bool italic;
+  final String title;
   final TypographyType type;
   final bool underline;
 
@@ -86,20 +86,28 @@ class TypographyTitle extends StatefulWidget {
 class _TypographyTitleState extends State<TypographyTitle> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle.merge(
-      child: Padding(
-        child: widget.child,
-        padding: const EdgeInsets.only(top: 8, bottom: 20),
+    return Padding(
+      child: Text(
+        widget.title,
+        style: TextStyle(
+          fontSize: _calculateFontSize(),
+          fontWeight: FontWeight.w600,
+        ),
       ),
-      style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+      padding: const EdgeInsets.only(top: 8, bottom: 20),
     );
+  }
+
+  double _calculateFontSize() {
+    List<double> sizes = [38, 30, 24, 20, 16];
+    return sizes[widget.level - 1];
   }
 }
 
 class TypographyParagraph extends StatefulWidget {
-  const TypographyParagraph({
+  const TypographyParagraph(
+    this.paragraph, {
     Key? key,
-    required this.child,
     this.code = false,
     this.copyable,
     this.delete = false,
@@ -115,7 +123,6 @@ class TypographyParagraph extends StatefulWidget {
     this.underline = false,
   }) : super(key: key);
 
-  final Widget child;
   final bool code;
   final TypographyCopyable? copyable;
   final bool delete;
@@ -125,6 +132,7 @@ class TypographyParagraph extends StatefulWidget {
   final bool keyboard;
   final bool mark;
   final void Function()? onClick;
+  final String paragraph;
   final bool strong;
   final bool italic;
   final TypographyType type;
@@ -137,7 +145,10 @@ class TypographyParagraph extends StatefulWidget {
 class _TypographyParagraphState extends State<TypographyParagraph> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      child: Text(widget.paragraph),
+      padding: const EdgeInsets.only(bottom: 14),
+    );
   }
 }
 

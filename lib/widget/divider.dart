@@ -54,6 +54,7 @@ class Divider extends StatelessWidget {
           ),
         )
       ],
+      crossAxisAlignment: CrossAxisAlignment.center,
     );
   }
 }

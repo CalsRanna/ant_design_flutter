@@ -2,6 +2,7 @@ library ant_design_flutter;
 
 export 'package:ant_design_flutter/style/color.dart';
 export 'package:ant_design_flutter/style/icon.dart';
+export 'package:ant_design_flutter/style/size.dart';
 export 'package:ant_design_flutter/style/theme.dart';
 
 export 'package:ant_design_flutter/widget/affix.dart';
@@ -9,6 +10,7 @@ export 'package:ant_design_flutter/widget/app.dart';
 export 'package:ant_design_flutter/widget/auto_complete.dart';
 export 'package:ant_design_flutter/widget/breadcrumb.dart';
 export 'package:ant_design_flutter/widget/button.dart';
+export 'package:ant_design_flutter/widget/card.dart';
 export 'package:ant_design_flutter/widget/cascader.dart';
 export 'package:ant_design_flutter/widget/checkbox.dart';
 export 'package:ant_design_flutter/widget/date_picker.dart';
