@@ -1,1 +1,1 @@
-enum AntSize { medium, small }
+enum AntSize { large, medium, small }

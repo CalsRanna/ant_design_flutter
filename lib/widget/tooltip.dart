@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ant_design_flutter/antdf.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' show Material;
@@ -88,13 +90,6 @@ class _TooltipState extends State<Tooltip> {
   }
 }
 
-class _AllowMultipleGestureRecognizer extends TapGestureRecognizer {
-  @override
-  void rejectGesture(int pointer) {
-    acceptGesture(pointer);
-  }
-}
-
 class _TooltipOverlayEntry extends StatelessWidget {
   const _TooltipOverlayEntry({Key? key, required this.label}) : super(key: key);
 
@@ -102,21 +97,43 @@ class _TooltipOverlayEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text(
-        label,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 14,
-          height: 1,
+    return Stack(
+      alignment: AlignmentDirectional.bottomCenter,
+      children: [
+        Positioned(
+          bottom: -4,
+          child: Transform.rotate(
+            angle: pi / 4,
+            child: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(2),
+                ),
+                color: Colors.gray_10,
+              ),
+              height: 8,
+              width: 8,
+            ),
+          ),
         ),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(2),
-        color: Colors.gray_10,
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+        Container(
+          alignment: AlignmentDirectional.center,
+          child: Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              height: 1,
+            ),
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: Colors.gray_10,
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+        ),
+      ],
+      clipBehavior: Clip.none,
     );
   }
 }

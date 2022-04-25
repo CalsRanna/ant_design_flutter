@@ -71,11 +71,13 @@ import 'package:ant_design_flutter/antdf.dart';
 
 void main() {
   runApp(const AntApp(
-    body: Center(
-      child: Button(
-        type: ButtonType.primary,
-        child: Text("Press Me"),
-      ),
+    home: AntScaffold(
+      body: Center(
+        child: Button(
+          type: ButtonType.primary,
+          child: Text("Press Me"),
+        ),
+      )
     ),
   ));
 }
@@ -83,7 +85,7 @@ void main() {
 
 ### Null Safety
 
-`antdf` is written in dart with null safety, check [Use in TypeScript](https://ant.design/docs/react/use-in-typescript) to get started.
+`antdf` is written in dart with null safety, check [Sound Null Safety](https://flutter.cn/posts/announcing-dart-2-12#%E5%81%A5%E5%85%A8%E7%9A%84%E7%A9%BA%E5%AE%89%E5%85%A8) to get started.
 
 ## 🌍 Internationalization
 
