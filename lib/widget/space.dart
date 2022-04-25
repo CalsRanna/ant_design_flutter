@@ -24,9 +24,9 @@ class Space extends StatelessWidget {
     return Wrap(
       children: children,
       direction: direction,
-      runAlignment: WrapAlignment.center,
-      alignment: WrapAlignment.center,
-      crossAxisAlignment: WrapCrossAlignment.center,
+      crossAxisAlignment: Axis.horizontal == direction
+          ? WrapCrossAlignment.center
+          : WrapCrossAlignment.start,
       spacing: _calculateSpacing(),
     );
   }
