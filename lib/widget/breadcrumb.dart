@@ -21,7 +21,7 @@ class Breadcrumb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BreadcrumbInhertedWidget(
+    return _BreadcrumbInhertedWidget(
       current: _getCurrent(context),
       child: Row(
         children: _buildChildren(context),
@@ -88,7 +88,7 @@ class _BreadcrumbItemState extends State<BreadcrumbItem> {
 
   @override
   Widget build(BuildContext context) {
-    var current = BreadcrumbInhertedWidget.of(context)!.current;
+    var current = _BreadcrumbInhertedWidget.of(context)!.current;
     return widget.href != current
         ? MouseRegion(
             child: DefaultTextStyle.merge(
@@ -145,8 +145,8 @@ class BreadcrumbSeparator extends StatelessWidget {
   }
 }
 
-class BreadcrumbInhertedWidget extends InheritedWidget {
-  const BreadcrumbInhertedWidget({
+class _BreadcrumbInhertedWidget extends InheritedWidget {
+  const _BreadcrumbInhertedWidget({
     Key? key,
     required this.current,
     required Widget child,
@@ -154,13 +154,13 @@ class BreadcrumbInhertedWidget extends InheritedWidget {
 
   final String current;
 
-  static BreadcrumbInhertedWidget? of(BuildContext context) {
+  static _BreadcrumbInhertedWidget? of(BuildContext context) {
     return context
-        .dependOnInheritedWidgetOfExactType<BreadcrumbInhertedWidget>();
+        .dependOnInheritedWidgetOfExactType<_BreadcrumbInhertedWidget>();
   }
 
   @override
-  bool updateShouldNotify(BreadcrumbInhertedWidget oldWidget) {
+  bool updateShouldNotify(_BreadcrumbInhertedWidget oldWidget) {
     return oldWidget.current != current;
   }
 }

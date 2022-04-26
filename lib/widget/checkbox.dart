@@ -27,7 +27,13 @@ class Checkbox extends StatefulWidget {
 class _CheckboxState extends State<Checkbox> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadiusDirectional.circular(2)),
+      width: 16,
+      height: 16,
+    );
   }
 }
 

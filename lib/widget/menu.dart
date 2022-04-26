@@ -75,7 +75,7 @@ class _MenuState extends State<Menu> {
 
   @override
   Widget build(BuildContext context) {
-    return MenuInhertedWidget(
+    return _MenuInhertedWidget(
       child: Container(
         child: Flex(
           children: _buildChildren(),
@@ -157,11 +157,11 @@ class _MenuItemState extends State<MenuItem> {
 
   @override
   Widget build(BuildContext context) {
-    var current = MenuInhertedWidget.of(context)!.current;
-    var indent = MenuInhertedWidget.of(context)!.indent;
-    var inlineCollapsed = MenuInhertedWidget.of(context)!.inlineCollapsed;
-    var mode = MenuInhertedWidget.of(context)!.mode;
-    var theme = MenuInhertedWidget.of(context)!.theme;
+    var current = _MenuInhertedWidget.of(context)!.current;
+    var indent = _MenuInhertedWidget.of(context)!.indent;
+    var inlineCollapsed = _MenuInhertedWidget.of(context)!.inlineCollapsed;
+    var mode = _MenuInhertedWidget.of(context)!.mode;
+    var theme = _MenuInhertedWidget.of(context)!.theme;
 
     return MouseRegion(
       child: GestureDetector(
@@ -221,12 +221,12 @@ class _MenuItemState extends State<MenuItem> {
   }
 
   void _handleTap() {
-    var current = MenuInhertedWidget.of(context)!.current;
-    var onClick = MenuInhertedWidget.of(context)!.onClick;
+    var current = _MenuInhertedWidget.of(context)!.current;
+    var onClick = _MenuInhertedWidget.of(context)!.onClick;
     if (current != widget.name && onClick != null) {
       onClick(widget, widget.name);
     }
-    MenuInhertedWidget.of(context)!.updateCurrent(widget.name);
+    _MenuInhertedWidget.of(context)!.updateCurrent(widget.name);
   }
 }
 
@@ -267,7 +267,7 @@ class MenuItemGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var indent = MenuInhertedWidget.of(context)!.indent;
+    var indent = _MenuInhertedWidget.of(context)!.indent;
 
     return Column(
       children: [
@@ -308,7 +308,7 @@ class MenuDivider extends StatelessWidget {
   }
 }
 
-class MenuInhertedWidget extends InheritedWidget {
+class _MenuInhertedWidget extends InheritedWidget {
   final String current;
   final double indent;
   final bool inlineCollapsed;
@@ -317,7 +317,7 @@ class MenuInhertedWidget extends InheritedWidget {
   final Theme theme;
   final void Function(String name) updateCurrent;
 
-  const MenuInhertedWidget({
+  const _MenuInhertedWidget({
     required Widget child,
     required this.current,
     required this.indent,
@@ -329,12 +329,12 @@ class MenuInhertedWidget extends InheritedWidget {
     Key? key,
   }) : super(child: child, key: key);
 
-  static MenuInhertedWidget? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<MenuInhertedWidget>();
+  static _MenuInhertedWidget? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<_MenuInhertedWidget>();
   }
 
   @override
-  bool updateShouldNotify(MenuInhertedWidget oldWidget) {
+  bool updateShouldNotify(_MenuInhertedWidget oldWidget) {
     return oldWidget.current != current;
   }
 }

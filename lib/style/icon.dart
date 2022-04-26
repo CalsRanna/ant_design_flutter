@@ -6,6 +6,15 @@ class Icons {
   /// <i class="material-icons md-36">arrow_back</i> &#x2014; material icon named "arrow left".
   static const arrow_left = material.Icons.arrow_back;
 
+  /// <i class="material-icons md-36">arrow_forward</i> &#x2014; material icon named "arrow right".
+  static const arrow_right = material.Icons.arrow_forward;
+
+  /// <i class="material-icons md-36">chevron_left</i> &#x2014; material icon named "chevron left".
+  static const chevron_left = material.Icons.chevron_left;
+
+  /// <i class="material-icons md-36">chevron_right</i> &#x2014; material icon named "chevron right".
+  static const chevron_right = material.Icons.chevron_right;
+
   /// <i class="material-icons md-36">code</i> &#x2014; material icon named "code".
   static const code = material.Icons.code;
 
