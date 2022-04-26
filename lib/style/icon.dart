@@ -9,6 +9,9 @@ class Icons {
   /// <i class="material-icons md-36">arrow_forward</i> &#x2014; material icon named "arrow right".
   static const arrow_right = material.Icons.arrow_forward;
 
+  /// <i class="material-icons md-36">check</i> &#x2014; material icon named "check".
+  static const check = material.Icons.check;
+
   /// <i class="material-icons md-36">chevron_left</i> &#x2014; material icon named "chevron left".
   static const chevron_left = material.Icons.chevron_left;
 

@@ -1,9 +1,12 @@
+import 'package:ant_design_flutter/style/color.dart';
+import 'package:ant_design_flutter/style/icon.dart';
 import 'package:flutter/widgets.dart';
 
 class Checkbox extends StatefulWidget {
   const Checkbox({
     Key? key,
-    required this.child,
+    this.controller,
+    this.child,
     this.autoFocus = false,
     this.checked = false,
     this.defaultChecked = false,
@@ -12,7 +15,8 @@ class Checkbox extends StatefulWidget {
     this.onChange,
   }) : super(key: key);
 
-  final Widget child;
+  final CheckboxController? controller;
+  final Widget? child;
   final bool autoFocus;
   final bool checked;
   final bool defaultChecked;
@@ -25,16 +29,87 @@ class Checkbox extends StatefulWidget {
 }
 
 class _CheckboxState extends State<Checkbox> {
+  bool hovered = false;
+  bool checked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      checked = widget.controller?.checked ?? false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: BorderRadiusDirectional.circular(2)),
-      width: 16,
-      height: 16,
+    return MouseRegion(
+      child: GestureDetector(
+        child: Row(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: hovered ? Colors.blue_6 : Colors.gray_5,
+                    ),
+                    borderRadius: BorderRadiusDirectional.circular(2),
+                  ),
+                  width: 16,
+                  height: 16,
+                ),
+                checked
+                    ? Container(
+                        child: const Center(
+                          child: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 12,
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadiusDirectional.circular(2),
+                          color: Colors.blue_6,
+                        ),
+                        height: 16,
+                        width: 16,
+                      )
+                    : const SizedBox(),
+              ],
+            ),
+            widget.child != null
+                ? Padding(
+                    child: widget.child!,
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  )
+                : const SizedBox(),
+          ],
+        ),
+        onTap: _handleTap,
+      ),
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() {
+        hovered = true;
+      }),
+      onExit: (_) => setState(() {
+        hovered = false;
+      }),
     );
   }
+
+  void _handleTap() {
+    setState(() {
+      checked = !checked;
+    });
+    widget.controller?.checked = checked;
+    if (widget.onChange != null) {
+      widget.onChange!();
+    }
+  }
+}
+
+class CheckboxController extends ChangeNotifier {
+  bool checked = false;
 }
 
 class CheckboxGroup extends StatefulWidget {
