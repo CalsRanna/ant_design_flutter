@@ -12,9 +12,9 @@ class AntScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DefaultTextStyle(
-        style: const TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.w300,
+        style: TextStyle(
+          color: Colors.black.withOpacity(0.85),
+          fontWeight: FontWeight.w400,
           fontSize: 14,
         ),
         child: IconTheme(
