@@ -1,6 +1,7 @@
 library ant_design_flutter;
 
 export 'package:ant_design_flutter/enumeration/placement.dart';
+export 'package:ant_design_flutter/enumeration/status.dart';
 export 'package:ant_design_flutter/enumeration/size.dart';
 export 'package:ant_design_flutter/enumeration/theme.dart';
 export 'package:ant_design_flutter/enumeration/trigger.dart';
@@ -21,6 +22,7 @@ export 'package:ant_design_flutter/widget/divider.dart';
 export 'package:ant_design_flutter/widget/dropdown.dart';
 export 'package:ant_design_flutter/widget/grid.dart';
 export 'package:ant_design_flutter/widget/icon.dart';
+export 'package:ant_design_flutter/widget/input.dart';
 export 'package:ant_design_flutter/widget/layout.dart';
 export 'package:ant_design_flutter/widget/menu.dart';
 export 'package:ant_design_flutter/widget/page_header.dart';
