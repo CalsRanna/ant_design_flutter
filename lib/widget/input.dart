@@ -123,3 +123,7 @@ class _InputState extends State<Input> {
 }
 
 enum InputType { text }
+
+class InputController extends ChangeNotifier {
+  String? value;
+}

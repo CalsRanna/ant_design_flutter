@@ -181,16 +181,6 @@ class __PaginationArowItemState extends State<_PaginationArrowItem> {
     return available;
   }
 
-  Color _buildColor() {
-    Color color = Colors.gray_5;
-    if (_available()) {
-      color = hovered ? Colors.blue_6 : Colors.black;
-    } else {
-      color = Colors.gray_4;
-    }
-    return color;
-  }
-
   void _handleTap() {
     var current = _PaginationInhertedWidget.of(context)?.current ?? 0;
     var handleChange = _PaginationInhertedWidget.of(context)!.handleChange;

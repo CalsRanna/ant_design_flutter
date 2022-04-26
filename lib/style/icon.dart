@@ -12,11 +12,17 @@ class Icons {
   /// <i class="material-icons md-36">check</i> &#x2014; material icon named "check".
   static const check = material.Icons.check;
 
+  /// <i class="material-icons md-36">expand_more</i> &#x2014; material icon named "chevron down".
+  static const chevron_down = material.Icons.expand_more;
+
   /// <i class="material-icons md-36">chevron_left</i> &#x2014; material icon named "chevron left".
   static const chevron_left = material.Icons.chevron_left;
 
   /// <i class="material-icons md-36">chevron_right</i> &#x2014; material icon named "chevron right".
   static const chevron_right = material.Icons.chevron_right;
+
+  /// <i class="material-icons md-36">expand_less</i> &#x2014; material icon named "chevron up".
+  static const chevron_up = material.Icons.expand_less;
 
   /// <i class="material-icons md-36">code</i> &#x2014; material icon named "code".
   static const code = material.Icons.code;

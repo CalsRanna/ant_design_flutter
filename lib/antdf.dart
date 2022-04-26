@@ -23,6 +23,7 @@ export 'package:ant_design_flutter/widget/dropdown.dart';
 export 'package:ant_design_flutter/widget/grid.dart';
 export 'package:ant_design_flutter/widget/icon.dart';
 export 'package:ant_design_flutter/widget/input.dart';
+export 'package:ant_design_flutter/widget/input_number.dart';
 export 'package:ant_design_flutter/widget/layout.dart';
 export 'package:ant_design_flutter/widget/menu.dart';
 export 'package:ant_design_flutter/widget/page_header.dart';
