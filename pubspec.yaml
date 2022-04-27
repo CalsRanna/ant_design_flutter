@@ -1,7 +1,7 @@
 name: ant_design_flutter
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: http://doc.antdf.xyz
 
 environment:
   sdk: ">=2.16.1 <3.0.0"

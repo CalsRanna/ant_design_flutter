@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' as material show Icons;
 
 class Icons {
@@ -24,6 +25,9 @@ class Icons {
   /// <i class="material-icons md-36">expand_less</i> &#x2014; material icon named "chevron up".
   static const chevron_up = material.Icons.expand_less;
 
+  /// <i class="material-icons md-36">cancel</i> &#x2014; material icon named "clear".
+  static const clear = material.Icons.cancel;
+
   /// <i class="material-icons md-36">code</i> &#x2014; material icon named "code".
   static const code = material.Icons.code;
 
@@ -35,6 +39,9 @@ class Icons {
 
   /// <i class="material-icons md-36">bug_report</i> &#x2014; material icon named "debug".
   static const debug = material.Icons.bug_report;
+
+  /// <i class="material-icons md-36">autorenew</i> &#x2014; material icon named "loading".
+  static const loading = material.Icons.autorenew;
 
   /// <i class="material-icons md-36">search</i> &#x2014; material icon named "search".
   static const search = material.Icons.search;

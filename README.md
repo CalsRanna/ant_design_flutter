@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://ant.design">
+  <a href="http://doc.antdf.xyz">
     <img width="200" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">
   </a>
 </p>
@@ -93,7 +93,7 @@ Dozens of languages supported in `antdf`, see [i18n](https://ant.design/docs/rea
 
 ## 🔗 Links
 
-- [Home page](https://ant.design/)
+- [Home page](http://doc.antdf.xyz)
 - [Components Overview](https://ant.design/components/overview)
 - [Ant Design Pro](http://pro.ant.design/)
 - [Change Log](CHANGELOG.en-US.md)

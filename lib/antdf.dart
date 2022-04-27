@@ -30,10 +30,13 @@ export 'package:ant_design_flutter/widget/page_header.dart';
 export 'package:ant_design_flutter/widget/pagination.dart';
 export 'package:ant_design_flutter/widget/radio.dart';
 export 'package:ant_design_flutter/widget/scaffold.dart';
+export 'package:ant_design_flutter/widget/select.dart';
 export 'package:ant_design_flutter/widget/space.dart';
 export 'package:ant_design_flutter/widget/step.dart';
 export 'package:ant_design_flutter/widget/tag.dart';
 export 'package:ant_design_flutter/widget/tooltip.dart';
 export 'package:ant_design_flutter/widget/typography.dart';
+
+export 'package:ant_design_flutter/widget/nested_gesture_detector.dart';
 
 export 'package:flutter/widgets.dart';
