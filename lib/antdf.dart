@@ -28,6 +28,7 @@ export 'package:ant_design_flutter/widget/layout.dart';
 export 'package:ant_design_flutter/widget/menu.dart';
 export 'package:ant_design_flutter/widget/page_header.dart';
 export 'package:ant_design_flutter/widget/pagination.dart';
+export 'package:ant_design_flutter/widget/radio.dart';
 export 'package:ant_design_flutter/widget/scaffold.dart';
 export 'package:ant_design_flutter/widget/space.dart';
 export 'package:ant_design_flutter/widget/step.dart';
