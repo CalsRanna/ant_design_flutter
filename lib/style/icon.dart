@@ -1,6 +1,5 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' as material show Icons;
 
 class Icons {

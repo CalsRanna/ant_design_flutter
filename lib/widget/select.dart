@@ -3,7 +3,7 @@ import 'package:ant_design_flutter/enumeration/status.dart';
 import 'package:ant_design_flutter/style/color.dart';
 import 'package:ant_design_flutter/style/icon.dart';
 import 'package:flutter/material.dart'
-    show AnimatedIcon, AnimatedIcons, InputBorder, InputDecoration, TextField;
+    show InputBorder, InputDecoration, TextField;
 import 'package:flutter/widgets.dart';
 
 class Select extends StatefulWidget {
