@@ -1,3 +1,4 @@
+import 'package:ant_design_flutter/enumeration/size.dart';
 import 'package:ant_design_flutter/widget/button.dart';
 import 'package:flutter/widgets.dart';
 
@@ -52,7 +53,7 @@ class DropdownButton extends StatefulWidget {
       this.icon,
       required this.overlay,
       this.placement = Alignment.bottomLeft,
-      this.size = ButtonSize.middle,
+      this.size = AntSize.medium,
       this.trigger = const [DropdownTrigger.hover],
       this.type = ButtonType.normal,
       required this.visible,
@@ -66,7 +67,7 @@ class DropdownButton extends StatefulWidget {
   final Widget? icon;
   final Widget overlay;
   final Alignment placement;
-  final ButtonSize size;
+  final AntSize size;
   final List<DropdownTrigger> trigger;
   final ButtonType type;
   final bool visible;

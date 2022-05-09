@@ -1,3 +1,4 @@
+import 'package:ant_design_flutter/enumeration/size.dart';
 import 'package:ant_design_flutter/style/color.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/gestures.dart';
@@ -17,7 +18,7 @@ class Button extends StatefulWidget {
     this.icon,
     this.loading = false,
     this.shape = ButtonShape.square,
-    this.size = ButtonSize.middle,
+    this.size = AntSize.medium,
     this.target,
     this.type = ButtonType.normal,
     this.onClick,
@@ -35,7 +36,7 @@ class Button extends StatefulWidget {
   final Widget? icon;
   final bool? loading;
   final ButtonShape shape;
-  final ButtonSize size;
+  final AntSize size;
   final String? target;
   final ButtonType type;
   final void Function()? onClick;
@@ -228,5 +229,4 @@ class _ButtonState extends State<Button> {
 
 enum ButtonHtmlType { button, submit, reset }
 enum ButtonShape { square, circle, round }
-enum ButtonSize { large, middle, small }
 enum ButtonType { primary, ghost, dashed, link, text, normal }
