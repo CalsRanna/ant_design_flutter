@@ -1,1 +1,1 @@
-enum Status { warning, error }
+enum Status { error, info, success, warning }

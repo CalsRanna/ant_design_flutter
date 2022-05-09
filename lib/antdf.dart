@@ -10,6 +10,7 @@ export 'package:ant_design_flutter/style/color.dart';
 export 'package:ant_design_flutter/style/icon.dart';
 
 export 'package:ant_design_flutter/widget/affix.dart';
+export 'package:ant_design_flutter/widget/alert.dart';
 export 'package:ant_design_flutter/widget/app.dart';
 export 'package:ant_design_flutter/widget/auto_complete.dart';
 export 'package:ant_design_flutter/widget/breadcrumb.dart';

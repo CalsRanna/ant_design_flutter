@@ -27,6 +27,9 @@ class Icons {
   /// <i class="material-icons md-36">cancel</i> &#x2014; material icon named "clear".
   static const clear = material.Icons.cancel;
 
+  /// <i class="material-icons md-36">close</i> &#x2014; material icon named "close".
+  static const close = material.Icons.close;
+
   /// <i class="material-icons md-36">code</i> &#x2014; material icon named "code".
   static const code = material.Icons.code;
 
