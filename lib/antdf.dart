@@ -22,6 +22,7 @@ export 'package:ant_design_flutter/widget/divider.dart';
 export 'package:ant_design_flutter/widget/dropdown.dart';
 export 'package:ant_design_flutter/widget/grid.dart';
 export 'package:ant_design_flutter/widget/icon.dart';
+export 'package:ant_design_flutter/widget/image.dart';
 export 'package:ant_design_flutter/widget/input.dart';
 export 'package:ant_design_flutter/widget/input_number.dart';
 export 'package:ant_design_flutter/widget/layout.dart';
