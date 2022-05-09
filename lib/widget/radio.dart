@@ -27,6 +27,41 @@ class _RadioState extends State<Radio> {
 
   @override
   Widget build(BuildContext context) {
+    Widget circle = Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: widget.disabled ? Colors.gray_6 : Colors.gray_5,
+        ),
+        shape: BoxShape.circle,
+      ),
+      height: 16,
+      width: 16,
+    );
+
+    Widget dot = checked
+        ? Container(
+            decoration: BoxDecoration(
+              color: widget.disabled ? Colors.gray_6 : Colors.blue_6,
+              shape: BoxShape.circle,
+            ),
+            height: 8,
+            width: 8,
+          )
+        : const SizedBox();
+
+    Widget text = widget.child != null
+        ? Padding(
+            child: widget.child,
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          )
+        : const SizedBox();
+
+    TextStyle style = TextStyle(color: widget.disabled ? Colors.gray_6 : null);
+
+    MouseCursor cursor = widget.disabled
+        ? SystemMouseCursors.forbidden
+        : SystemMouseCursors.click;
+
     return MouseRegion(
       child: GestureDetector(
         child: DefaultTextStyle.merge(
@@ -34,52 +69,25 @@ class _RadioState extends State<Radio> {
             children: [
               Stack(
                 alignment: AlignmentDirectional.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: widget.disabled ? Colors.gray_6 : Colors.gray_5,
-                      ),
-                      shape: BoxShape.circle,
-                    ),
-                    height: 16,
-                    width: 16,
-                  ),
-                  checked
-                      ? Container(
-                          decoration: BoxDecoration(
-                            color:
-                                widget.disabled ? Colors.gray_6 : Colors.blue_6,
-                            shape: BoxShape.circle,
-                          ),
-                          height: 8,
-                          width: 8,
-                        )
-                      : const SizedBox()
-                ],
+                children: [circle, dot],
               ),
-              widget.child != null
-                  ? Padding(
-                      child: widget.child,
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    )
-                  : const SizedBox()
+              text,
             ],
           ),
-          style: TextStyle(color: widget.disabled ? Colors.gray_6 : null),
+          style: style,
         ),
-        onTap: () {
-          if (!widget.disabled) {
-            setState(() {
-              checked = true;
-            });
-          }
-        },
+        onTap: _handleTap,
       ),
-      cursor: widget.disabled
-          ? SystemMouseCursors.forbidden
-          : SystemMouseCursors.click,
+      cursor: cursor,
     );
+  }
+
+  void _handleTap() {
+    if (!widget.disabled) {
+      setState(() {
+        checked = true;
+      });
+    }
   }
 }
 

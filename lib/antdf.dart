@@ -31,6 +31,7 @@ export 'package:ant_design_flutter/widget/pagination.dart';
 export 'package:ant_design_flutter/widget/radio.dart';
 export 'package:ant_design_flutter/widget/scaffold.dart';
 export 'package:ant_design_flutter/widget/select.dart';
+export 'package:ant_design_flutter/widget/slider.dart';
 export 'package:ant_design_flutter/widget/space.dart';
 export 'package:ant_design_flutter/widget/step.dart';
 export 'package:ant_design_flutter/widget/tag.dart';

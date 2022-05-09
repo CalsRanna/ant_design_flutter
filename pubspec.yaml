@@ -1,5 +1,5 @@
 name: ant_design_flutter
-description: A new Flutter package project.
+description: An UI framework designed for Flutter.
 version: 0.0.1
 homepage: http://doc.antdf.xyz
 
@@ -17,10 +17,6 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
 
   # To add assets to your package, add an assets section, like this:
