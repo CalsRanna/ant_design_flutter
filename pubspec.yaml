@@ -11,6 +11,7 @@ dependencies:
   dotted_border: ^2.0.0+2
   flutter:
     sdk: flutter
+  flutter_spinkit: ^5.1.0
 
 dev_dependencies:
   flutter_test:

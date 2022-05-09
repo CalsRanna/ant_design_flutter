@@ -34,6 +34,7 @@ export 'package:ant_design_flutter/widget/select.dart';
 export 'package:ant_design_flutter/widget/slider.dart';
 export 'package:ant_design_flutter/widget/space.dart';
 export 'package:ant_design_flutter/widget/step.dart';
+export 'package:ant_design_flutter/widget/switch.dart';
 export 'package:ant_design_flutter/widget/tag.dart';
 export 'package:ant_design_flutter/widget/tooltip.dart';
 export 'package:ant_design_flutter/widget/typography.dart';
