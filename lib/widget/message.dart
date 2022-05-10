@@ -8,7 +8,7 @@ import 'package:flutter/material.dart' show Material;
 import 'package:flutter/widgets.dart';
 
 class Message {
-  void success(
+  static void success(
     BuildContext context, {
     required Widget content,
     Duration duration = const Duration(seconds: 3),
@@ -28,7 +28,7 @@ class Message {
     );
   }
 
-  void error(
+  static void error(
     BuildContext context, {
     required Widget content,
     Duration duration = const Duration(seconds: 3),
@@ -48,7 +48,7 @@ class Message {
     );
   }
 
-  void info(
+  static void info(
     BuildContext context, {
     required Widget content,
     Duration duration = const Duration(seconds: 3),
@@ -68,7 +68,7 @@ class Message {
     );
   }
 
-  void warning(
+  static void warning(
     BuildContext context, {
     required Widget content,
     Duration duration = const Duration(seconds: 3),
@@ -88,7 +88,7 @@ class Message {
     );
   }
 
-  void _insertEntry(
+  static void _insertEntry(
     BuildContext context,
     ValueKey key,
     Widget content,
