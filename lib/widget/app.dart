@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show MaterialApp;
+import 'package:flutter/widgets.dart';
 
 class AntApp extends MaterialApp {
   const AntApp({Widget? home, Key? key, bool showPerformanceOverlay = false})

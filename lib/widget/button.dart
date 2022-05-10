@@ -1,4 +1,4 @@
-import 'package:ant_design_flutter/enumeration/size.dart';
+import 'package:ant_design_flutter/enum/size.dart';
 import 'package:ant_design_flutter/style/color.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/gestures.dart';

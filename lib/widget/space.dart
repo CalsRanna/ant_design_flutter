@@ -1,4 +1,4 @@
-import 'package:ant_design_flutter/enumeration/size.dart';
+import 'package:ant_design_flutter/enum/size.dart';
 import 'package:flutter/widgets.dart';
 
 class Space extends StatelessWidget {

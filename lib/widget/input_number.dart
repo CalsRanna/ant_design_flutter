@@ -1,5 +1,5 @@
-import 'package:ant_design_flutter/enumeration/size.dart';
-import 'package:ant_design_flutter/enumeration/status.dart';
+import 'package:ant_design_flutter/enum/size.dart';
+import 'package:ant_design_flutter/enum/status.dart';
 import 'package:ant_design_flutter/style/color.dart';
 import 'package:ant_design_flutter/style/icon.dart';
 import 'package:flutter/material.dart'

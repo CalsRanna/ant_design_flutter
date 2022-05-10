@@ -1,4 +1,4 @@
-import 'package:ant_design_flutter/enumeration/size.dart';
+import 'package:ant_design_flutter/enum/size.dart';
 import 'package:ant_design_flutter/widget/button.dart';
 import 'package:flutter/widgets.dart';
 

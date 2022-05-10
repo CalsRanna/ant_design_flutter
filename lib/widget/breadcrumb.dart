@@ -8,7 +8,6 @@ class Breadcrumb extends StatelessWidget {
     this.itemBuilder,
     this.itemCount,
     this.params,
-    this.routes,
     this.separator,
   }) : super(key: key);
 
@@ -16,7 +15,6 @@ class Breadcrumb extends StatelessWidget {
   final Widget Function(BuildContext context, int index)? itemBuilder;
   final int? itemCount;
   final Map? params;
-  final List<AntRoute>? routes;
   final Widget? separator;
 
   @override
@@ -114,18 +112,6 @@ class _BreadcrumbItemState extends State<BreadcrumbItem> {
             child: widget.child,
           );
   }
-}
-
-class AntRoute {
-  AntRoute({
-    required this.path,
-    required this.breadcrumbName,
-    this.children,
-  });
-
-  String path;
-  String breadcrumbName;
-  List<AntRoute>? children;
 }
 
 class BreadcrumbSeparator extends StatelessWidget {

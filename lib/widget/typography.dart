@@ -91,7 +91,7 @@ class _TypographyTitleState extends State<TypographyTitle> {
         widget.title,
         style: TextStyle(
           fontSize: _calculateFontSize(),
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w500,
         ),
       ),
       padding: const EdgeInsets.only(top: 8, bottom: 20),

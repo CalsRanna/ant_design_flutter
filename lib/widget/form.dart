@@ -1,3 +1,5 @@
+import 'package:ant_design_flutter/enum/placement.dart';
+import 'package:ant_design_flutter/enum/size.dart';
 import 'package:ant_design_flutter/widget/grid.dart';
 import 'package:flutter/widgets.dart';
 
@@ -7,7 +9,7 @@ class AntForm<T> extends StatefulWidget {
     required this.children,
     this.colon = true,
     required this.initialValues,
-    this.labelAlign = AntFormLabelAlign.right,
+    this.labelAlign = Placement.right,
     this.labelWrap = false,
     this.labelCol,
     this.layout = AntFormLayout.horizontal,
@@ -15,7 +17,7 @@ class AntForm<T> extends StatefulWidget {
     this.preserve = true,
     this.requiredMark = true,
     this.scrollToFirstError = false,
-    this.size = AntFormSize.middle,
+    this.size = AntSize.medium,
     this.validateMessages,
     this.validateTrigger = 'onChange',
     this.wrapperCol,
@@ -30,7 +32,7 @@ class AntForm<T> extends StatefulWidget {
     required this.children,
     this.colon = true,
     required this.initialValues,
-    this.labelAlign = AntFormLabelAlign.right,
+    this.labelAlign = Placement.right,
     this.labelWrap = false,
     this.labelCol,
     this.layout = AntFormLayout.horizontal,
@@ -38,7 +40,7 @@ class AntForm<T> extends StatefulWidget {
     this.preserve = true,
     this.requiredMark = true,
     this.scrollToFirstError = false,
-    this.size = AntFormSize.middle,
+    this.size = AntSize.medium,
     this.validateMessages,
     this.validateTrigger = 'onChange',
     this.wrapperCol,
@@ -53,7 +55,7 @@ class AntForm<T> extends StatefulWidget {
     required this.children,
     this.colon = true,
     required this.initialValues,
-    this.labelAlign = AntFormLabelAlign.right,
+    this.labelAlign = Placement.right,
     this.labelWrap = false,
     this.labelCol,
     this.layout = AntFormLayout.horizontal,
@@ -61,7 +63,7 @@ class AntForm<T> extends StatefulWidget {
     this.preserve = true,
     this.requiredMark = true,
     this.scrollToFirstError = false,
-    this.size = AntFormSize.middle,
+    this.size = AntSize.medium,
     this.validateMessages,
     this.validateTrigger = 'onChange',
     this.wrapperCol,
@@ -76,7 +78,7 @@ class AntForm<T> extends StatefulWidget {
     required this.children,
     this.colon = true,
     required this.initialValues,
-    this.labelAlign = AntFormLabelAlign.right,
+    this.labelAlign = Placement.right,
     this.labelWrap = false,
     this.labelCol,
     this.layout = AntFormLayout.horizontal,
@@ -84,7 +86,7 @@ class AntForm<T> extends StatefulWidget {
     this.preserve = true,
     this.requiredMark = true,
     this.scrollToFirstError = false,
-    this.size = AntFormSize.middle,
+    this.size = AntSize.medium,
     this.validateMessages,
     this.validateTrigger = 'onChange',
     this.wrapperCol,
@@ -97,7 +99,7 @@ class AntForm<T> extends StatefulWidget {
   final List<Widget> children;
   final bool colon;
   final T initialValues;
-  final AntFormLabelAlign labelAlign;
+  final Placement labelAlign;
   final bool labelWrap;
   final AntColumnResponsiveOption? labelCol;
   final AntFormLayout layout;
@@ -105,7 +107,7 @@ class AntForm<T> extends StatefulWidget {
   final bool preserve;
   final bool requiredMark;
   final bool scrollToFirstError;
-  final AntFormSize size;
+  final AntSize size;
   final ValidateMessages? validateMessages;
   final String validateTrigger;
   final AntColumnResponsiveOption? wrapperCol;
@@ -135,9 +137,7 @@ class _AntFormState extends State<AntForm> {
   }
 }
 
-enum AntFormLabelAlign { left, right }
 enum AntFormLayout { horizontal, vertical, inline }
-enum AntFormSize { small, middle, large }
 
 class ValidateMessages {}
 
@@ -161,7 +161,7 @@ class AntFormItem extends StatefulWidget {
     this.htmlFor,
     this.initialValue,
     this.label,
-    this.labelAlign = AntFormLabelAlign.right,
+    this.labelAlign = Placement.right,
     this.labelCol,
     this.messageVariables,
     this.name,
@@ -188,7 +188,7 @@ class AntFormItem extends StatefulWidget {
   final String? htmlFor;
   final String? initialValue;
   final Widget? label;
-  final AntFormLabelAlign labelAlign;
+  final Placement labelAlign;
   final AntColumnResponsiveOption? labelCol;
   final Map<String, String>? messageVariables;
   final String? name;

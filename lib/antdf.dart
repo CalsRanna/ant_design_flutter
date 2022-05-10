@@ -1,10 +1,10 @@
 library ant_design_flutter;
 
-export 'package:ant_design_flutter/enumeration/placement.dart';
-export 'package:ant_design_flutter/enumeration/status.dart';
-export 'package:ant_design_flutter/enumeration/size.dart';
-export 'package:ant_design_flutter/enumeration/theme.dart';
-export 'package:ant_design_flutter/enumeration/trigger.dart';
+export 'package:ant_design_flutter/enum/placement.dart';
+export 'package:ant_design_flutter/enum/status.dart';
+export 'package:ant_design_flutter/enum/size.dart';
+export 'package:ant_design_flutter/enum/theme.dart';
+export 'package:ant_design_flutter/enum/trigger.dart';
 
 export 'package:ant_design_flutter/style/color.dart';
 export 'package:ant_design_flutter/style/icon.dart';
@@ -20,6 +20,7 @@ export 'package:ant_design_flutter/widget/cascader.dart';
 export 'package:ant_design_flutter/widget/checkbox.dart';
 export 'package:ant_design_flutter/widget/date_picker.dart';
 export 'package:ant_design_flutter/widget/divider.dart';
+export 'package:ant_design_flutter/widget/drawer.dart';
 export 'package:ant_design_flutter/widget/dropdown.dart';
 export 'package:ant_design_flutter/widget/grid.dart';
 export 'package:ant_design_flutter/widget/icon.dart';
