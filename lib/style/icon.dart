@@ -42,9 +42,21 @@ class Icons {
   /// <i class="material-icons md-36">bug_report</i> &#x2014; material icon named "debug".
   static const debug = material.Icons.bug_report;
 
+  /// <i class="material-icons md-36">cancel</i> &#x2014; material icon named "error".
+  static const error = material.Icons.cancel;
+
+  /// <i class="material-icons md-36">info</i> &#x2014; material icon named "info".
+  static const info = material.Icons.info;
+
   /// <i class="material-icons md-36">autorenew</i> &#x2014; material icon named "loading".
   static const loading = material.Icons.autorenew;
 
   /// <i class="material-icons md-36">search</i> &#x2014; material icon named "search".
   static const search = material.Icons.search;
+
+  /// <i class="material-icons md-36">check_circle</i> &#x2014; material icon named "success".
+  static const success = material.Icons.check_circle;
+
+  /// <i class="material-icons md-36">error</i> &#x2014; material icon named "warning".
+  static const warning = material.Icons.error;
 }
