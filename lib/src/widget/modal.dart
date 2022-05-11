@@ -1,5 +1,8 @@
-import 'package:ant_design_flutter/antdf.dart';
+import 'package:ant_design_flutter/src/style/color.dart';
+import 'package:ant_design_flutter/src/style/icon.dart';
+import 'package:ant_design_flutter/src/widget/button.dart';
 import 'package:flutter/material.dart' show Material, showDialog;
+import 'package:flutter/widgets.dart';
 
 class Modal {
   Modal(

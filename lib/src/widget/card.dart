@@ -1,4 +1,6 @@
-import 'package:ant_design_flutter/antdf.dart';
+import 'package:ant_design_flutter/src/enum/size.dart';
+import 'package:ant_design_flutter/src/style/color.dart';
+import 'package:flutter/widgets.dart';
 
 class Card extends StatefulWidget {
   const Card({

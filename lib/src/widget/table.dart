@@ -1,4 +1,5 @@
-import 'package:ant_design_flutter/antdf.dart';
+import 'package:ant_design_flutter/src/style/color.dart';
+import 'package:flutter/widgets.dart';
 
 class AntTable<T> extends StatefulWidget {
   const AntTable({

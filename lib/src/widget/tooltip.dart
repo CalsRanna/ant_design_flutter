@@ -1,8 +1,11 @@
 import 'dart:math';
 
-import 'package:ant_design_flutter/antdf.dart';
+import 'package:ant_design_flutter/src/enum/placement.dart';
+import 'package:ant_design_flutter/src/enum/trigger.dart';
+import 'package:ant_design_flutter/src/style/color.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' show Material;
+import 'package:flutter/widgets.dart';
 
 class Tooltip extends StatefulWidget {
   const Tooltip({

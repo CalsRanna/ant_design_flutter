@@ -1,4 +1,4 @@
-import 'package:ant_design_flutter/antdf.dart';
+import 'package:flutter/widgets.dart';
 
 class AntImage extends StatefulWidget {
   const AntImage({

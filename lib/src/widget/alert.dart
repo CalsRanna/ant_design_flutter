@@ -1,4 +1,7 @@
-import 'package:ant_design_flutter/antdf.dart';
+import 'package:ant_design_flutter/src/enum/status.dart';
+import 'package:ant_design_flutter/src/style/color.dart';
+import 'package:ant_design_flutter/src/style/icon.dart';
+import 'package:flutter/widgets.dart';
 
 class Alert extends StatefulWidget {
   const Alert({
@@ -40,9 +43,10 @@ class _AlertState extends State<Alert> {
     return Container(
       child: widget.message,
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue_3),
-          borderRadius: BorderRadius.circular(2),
-          color: Colors.blue_1),
+        border: Border.all(color: Colors.blue_3),
+        borderRadius: BorderRadius.circular(2),
+        color: Colors.blue_1,
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       width: double.infinity,
     );

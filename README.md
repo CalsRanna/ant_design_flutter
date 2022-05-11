@@ -24,7 +24,7 @@ A Flutter UI framework designed for web / pc application, contains some high qua
 
 ## 🖥 Environment Support
 
-- Working on Windows and Mac Os
+- Working on Windows and Mac OS
 
 ## 📦 Install
 
@@ -43,7 +43,7 @@ void main() {
       body: Center(
         child: Button(
           type: ButtonType.primary,
-          child: Text("Press Me"),
+          child: Text("Click Me"),
         ),
       )
     ),
@@ -59,7 +59,6 @@ void main() {
 
 - [Home page](https://doc.antdf.xyz)
 - [Widgets Overview](https://doc.antdf.xyz/#/overview)
-- [FAQ](https://ant.design/docs/react/faq)
 
 ## ⌨️ Development
 
@@ -72,11 +71,11 @@ Or clone locally:
 ```bash
 $ git git@github.com:CalsRanna/ant_design_flutter
 $ cd ant_design_flutter
-$ flutter install
+$ flutter pub get
 $ flutter run
 ```
 
-Now flutter will choose the device avaiale by your environment.
+Now flutter will run on the connected device in your environment.
 
 ## 🤝 Contributing [![PR Welcome](https://img.shields.io/badge/PR-WELCOME-brightgreen.svg?style=flat-square)](https://github.com/CalsRanna/ant_design_flutter/pulls)
 
