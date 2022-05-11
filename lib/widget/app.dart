@@ -30,6 +30,7 @@ class AntApp extends StatefulWidget {
 class _AntAppState extends State<AntApp> {
   int messageCount = 0;
   Map<ValueKey, double> tops = {};
+  Map<Key, double> notificationTops = {};
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +52,13 @@ class _AntAppState extends State<AntApp> {
       child: app,
       messageCount: messageCount,
       tops: tops,
+      notificationTops: notificationTops,
       decreseMessageCount: _decreseMessageCount,
       increseMessageCount: _increseMessageCount,
       insert: _insert,
       remove: _remove,
+      insertNotification: _insertNotification,
+      removeNotification: _removeNotification,
     );
   }
 
@@ -81,6 +85,18 @@ class _AntAppState extends State<AntApp> {
       tops.remove(key);
     });
   }
+
+  void _insertNotification(Key key, double top) {
+    setState(() {
+      notificationTops[key] = top;
+    });
+  }
+
+  void _removeNotification(Key key) {
+    setState(() {
+      notificationTops.remove(key);
+    });
+  }
 }
 
 class GlobalQuery extends InheritedWidget {
@@ -89,18 +105,24 @@ class GlobalQuery extends InheritedWidget {
     required Widget child,
     required this.messageCount,
     required this.tops,
+    required this.notificationTops,
     required this.decreseMessageCount(),
     required this.increseMessageCount(),
     required this.insert(ValueKey key, double top),
     required this.remove(ValueKey key),
+    required this.insertNotification(Key key, double top),
+    required this.removeNotification(Key key),
   }) : super(key: key, child: child);
 
   final int messageCount;
   final Map<ValueKey, double> tops;
+  final Map<Key, double> notificationTops;
   final void Function() decreseMessageCount;
   final void Function() increseMessageCount;
   final void Function(ValueKey key, double top) insert;
   final void Function(ValueKey key) remove;
+  final void Function(Key key, double top) insertNotification;
+  final void Function(Key key) removeNotification;
 
   static GlobalQuery? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<GlobalQuery>();

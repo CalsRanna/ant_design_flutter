@@ -31,6 +31,7 @@ export 'package:ant_design_flutter/widget/layout.dart';
 export 'package:ant_design_flutter/widget/modal.dart';
 export 'package:ant_design_flutter/widget/menu.dart';
 export 'package:ant_design_flutter/widget/message.dart';
+export 'package:ant_design_flutter/widget/notification.dart';
 export 'package:ant_design_flutter/widget/page_header.dart';
 export 'package:ant_design_flutter/widget/pagination.dart';
 export 'package:ant_design_flutter/widget/radio.dart';
