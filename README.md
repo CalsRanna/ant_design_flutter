@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://doc.antdf.xyz">
+  <a href="https://doc.antdf.xyz">
     <img width="200" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">
   </a>
 </p>
@@ -8,18 +8,18 @@
 
 <div align="center">
 
-An enterprise-class Flutter UI library.
+A Flutter UI framework designed for web / pc application, contains some high quality widgets.
 
-![Pub Version](https://img.shields.io/pub/v/ant_design_flutter?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/CalsRanna/ant_design_flutter?style=for-the-badge)
+![Status](https://img.shields.io/badge/STATUS-WIP-orange?style=for-the-badge&color=blue) ![Pub Version](https://img.shields.io/pub/v/ant_design_flutter?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/CalsRanna/ant_design_flutter?style=for-the-badge)
 
 </div>
 
-[![](https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*Yl83RJhUE7kAAAAAAAAAAABkARQnAQ)](http://doc.antdf.xyz)
+[![](https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*Yl83RJhUE7kAAAAAAAAAAABkARQnAQ)](https://doc.antdf.xyz)
 
 ## ✨ Features
 
 - 🌈 Enterprise-class UI designed for web / desktop applications.
-- 📦 A set of high-quality Flutter components out of the box.
+- 📦 A set of high-quality Flutter widgets out of the box.
 - 🛡 Written in pure Dart with null safety.
 
 ## 🖥 Environment Support
@@ -57,8 +57,8 @@ void main() {
 
 ## 🔗 Links
 
-- [Home page](http://doc.antdf.xyz)
-- [Components Overview](http://doc.antdf.xyz/#/overview)
+- [Home page](https://doc.antdf.xyz)
+- [Widgets Overview](https://doc.antdf.xyz/#/overview)
 - [FAQ](https://ant.design/docs/react/faq)
 
 ## ⌨️ Development
