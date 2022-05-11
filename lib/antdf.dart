@@ -22,7 +22,6 @@ export 'package:ant_design_flutter/src/widget/date_picker.dart';
 export 'package:ant_design_flutter/src/widget/divider.dart';
 export 'package:ant_design_flutter/src/widget/drawer.dart';
 export 'package:ant_design_flutter/src/widget/dropdown.dart';
-export 'package:ant_design_flutter/src/widget/grid.dart';
 export 'package:ant_design_flutter/src/widget/icon.dart';
 export 'package:ant_design_flutter/src/widget/image.dart';
 export 'package:ant_design_flutter/src/widget/input.dart';
@@ -49,4 +48,4 @@ export 'package:ant_design_flutter/src/widget/typography.dart';
 
 export 'package:ant_design_flutter/src/widget/nested_gesture_detector.dart';
 
-export 'package:flutter/widgets.dart';
+export 'package:flutter/widgets.dart' hide Icon, Image, Notification, Table;

@@ -1,16 +1,16 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' as widgets;
 
-class AntIcon extends StatelessWidget {
-  const AntIcon(this.icon, {Key? key, this.rotate, this.spin = false})
+class Icon extends widgets.StatelessWidget {
+  const Icon(this.icon, {widgets.Key? key, this.rotate, this.spin = false})
       : super(key: key);
 
-  final IconData icon;
+  final widgets.IconData icon;
   final double? rotate;
   final bool spin;
 
   @override
-  Widget build(BuildContext context) {
-    return Transform.rotate(
+  widgets.Widget build(widgets.BuildContext context) {
+    return widgets.Transform.rotate(
       child: Icon(icon),
       angle: rotate ?? 0,
     );

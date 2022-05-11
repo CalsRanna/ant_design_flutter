@@ -7,7 +7,7 @@ import 'package:ant_design_flutter/src/widget/app.dart';
 import 'package:flutter/material.dart' show Material;
 import 'package:flutter/widgets.dart';
 
-class AntNotification {
+class Notification {
   static void open(
     BuildContext context, {
     double bottom = 24,

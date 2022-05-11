@@ -1,8 +1,8 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' as material;
 
-class AntImage extends StatefulWidget {
-  const AntImage({
-    Key? key,
+class Image extends material.StatefulWidget {
+  const Image({
+    material.Key? key,
     this.alt,
     this.fallback,
     this.height,
@@ -17,23 +17,23 @@ class AntImage extends StatefulWidget {
   final String? fallback;
   final double? height;
   final void Function()? onError;
-  final Widget? placeholder;
+  final material.Widget? placeholder;
   final bool preview;
   final String src;
   final double? width;
 
   @override
-  State<AntImage> createState() => _AntImageState();
+  material.State<Image> createState() => _ImageState();
 }
 
-class _AntImageState extends State<AntImage> {
+class _ImageState extends material.State<Image> {
   @override
-  Widget build(BuildContext context) {
-    return Image(
+  material.Widget build(material.BuildContext context) {
+    return material.Image(
       height: widget.height,
       image: widget.src.contains('http')
-          ? NetworkImage(widget.src)
-          : AssetImage(widget.src) as ImageProvider,
+          ? material.NetworkImage(widget.src)
+          : material.AssetImage(widget.src) as material.ImageProvider,
       semanticLabel: widget.alt,
       width: widget.width,
     );

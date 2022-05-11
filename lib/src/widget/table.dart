@@ -1,84 +1,86 @@
 import 'package:ant_design_flutter/src/style/color.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' as widgets;
 
-class AntTable<T> extends StatefulWidget {
-  const AntTable({
-    Key? key,
+class Table<T> extends widgets.StatefulWidget {
+  const Table({
+    widgets.Key? key,
     this.bordered = false,
     required this.columns,
     required this.dataSource,
   }) : super(key: key);
 
   final bool bordered;
-  final List<AntTableColumn> columns;
+  final List<TableColumn> columns;
   final List<T> dataSource;
 
   @override
-  State<AntTable> createState() => _AntTableState();
+  widgets.State<Table> createState() => _TableState();
 }
 
-class _AntTableState extends State<AntTable> {
+class _TableState extends widgets.State<Table> {
   int? hoveredRow;
 
   @override
-  Widget build(BuildContext context) {
-    TableRow header = TableRow(
+  widgets.Widget build(widgets.BuildContext context) {
+    widgets.TableRow header = widgets.TableRow(
       children: widget.columns.map((column) {
-        return Container(
-          child: Text(
+        return widgets.Container(
+          child: widgets.Text(
             column.title,
-            style: const TextStyle(fontWeight: FontWeight.w500),
+            style: const widgets.TextStyle(fontWeight: widgets.FontWeight.w500),
           ),
-          padding: const EdgeInsets.all(16),
+          padding: const widgets.EdgeInsets.all(16),
         );
       }).toList(),
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.gray_4)),
+      decoration: const widgets.BoxDecoration(
+        border:
+            widgets.Border(bottom: widgets.BorderSide(color: Colors.gray_4)),
         color: Colors.gray_3,
       ),
     );
 
-    List<TableRow> rows = [];
+    List<widgets.TableRow> rows = [];
     for (var i = 0; i < widget.dataSource.length; i++) {
       rows.add(
-        TableRow(
+        widgets.TableRow(
           children: widget.columns.map((column) {
-            return MouseRegion(
-              child: GestureDetector(
-                child: Container(
+            return widgets.MouseRegion(
+              child: widgets.GestureDetector(
+                child: widgets.Container(
                   child: _buildCell(widget.dataSource[i], column),
-                  padding: const EdgeInsets.all(16),
+                  padding: const widgets.EdgeInsets.all(16),
                 ),
               ),
               onEnter: (_) => setState(() => hoveredRow = i),
               onExit: (_) => setState(() => hoveredRow = null),
             );
           }).toList(),
-          decoration: BoxDecoration(
-            border: const Border(bottom: BorderSide(color: Colors.gray_4)),
+          decoration: widgets.BoxDecoration(
+            border: const widgets.Border(
+                bottom: widgets.BorderSide(color: Colors.gray_4)),
             color: i == hoveredRow ? Colors.gray_3 : null,
           ),
         ),
       );
     }
 
-    Map<int, TableColumnWidth> widths = {};
+    Map<int, widgets.TableColumnWidth> widths = {};
     for (var i = 0; i < widget.columns.length; i++) {
       if (widget.columns[i].width != null) {
-        widths[i] = FixedColumnWidth(widget.columns[i].width!);
+        widths[i] = widgets.FixedColumnWidth(widget.columns[i].width!);
       }
     }
 
-    return Table(
+    return widgets.Table(
       columnWidths: widths,
       children: [header, ...rows],
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      defaultVerticalAlignment: widgets.TableCellVerticalAlignment.middle,
     );
   }
 
-  Widget _buildCell(dynamic data, AntTableColumn column) {
+  widgets.Widget _buildCell(dynamic data, TableColumn column) {
     return column.render?.call(data) ??
-        Text(
+        widgets.Text(
           column.dataIndex != null
               ? data.toJson()[column.dataIndex].toString()
               : '',
@@ -86,9 +88,9 @@ class _AntTableState extends State<AntTable> {
   }
 }
 
-class AntTableColumn {
-  const AntTableColumn({
-    this.alignment = Alignment.centerLeft,
+class TableColumn {
+  const TableColumn({
+    this.alignment = widgets.Alignment.centerLeft,
     this.colSpan,
     this.dataIndex,
     this.render,
@@ -96,10 +98,10 @@ class AntTableColumn {
     this.width,
   });
 
-  final Alignment alignment;
+  final widgets.Alignment alignment;
   final double? colSpan;
   final String? dataIndex;
-  final Widget Function(dynamic record)? render;
+  final widgets.Widget Function(dynamic record)? render;
   final String title;
   final double? width;
 }
