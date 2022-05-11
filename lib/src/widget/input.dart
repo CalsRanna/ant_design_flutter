@@ -20,7 +20,7 @@ class Input extends StatefulWidget {
     this.status,
     this.placeholder,
     this.prefix,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.suffix,
     this.type = InputType.text,
     this.value,
@@ -38,7 +38,7 @@ class Input extends StatefulWidget {
   final Status? status;
   final String? placeholder;
   final Widget? prefix;
-  final AntSize size;
+  final Size size;
   final Widget? suffix;
   final InputType type;
   final String? value;
@@ -49,9 +49,9 @@ class Input extends StatefulWidget {
 
 class _InputState extends State<Input> {
   static const height = {
-    AntSize.small: 24.0,
-    AntSize.medium: 32.0,
-    AntSize.large: 40.0,
+    Size.small: 24.0,
+    Size.medium: 32.0,
+    Size.large: 40.0,
   };
 
   bool actived = false;

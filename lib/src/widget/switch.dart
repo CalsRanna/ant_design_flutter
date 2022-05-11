@@ -11,7 +11,7 @@ class Switch extends StatefulWidget {
     this.controller,
     this.disabled = false,
     this.loading = false,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.uncheckedChildren,
     this.onChange,
     this.onClick,
@@ -22,7 +22,7 @@ class Switch extends StatefulWidget {
   final SwitchController? controller;
   final bool disabled;
   final bool loading;
-  final AntSize size;
+  final Size size;
   final Widget? uncheckedChildren;
   final void Function(bool checked)? onChange;
   final void Function(bool checked)? onClick;
@@ -44,8 +44,8 @@ class _SwitchState extends State<Switch> {
 
   @override
   Widget build(BuildContext context) {
-    double height = widget.size == AntSize.small ? 16 : 22;
-    double width = widget.size == AntSize.small ? 12 : 18;
+    double height = widget.size == Size.small ? 16 : 22;
+    double width = widget.size == Size.small ? 12 : 18;
 
     Widget left = const SizedBox();
     if (checked) {

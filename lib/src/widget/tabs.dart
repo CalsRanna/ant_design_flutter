@@ -14,7 +14,7 @@ class Tabs extends StatefulWidget {
     this.hideAdd = false,
     this.moreIcon,
     this.renderTabBar,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.tabBarExtraContent,
     this.tabBarGutter,
     this.tabPosition = Placement.top,
@@ -34,7 +34,7 @@ class Tabs extends StatefulWidget {
   final bool hideAdd;
   final Widget? moreIcon;
   final Widget Function()? renderTabBar;
-  final AntSize size;
+  final Size size;
   final Widget? tabBarExtraContent;
   final double? tabBarGutter;
   final Placement tabPosition;

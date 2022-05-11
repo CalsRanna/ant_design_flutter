@@ -48,4 +48,5 @@ export 'package:ant_design_flutter/src/widget/typography.dart';
 
 export 'package:ant_design_flutter/src/widget/nested_gesture_detector.dart';
 
-export 'package:flutter/widgets.dart' hide Icon, Image, Notification, Table;
+export 'package:flutter/widgets.dart'
+    hide Icon, Image, Notification, Size, Table;

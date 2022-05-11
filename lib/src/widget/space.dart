@@ -7,7 +7,7 @@ class Space extends StatelessWidget {
     required this.children,
     this.align,
     this.direction = Axis.horizontal,
-    this.size = AntSize.small,
+    this.size = Size.small,
     this.split,
     this.wrap = false,
   }) : super(key: key);
@@ -15,7 +15,7 @@ class Space extends StatelessWidget {
   final List<Widget> children;
   final SpaceAlign? align;
   final Axis direction;
-  final AntSize size;
+  final Size size;
   final Widget? split;
   final bool wrap;
 
@@ -33,19 +33,13 @@ class Space extends StatelessWidget {
 
   double _calculateSpacing() {
     var spacing = 8.0;
-    if (AntSize.medium == size) {
+    if (Size.medium == size) {
       spacing = 16.0;
-    } else if (AntSize.large == size) {
+    } else if (Size.large == size) {
       spacing = 24.0;
     }
     return spacing;
   }
-}
-
-class SpaceSize {
-  static const double small = 8;
-  static const double medium = 16;
-  static const double large = 24;
 }
 
 enum SpaceAlign { start, end, center, baseline }

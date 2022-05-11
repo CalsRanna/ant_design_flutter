@@ -31,7 +31,7 @@ class InputNumber extends StatefulWidget {
     this.readOnly = false,
     this.stringMode = false,
     this.status,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.step = 1,
   }) : super(key: key);
 
@@ -57,7 +57,7 @@ class InputNumber extends StatefulWidget {
   final bool readOnly;
   final bool stringMode;
   final Status? status;
-  final AntSize size;
+  final Size size;
   final double step;
 
   @override
@@ -66,9 +66,9 @@ class InputNumber extends StatefulWidget {
 
 class _InputNumberState extends State<InputNumber> {
   static const height = {
-    AntSize.small: 24.0,
-    AntSize.medium: 32.0,
-    AntSize.large: 40.0,
+    Size.small: 24.0,
+    Size.medium: 32.0,
+    Size.large: 40.0,
   };
 
   bool actived = false;

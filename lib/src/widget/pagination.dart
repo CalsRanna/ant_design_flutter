@@ -21,7 +21,7 @@ class Pagination extends StatefulWidget {
     this.showSizeChanger,
     this.showTitle = true,
     this.simple,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.total = 0,
     this.onChange,
     this.onShowSizeChange,
@@ -42,7 +42,7 @@ class Pagination extends StatefulWidget {
   final bool? showSizeChanger;
   final bool showTitle;
   final bool? simple;
-  final AntSize size;
+  final Size size;
   final int total;
   final void Function(int page, int pageSize)? onChange;
   final void Function(int current, int size)? onShowSizeChange;

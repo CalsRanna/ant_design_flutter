@@ -50,7 +50,7 @@ class Select extends StatefulWidget {
     this.removeIcon,
     this.showArrow,
     this.showSearch = false,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.status,
     this.suffixIcon,
     this.tagBuilder,
@@ -99,7 +99,7 @@ class Select extends StatefulWidget {
   final Widget? removeIcon;
   final bool? showArrow;
   final bool showSearch;
-  final AntSize size;
+  final Size size;
   final Status? status;
   final Widget? suffixIcon;
   final Widget Function()? tagBuilder;
@@ -112,9 +112,9 @@ class Select extends StatefulWidget {
 
 class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
   static const height = {
-    AntSize.small: 24.0,
-    AntSize.medium: 32.0,
-    AntSize.large: 40.0,
+    Size.small: 24.0,
+    Size.medium: 32.0,
+    Size.large: 40.0,
   };
 
   bool actived = false;

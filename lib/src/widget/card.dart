@@ -8,14 +8,14 @@ class Card extends StatefulWidget {
     required this.child,
     this.extra,
     this.hoverable = false,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.title,
   }) : super(key: key);
 
   final Widget child;
   final Widget? extra;
   final bool hoverable;
-  final AntSize size;
+  final Size size;
   final Widget? title;
 
   @override
@@ -58,12 +58,12 @@ class _CardState extends State<Card> {
                       border: Border(bottom: BorderSide(color: Colors.gray_4)),
                     ),
                     padding:
-                        EdgeInsets.all(AntSize.medium == widget.size ? 24 : 12),
+                        EdgeInsets.all(Size.medium == widget.size ? 24 : 12),
                   )
                 : const SizedBox(),
             Padding(
               child: widget.child,
-              padding: EdgeInsets.all(AntSize.medium == widget.size ? 24 : 12),
+              padding: EdgeInsets.all(Size.medium == widget.size ? 24 : 12),
             )
           ],
           crossAxisAlignment: CrossAxisAlignment.start,

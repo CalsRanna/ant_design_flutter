@@ -18,7 +18,7 @@ class Button extends StatefulWidget {
     this.icon,
     this.loading = false,
     this.shape = ButtonShape.square,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.target,
     this.type = ButtonType.normal,
     this.onClick,
@@ -36,7 +36,7 @@ class Button extends StatefulWidget {
   final Widget? icon;
   final bool? loading;
   final ButtonShape shape;
-  final AntSize size;
+  final Size size;
   final String? target;
   final ButtonType type;
   final void Function()? onClick;

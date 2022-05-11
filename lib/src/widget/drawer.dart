@@ -23,7 +23,7 @@ class Drawer {
     this.mask = true,
     this.maskClosable = true,
     this.placement = Placement.right,
-    this.size = AntSize.medium,
+    this.size = Size.medium,
     this.title,
     this.width,
     this.onClose,
@@ -66,7 +66,7 @@ class Drawer {
   final bool mask;
   final bool maskClosable;
   final Placement placement;
-  final AntSize size;
+  final Size size;
   final Widget? title;
   final double? width;
   final void Function()? onClose;
@@ -110,7 +110,7 @@ class _Drawer extends StatefulWidget {
   final bool mask;
   final bool maskClosable;
   final Placement placement;
-  final AntSize size;
+  final Size size;
   final Widget? title;
   final double? width;
   final void Function() onClose;
@@ -127,8 +127,8 @@ class __DrawerState extends State<_Drawer> {
       direction = Axis.vertical;
     }
 
-    double width = widget.width ?? (AntSize.large == widget.size ? 736 : 378);
-    double height = widget.height ?? (AntSize.large == widget.size ? 736 : 378);
+    double width = widget.width ?? (Size.large == widget.size ? 736 : 378);
+    double height = widget.height ?? (Size.large == widget.size ? 736 : 378);
     if ([Placement.bottom, Placement.top].contains(widget.placement)) {
       width = double.infinity;
     }
