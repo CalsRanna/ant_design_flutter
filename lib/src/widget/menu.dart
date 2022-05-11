@@ -1,5 +1,5 @@
-import 'package:ant_design_flutter/style/color.dart';
-import 'package:ant_design_flutter/enum/theme.dart';
+import 'package:ant_design_flutter/src/style/color.dart';
+import 'package:ant_design_flutter/src/enum/theme.dart';
 import 'package:flutter/widgets.dart';
 
 class Menu extends StatefulWidget {

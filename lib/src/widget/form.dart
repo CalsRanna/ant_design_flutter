@@ -1,6 +1,6 @@
-import 'package:ant_design_flutter/enum/placement.dart';
-import 'package:ant_design_flutter/enum/size.dart';
-import 'package:ant_design_flutter/widget/grid.dart';
+import 'package:ant_design_flutter/src/enum/placement.dart';
+import 'package:ant_design_flutter/src/enum/size.dart';
+import 'package:ant_design_flutter/src/widget/grid.dart';
 import 'package:flutter/widgets.dart';
 
 class AntForm<T> extends StatefulWidget {

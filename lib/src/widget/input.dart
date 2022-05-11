@@ -1,6 +1,6 @@
-import 'package:ant_design_flutter/enum/size.dart';
-import 'package:ant_design_flutter/enum/status.dart';
-import 'package:ant_design_flutter/style/color.dart';
+import 'package:ant_design_flutter/src/enum/size.dart';
+import 'package:ant_design_flutter/src/enum/status.dart';
+import 'package:ant_design_flutter/src/style/color.dart';
 import 'package:flutter/material.dart'
     show InputBorder, InputDecoration, TextField;
 import 'package:flutter/widgets.dart';

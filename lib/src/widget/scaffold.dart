@@ -1,4 +1,4 @@
-import 'package:ant_design_flutter/style/color.dart';
+import 'package:ant_design_flutter/src/style/color.dart';
 import 'package:flutter/material.dart' show Scaffold;
 import 'package:flutter/widgets.dart';
 
