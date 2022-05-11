@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return AntApp(
-      home: AntScaffold(
+      home: Scaffold(
         body: Center(
           child: Column(
             children: [

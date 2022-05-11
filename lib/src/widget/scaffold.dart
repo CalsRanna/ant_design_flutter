@@ -1,17 +1,24 @@
 import 'package:ant_design_flutter/src/style/color.dart';
-import 'package:flutter/material.dart' show Scaffold;
+import 'package:flutter/material.dart' as material show Scaffold;
 import 'package:flutter/widgets.dart';
 
-class AntScaffold extends StatelessWidget {
-  const AntScaffold({Key? key, this.body, this.floatingActionButton})
-      : super(key: key);
+class Scaffold extends StatelessWidget {
+  const Scaffold({Key? key, required this.body})
+      : floatingActionButton = null,
+        super(key: key);
 
-  final Widget? body;
+  const Scaffold.floatingActionButton({
+    Key? key,
+    required this.body,
+    this.floatingActionButton,
+  }) : super(key: key);
+
+  final Widget body;
   final Widget? floatingActionButton;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return material.Scaffold(
       body: DefaultTextStyle(
         style: TextStyle(
           color: Colors.black.withOpacity(0.85),
@@ -19,7 +26,7 @@ class AntScaffold extends StatelessWidget {
           fontSize: 14,
         ),
         child: IconTheme(
-          child: Container(child: body),
+          child: body,
           data: const IconThemeData(color: Colors.gray_7, size: 16),
         ),
       ),
