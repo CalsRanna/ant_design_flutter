@@ -78,7 +78,7 @@ $ flutter run
 
 Now flutter will choose the device avaiale by your environment.
 
-## 🤝 Contributing [![PR Welcome](https://img.shields.io/badge/PR-WELCOME-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+## 🤝 Contributing [![PR Welcome](https://img.shields.io/badge/PR-WELCOME-brightgreen.svg?style=flat-square)](https://github.com/CalsRanna/ant_design_flutter/pulls)
 
 We welcome all contributions. You can submit any ideas as [pull requests](https://github.com/CalsRanna/ant_design_flutter/pulls) or as [GitHub issues](https://github.com/CalsRanna/ant_design_flutter/issues).
 
