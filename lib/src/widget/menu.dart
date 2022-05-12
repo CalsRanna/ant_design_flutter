@@ -100,9 +100,10 @@ class _MenuState extends State<Menu> {
       indent: widget.inlineIndent,
       inlineCollapsed: widget.inlineCollapsed ?? false,
       mode: widget.mode,
-      onClick: widget.onClick,
       theme: widget.theme,
       updateCurrent: _updateCurrent,
+      onClick: widget.onClick,
+      onSelect: widget.onSelect,
     );
   }
 
@@ -128,6 +129,7 @@ class _MenuState extends State<Menu> {
 }
 
 enum MenuMode { vertical, horizontal, inline }
+
 enum SubMenuAction { hover, click }
 
 class MenuItem extends StatefulWidget {
@@ -223,8 +225,10 @@ class _MenuItemState extends State<MenuItem> {
   void _handleTap() {
     var current = _MenuInhertedWidget.of(context)!.current;
     var onClick = _MenuInhertedWidget.of(context)!.onClick;
-    if (current != widget.name && onClick != null) {
-      onClick(widget, widget.name);
+    var onSelect = _MenuInhertedWidget.of(context)?.onSelect;
+    if (current != widget.name) {
+      onClick?.call(widget, widget.name);
+      onSelect?.call(widget, widget.name, [current]);
     }
     _MenuInhertedWidget.of(context)!.updateCurrent(widget.name);
   }
@@ -314,6 +318,11 @@ class _MenuInhertedWidget extends InheritedWidget {
   final bool inlineCollapsed;
   final MenuMode mode;
   final void Function(MenuItem item, String name)? onClick;
+  final void Function(
+    MenuItem item,
+    String name,
+    List<String> selectedKeys,
+  )? onSelect;
   final Theme theme;
   final void Function(String name) updateCurrent;
 
@@ -323,9 +332,10 @@ class _MenuInhertedWidget extends InheritedWidget {
     required this.indent,
     required this.inlineCollapsed,
     required this.mode,
-    this.onClick,
     required this.theme,
     required this.updateCurrent,
+    this.onClick,
+    this.onSelect,
     Key? key,
   }) : super(child: child, key: key);
 

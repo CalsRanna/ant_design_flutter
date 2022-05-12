@@ -141,10 +141,14 @@ class _ButtonState extends State<Button> {
   }
 
   EdgeInsets _calculatePadding() {
-    EdgeInsets padding =
-        const EdgeInsets.symmetric(vertical: 8, horizontal: 15);
+    double horizontal = Size.small == widget.size ? 7 : 15;
+    double vertical = Size.small == widget.size ? 0 : 7;
+    var padding = EdgeInsets.symmetric(
+      horizontal: horizontal,
+      vertical: vertical,
+    );
     if (widget.shape == ButtonShape.circle && widget.child == null) {
-      padding = const EdgeInsets.all(7);
+      padding = EdgeInsets.all(vertical);
     }
     return padding;
   }
@@ -228,5 +232,7 @@ class _ButtonState extends State<Button> {
 }
 
 enum ButtonHtmlType { button, submit, reset }
+
 enum ButtonShape { square, circle, round }
+
 enum ButtonType { primary, ghost, dashed, link, text, normal }
