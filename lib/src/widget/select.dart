@@ -123,7 +123,7 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
   bool hovered = false;
   LayerLink link = LayerLink();
   TextEditingController textEditingController = TextEditingController();
-  late AnimationController animatedContainer;
+  late AnimationController animatedController;
 
   @override
   void initState() {
@@ -136,7 +136,7 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
     textEditingController.addListener(() {
       widget.controller?.selected[0] = textEditingController.text;
     });
-    animatedContainer = AnimationController(
+    animatedController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
     )..repeat();
@@ -147,7 +147,7 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
     focusNode.removeListener(_focusNodeListener);
     focusNode.dispose();
     textEditingController.dispose();
-    animatedContainer.dispose();
+    animatedController.dispose();
     super.dispose();
   }
 
@@ -186,7 +186,7 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
                 ),
                 widget.loading
                     ? RotationTransition(
-                        turns: animatedContainer,
+                        turns: animatedController,
                         child: const Icon(
                           Icons.loading,
                         ),
