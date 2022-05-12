@@ -71,10 +71,22 @@ class _TableState extends widgets.State<Table> {
       }
     }
 
-    return widgets.Table(
-      columnWidths: widths,
-      children: [header, ...rows],
-      defaultVerticalAlignment: widgets.TableCellVerticalAlignment.middle,
+    return widgets.Column(
+      children: [
+        widgets.Table(
+          columnWidths: widths,
+          children: [header],
+          defaultVerticalAlignment: widgets.TableCellVerticalAlignment.middle,
+        ),
+        widgets.SingleChildScrollView(
+          child: widgets.Table(
+            columnWidths: widths,
+            children: rows,
+            defaultVerticalAlignment: widgets.TableCellVerticalAlignment.middle,
+          ),
+          controller: widgets.ScrollController(),
+        )
+      ],
     );
   }
 
