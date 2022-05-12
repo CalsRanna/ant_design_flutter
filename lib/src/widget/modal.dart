@@ -27,10 +27,13 @@ class Modal {
     showDialog(
       context: context,
       builder: (_) => _Modal(
+        afterClose: afterClose,
         cancelText: cancelText,
         centered: centered,
         closable: closable,
+        closeIcon: closeIcon,
         content: content,
+        icon: icon,
         keyboard: keyboard,
         mask: mask,
         maskClosable: maskClosable,
@@ -38,6 +41,8 @@ class Modal {
         okType: okType,
         title: title,
         width: width,
+        onCancel: onCancel,
+        onOk: onOk,
       ),
     );
   }

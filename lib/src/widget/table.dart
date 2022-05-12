@@ -78,16 +78,12 @@ class _TableState extends widgets.State<Table> {
           children: [header],
           defaultVerticalAlignment: widgets.TableCellVerticalAlignment.middle,
         ),
-        widgets.SingleChildScrollView(
-          child: widgets.Table(
-            columnWidths: widths,
-            children: rows,
-            defaultVerticalAlignment: widgets.TableCellVerticalAlignment.middle,
-          ),
-          controller: widgets.ScrollController(),
-        )
+        widgets.Table(
+          columnWidths: widths,
+          children: rows,
+          defaultVerticalAlignment: widgets.TableCellVerticalAlignment.middle,
+        ),
       ],
-      mainAxisSize: widgets.MainAxisSize.min,
     );
   }
 
