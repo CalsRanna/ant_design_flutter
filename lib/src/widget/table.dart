@@ -87,6 +87,7 @@ class _TableState extends widgets.State<Table> {
           controller: widgets.ScrollController(),
         )
       ],
+      mainAxisSize: widgets.MainAxisSize.min,
     );
   }
 
