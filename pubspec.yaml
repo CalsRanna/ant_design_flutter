@@ -1,6 +1,6 @@
 name: ant_design_flutter
 description: A Flutter UI framework designed for web / pc application, contains some high quality widgets.
-version: 0.0.1+2
+version: 0.0.1+3
 homepage: https://doc.antdf.xyz
 
 environment:

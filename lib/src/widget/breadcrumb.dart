@@ -40,6 +40,9 @@ class Breadcrumb extends StatelessWidget {
     if (itemBuilder != null && itemCount != null) {
       for (int i = 0; i < itemCount!; i++) {
         _children.add(itemBuilder!(context, i));
+        if (i != itemCount! - 1) {
+          _children.add(_separator);
+        }
       }
     } else {
       if (children != null) {

@@ -1,3 +1,8 @@
+## 0.0.1+3
+
+- Hide raw MenuItem to avoid comflict since Flutter 3.0 brings PlatformMenuBar
+- Some feature of widgets
+
 ## 0.0.1+2
 
 - Remove 'Ant' prefix of some widgets and hide the same name raw widget to avoid comflict.

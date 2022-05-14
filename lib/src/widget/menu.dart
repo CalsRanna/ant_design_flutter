@@ -225,7 +225,7 @@ class _MenuItemState extends State<MenuItem> {
   void _handleTap() {
     var current = _MenuInhertedWidget.of(context)!.current;
     var onClick = _MenuInhertedWidget.of(context)!.onClick;
-    var onSelect = _MenuInhertedWidget.of(context)?.onSelect;
+    var onSelect = _MenuInhertedWidget.of(context)!.onSelect;
     if (current != widget.name) {
       onClick?.call(widget, widget.name);
       onSelect?.call(widget, widget.name, [current]);
