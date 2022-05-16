@@ -177,7 +177,7 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (widget.loading) loadingIcon,
-            const SizedBox(width: 8),
+            if (widget.loading) const SizedBox(width: 8),
             widget.child!,
           ],
         );
