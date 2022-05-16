@@ -26,6 +26,7 @@ class Space extends StatelessWidget {
       crossAxisAlignment: Axis.horizontal == direction
           ? WrapCrossAlignment.center
           : WrapCrossAlignment.start,
+      runSpacing: _calculateSpacing(),
       spacing: _calculateSpacing(),
       children: children,
     );

@@ -49,29 +49,14 @@ class _AntAppState extends State<AntApp> {
     }
 
     return GlobalQuery(
-      messageCount: messageCount,
       tops: tops,
       notificationTops: notificationTops,
-      decreseMessageCount: _decreseMessageCount,
-      increseMessageCount: _increseMessageCount,
       insert: _insert,
       remove: _remove,
       insertNotification: _insertNotification,
       removeNotification: _removeNotification,
       child: app,
     );
-  }
-
-  void _decreseMessageCount() {
-    setState(() {
-      messageCount -= 1;
-    });
-  }
-
-  void _increseMessageCount() {
-    setState(() {
-      messageCount += 1;
-    });
   }
 
   void _insert(ValueKey key, double top) {
@@ -103,22 +88,16 @@ class GlobalQuery extends InheritedWidget {
   const GlobalQuery({
     Key? key,
     required Widget child,
-    required this.messageCount,
     required this.tops,
     required this.notificationTops,
-    required this.decreseMessageCount(),
-    required this.increseMessageCount(),
     required this.insert(ValueKey key, double top),
     required this.remove(ValueKey key),
     required this.insertNotification(Key key, double top),
     required this.removeNotification(Key key),
   }) : super(key: key, child: child);
 
-  final int messageCount;
   final Map<ValueKey, double> tops;
   final Map<Key, double> notificationTops;
-  final void Function() decreseMessageCount;
-  final void Function() increseMessageCount;
   final void Function(ValueKey key, double top) insert;
   final void Function(ValueKey key) remove;
   final void Function(Key key, double top) insertNotification;
@@ -130,6 +109,7 @@ class GlobalQuery extends InheritedWidget {
 
   @override
   bool updateShouldNotify(GlobalQuery oldWidget) {
-    return oldWidget.messageCount != messageCount;
+    return oldWidget.tops != tops ||
+        oldWidget.notificationTops != notificationTops;
   }
 }

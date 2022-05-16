@@ -42,6 +42,9 @@ class Icons {
   /// <i class="material-icons md-36">bug_report</i> &#x2014; material icon named "debug".
   static const debug = material.Icons.bug_report;
 
+  /// <i class="material-icons md-36">download</i> &#x2014; material icon named "download".
+  static const download = material.Icons.download;
+
   /// <i class="material-icons md-36">cancel</i> &#x2014; material icon named "error".
   static const error = material.Icons.cancel;
 
@@ -50,6 +53,9 @@ class Icons {
 
   /// <i class="material-icons md-36">autorenew</i> &#x2014; material icon named "loading".
   static const loading = material.Icons.autorenew;
+
+  /// <i class="material-icons md-36">power_settings_new</i> &#x2014; material icon named "power off".
+  static const power_off = material.Icons.power_settings_new;
 
   /// <i class="material-icons md-36">search</i> &#x2014; material icon named "search".
   static const search = material.Icons.search;
