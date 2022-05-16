@@ -1,5 +1,10 @@
 ## 0.0.1+3
 
+- Upgrade flutter_lints to 2.0
+- Some feature of Button widget
+
+## 0.0.1+3
+
 - Hide raw MenuItem to avoid comflict since Flutter 3.0 brings PlatformMenuBar
 - Some feature of widgets
 
