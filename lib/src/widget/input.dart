@@ -74,8 +74,23 @@ class _InputState extends State<Input> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.text,
+      onEnter: (_) => setState(() {
+        hovered = true;
+      }),
+      onExit: (_) => setState(() {
+        hovered = false;
+      }),
       child: GestureDetector(
         child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: actived || hovered ? Colors.blue_6 : Colors.gray_5,
+            ),
+            borderRadius: BorderRadius.circular(2),
+          ),
+          height: height[widget.size],
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           child: Center(
             child: TextField(
               decoration: InputDecoration(
@@ -88,24 +103,9 @@ class _InputState extends State<Input> {
               style: const TextStyle(fontSize: 14),
             ),
           ),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: actived || hovered ? Colors.blue_6 : Colors.gray_5,
-            ),
-            borderRadius: BorderRadius.circular(2),
-          ),
-          height: height[widget.size],
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         ),
         onTap: () => FocusScope.of(context).requestFocus(focusNode),
       ),
-      cursor: SystemMouseCursors.text,
-      onEnter: (_) => setState(() {
-        hovered = true;
-      }),
-      onExit: (_) => setState(() {
-        hovered = false;
-      }),
     );
   }
 

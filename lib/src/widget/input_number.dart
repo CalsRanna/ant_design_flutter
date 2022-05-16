@@ -99,12 +99,30 @@ class _InputNumberState extends State<InputNumber> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.text,
+      onEnter: (_) => setState(() {
+        hovered = true;
+      }),
+      onExit: (_) => setState(() {
+        hovered = false;
+      }),
       child: GestureDetector(
         child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: actived || hovered ? Colors.blue_6 : Colors.gray_5,
+            ),
+            borderRadius: BorderRadius.circular(2),
+          ),
+          height: height[widget.size],
           child: Row(
             children: [
               Expanded(
                 child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 4,
+                  ),
                   child: TextField(
                     controller: textEditingController,
                     decoration: InputDecoration(
@@ -117,26 +135,28 @@ class _InputNumberState extends State<InputNumber> {
                     focusNode: focusNode,
                     style: const TextStyle(fontSize: 14),
                   ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
                 ),
               ),
               Visibility(
+                visible: hovered,
                 child: Container(
+                  decoration: const BoxDecoration(
+                    border: Border(left: BorderSide(color: Colors.gray_5)),
+                  ),
+                  height: 30,
+                  width: 22,
                   child: Column(
                     children: [
                       MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        onEnter: (_) => setState(() {
+                          hoveredIcon = 'up';
+                        }),
+                        onExit: (_) => setState(() {
+                          hoveredIcon = null;
+                        }),
                         child: GestureDetector(
                           child: Container(
-                            child: Icon(
-                              Icons.chevron_up,
-                              color: hoveredIcon != null && hoveredIcon == 'up'
-                                  ? Colors.gray_6
-                                  : Colors.gray_5,
-                              size: 12,
-                            ),
                             decoration: BoxDecoration(
                               border: const Border(
                                 bottom: BorderSide(color: Colors.gray_5),
@@ -151,6 +171,13 @@ class _InputNumberState extends State<InputNumber> {
                                     ? 18
                                     : 12,
                             width: 22,
+                            child: Icon(
+                              Icons.chevron_up,
+                              color: hoveredIcon != null && hoveredIcon == 'up'
+                                  ? Colors.gray_6
+                                  : Colors.gray_5,
+                              size: 12,
+                            ),
                           ),
                           onTapDown: (_) {
                             setState(() {
@@ -170,25 +197,17 @@ class _InputNumberState extends State<InputNumber> {
                             });
                           },
                         ),
+                      ),
+                      MouseRegion(
                         cursor: SystemMouseCursors.click,
                         onEnter: (_) => setState(() {
-                          hoveredIcon = 'up';
+                          hoveredIcon = 'down';
                         }),
                         onExit: (_) => setState(() {
                           hoveredIcon = null;
                         }),
-                      ),
-                      MouseRegion(
                         child: GestureDetector(
                           child: Container(
-                            child: Icon(
-                              Icons.chevron_down,
-                              color:
-                                  hoveredIcon != null && hoveredIcon == 'down'
-                                      ? Colors.gray_6
-                                      : Colors.gray_5,
-                              size: 12,
-                            ),
                             decoration: BoxDecoration(
                               color:
                                   clickedIcon != null && clickedIcon == 'down'
@@ -201,6 +220,14 @@ class _InputNumberState extends State<InputNumber> {
                                     ? 18
                                     : 12,
                             width: 22,
+                            child: Icon(
+                              Icons.chevron_down,
+                              color:
+                                  hoveredIcon != null && hoveredIcon == 'down'
+                                      ? Colors.gray_6
+                                      : Colors.gray_5,
+                              size: 12,
+                            ),
                           ),
                           onTapDown: (_) {
                             setState(() {
@@ -220,43 +247,16 @@ class _InputNumberState extends State<InputNumber> {
                             });
                           },
                         ),
-                        cursor: SystemMouseCursors.click,
-                        onEnter: (_) => setState(() {
-                          hoveredIcon = 'down';
-                        }),
-                        onExit: (_) => setState(() {
-                          hoveredIcon = null;
-                        }),
                       ),
                     ],
                   ),
-                  decoration: const BoxDecoration(
-                    border: Border(left: BorderSide(color: Colors.gray_5)),
-                  ),
-                  height: 30,
-                  width: 22,
                 ),
-                visible: hovered,
               )
             ],
           ),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: actived || hovered ? Colors.blue_6 : Colors.gray_5,
-            ),
-            borderRadius: BorderRadius.circular(2),
-          ),
-          height: height[widget.size],
         ),
         onTap: () => FocusScope.of(context).requestFocus(focusNode),
       ),
-      cursor: SystemMouseCursors.text,
-      onEnter: (_) => setState(() {
-        hovered = true;
-      }),
-      onExit: (_) => setState(() {
-        hovered = false;
-      }),
     );
   }
 

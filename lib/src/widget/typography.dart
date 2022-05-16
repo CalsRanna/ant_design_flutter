@@ -87,6 +87,7 @@ class _TypographyTitleState extends State<TypographyTitle> {
   @override
   Widget build(BuildContext context) {
     return Padding(
+      padding: const EdgeInsets.only(top: 8, bottom: 20),
       child: Text(
         widget.title,
         style: TextStyle(
@@ -94,7 +95,6 @@ class _TypographyTitleState extends State<TypographyTitle> {
           fontWeight: FontWeight.w500,
         ),
       ),
-      padding: const EdgeInsets.only(top: 8, bottom: 20),
     );
   }
 
@@ -146,8 +146,8 @@ class _TypographyParagraphState extends State<TypographyParagraph> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      child: Text(widget.paragraph),
       padding: const EdgeInsets.only(bottom: 14),
+      child: Text(widget.paragraph),
     );
   }
 }

@@ -24,6 +24,7 @@ class Divider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           decoration: const BoxDecoration(
@@ -54,7 +55,6 @@ class Divider extends StatelessWidget {
           ),
         )
       ],
-      crossAxisAlignment: CrossAxisAlignment.center,
     );
   }
 }

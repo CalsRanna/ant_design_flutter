@@ -126,31 +126,36 @@ class _Modal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget header = Container(
+      decoration: const BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.gray_4)),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           DefaultTextStyle.merge(
             child: title,
             style: const TextStyle(fontWeight: FontWeight.w500),
           ),
           MouseRegion(
+            cursor: SystemMouseCursors.click,
             child: GestureDetector(
               child: closeIcon ??
                   const Icon(Icons.close, color: Colors.gray_5, size: 16),
               onTap: () => _handleCancel(context),
             ),
-            cursor: SystemMouseCursors.click,
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
       ),
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.gray_4)),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
     );
 
     Widget footer = Container(
+      decoration: const BoxDecoration(
+        border: Border(top: BorderSide(color: Colors.gray_4)),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Button(
             child: Text(cancelText),
@@ -158,38 +163,33 @@ class _Modal extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Button(
-            child: Text(okText),
             type: okType,
             onClick: () => _handleOk(context),
+            child: Text(okText),
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.end,
       ),
-      decoration: const BoxDecoration(
-        border: Border(top: BorderSide(color: Colors.gray_4)),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
     );
 
     return Align(
       alignment: Alignment.topCenter,
       child: Padding(
+        padding: const EdgeInsets.only(top: 80),
         child: Material(
           borderRadius: BorderRadius.circular(2),
           child: SizedBox(
+            width: width,
             child: Column(
-              children: [
-                header,
-                Padding(child: content, padding: const EdgeInsets.all(24)),
-                footer,
-              ],
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
+              children: [
+                header,
+                Padding(padding: const EdgeInsets.all(24), child: content),
+                footer,
+              ],
             ),
-            width: width,
           ),
         ),
-        padding: const EdgeInsets.only(top: 80),
       ),
     );
   }

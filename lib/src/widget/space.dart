@@ -22,12 +22,12 @@ class Space extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      children: children,
       direction: direction,
       crossAxisAlignment: Axis.horizontal == direction
           ? WrapCrossAlignment.center
           : WrapCrossAlignment.start,
       spacing: _calculateSpacing(),
+      children: children,
     );
   }
 

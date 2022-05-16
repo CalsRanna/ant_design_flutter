@@ -55,13 +55,13 @@ class _SwitchState extends State<Switch> {
     Widget loading = SpinKitFadingCircle(color: Colors.blue_3, size: width - 2);
 
     Widget circle = Container(
-      child: widget.loading ? loading : null,
       decoration: const BoxDecoration(
         color: Colors.white,
         shape: BoxShape.circle,
       ),
       height: width,
       width: width,
+      child: widget.loading ? loading : null,
     );
 
     Widget right = widget.uncheckedChildren ?? SizedBox(width: width + 2);
@@ -75,24 +75,24 @@ class _SwitchState extends State<Switch> {
     }
 
     return MouseRegion(
+      cursor: widget.disabled || widget.loading
+          ? SystemMouseCursors.forbidden
+          : SystemMouseCursors.click,
       child: GestureDetector(
+        onTap: _handleTap,
         child: Container(
-          child: Row(
-            children: [left, circle, right],
-            mainAxisSize: MainAxisSize.min,
-          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(11),
             color: color,
           ),
           height: height,
           padding: const EdgeInsets.all(2),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [left, circle, right],
+          ),
         ),
-        onTap: _handleTap,
       ),
-      cursor: widget.disabled || widget.loading
-          ? SystemMouseCursors.forbidden
-          : SystemMouseCursors.click,
     );
   }
 

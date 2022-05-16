@@ -76,14 +76,15 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return _MenuInhertedWidget(
+      current: current,
+      indent: widget.inlineIndent,
+      inlineCollapsed: widget.inlineCollapsed ?? false,
+      mode: widget.mode,
+      theme: widget.theme,
+      updateCurrent: _updateCurrent,
+      onClick: widget.onClick,
+      onSelect: widget.onSelect,
       child: Container(
-        child: Flex(
-          children: _buildChildren(),
-          crossAxisAlignment: CrossAxisAlignment.start,
-          direction: widget.mode == MenuMode.horizontal
-              ? Axis.horizontal
-              : Axis.vertical,
-        ),
         decoration: BoxDecoration(
           border: Border(
             bottom: widget.mode == MenuMode.horizontal
@@ -95,15 +96,14 @@ class _MenuState extends State<Menu> {
           ),
           color: widget.theme == Theme.dark ? Colors.black : Colors.white,
         ),
+        child: Flex(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          direction: widget.mode == MenuMode.horizontal
+              ? Axis.horizontal
+              : Axis.vertical,
+          children: _buildChildren(),
+        ),
       ),
-      current: current,
-      indent: widget.inlineIndent,
-      inlineCollapsed: widget.inlineCollapsed ?? false,
-      mode: widget.mode,
-      theme: widget.theme,
-      updateCurrent: _updateCurrent,
-      onClick: widget.onClick,
-      onSelect: widget.onSelect,
     );
   }
 
@@ -166,24 +166,16 @@ class _MenuItemState extends State<MenuItem> {
     var theme = _MenuInhertedWidget.of(context)!.theme;
 
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() {
+        hovered = true;
+      }),
+      onExit: (_) => setState(() {
+        hovered = false;
+      }),
       child: GestureDetector(
+        onTap: _handleTap,
         child: Container(
-          child: DefaultTextStyle.merge(
-            child: widget.child,
-            maxLines: 1,
-            overflow: TextOverflow.clip,
-            softWrap: true,
-            style: TextStyle(
-              color: Theme.light == theme
-                  ? hovered || widget.name == current
-                      ? Colors.blue_6
-                      : Colors.black
-                  : hovered || widget.name == current
-                      ? Colors.white
-                      : Colors.gray_4,
-              fontSize: 14,
-            ),
-          ),
           decoration: BoxDecoration(
             border: current == widget.name
                 ? Border(
@@ -209,16 +201,24 @@ class _MenuItemState extends State<MenuItem> {
               : inlineCollapsed
                   ? 80
                   : double.infinity,
+          child: DefaultTextStyle.merge(
+            child: widget.child,
+            maxLines: 1,
+            overflow: TextOverflow.clip,
+            softWrap: true,
+            style: TextStyle(
+              color: Theme.light == theme
+                  ? hovered || widget.name == current
+                      ? Colors.blue_6
+                      : Colors.black
+                  : hovered || widget.name == current
+                      ? Colors.white
+                      : Colors.gray_4,
+              fontSize: 14,
+            ),
+          ),
         ),
-        onTap: _handleTap,
       ),
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() {
-        hovered = true;
-      }),
-      onExit: (_) => setState(() {
-        hovered = false;
-      }),
     );
   }
 
@@ -274,13 +274,10 @@ class MenuItemGroup extends StatelessWidget {
     var indent = _MenuInhertedWidget.of(context)!.indent;
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         label != null
             ? Container(
-                child: DefaultTextStyle.merge(
-                  child: label!,
-                  style: const TextStyle(color: Colors.gray_7),
-                ),
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(color: Colors.gray_4),
@@ -289,14 +286,17 @@ class MenuItemGroup extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: indent),
                 padding: const EdgeInsets.symmetric(vertical: 13),
                 width: double.infinity,
+                child: DefaultTextStyle.merge(
+                  child: label!,
+                  style: const TextStyle(color: Colors.gray_7),
+                ),
               )
             : const SizedBox(),
         Column(
-          children: children,
           crossAxisAlignment: CrossAxisAlignment.start,
+          children: children,
         ),
       ],
-      crossAxisAlignment: CrossAxisAlignment.start,
     );
   }
 }

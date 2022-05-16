@@ -30,13 +30,13 @@ class _TagState extends State<Tag> {
   Widget build(BuildContext context) {
     return DefaultTextStyle.merge(
       child: Container(
-        child: widget.child,
         decoration: BoxDecoration(
           border: Border.all(color: widget.color ?? Colors.gray_5),
           borderRadius: BorderRadius.circular(2),
           color: widget.color ?? Colors.gray_2,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: widget.child,
       ),
       style: const TextStyle(fontSize: 12),
     );

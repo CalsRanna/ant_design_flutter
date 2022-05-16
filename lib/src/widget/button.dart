@@ -63,8 +63,16 @@ class _ButtonState extends State<Button> {
           onEnter: _handleEnter,
           onExit: _handleExit,
           child: GestureDetector(
+            onTapDown: _handleTapDown,
+            onTapUp: _handleTapUp,
             child: widget.type == ButtonType.dashed
                 ? DottedBorder(
+                    color: _buildBorderColor(),
+                    borderType: widget.shape == ButtonShape.circle
+                        ? BorderType.Circle
+                        : BorderType.RRect,
+                    padding: const EdgeInsets.all(0),
+                    radius: const Radius.circular(2),
                     child: Container(
                       padding: _calculatePadding(),
                       decoration: BoxDecoration(
@@ -75,12 +83,6 @@ class _ButtonState extends State<Button> {
                       ),
                       child: _buildChild(),
                     ),
-                    color: _buildBorderColor(),
-                    borderType: widget.shape == ButtonShape.circle
-                        ? BorderType.Circle
-                        : BorderType.RRect,
-                    padding: const EdgeInsets.all(0),
-                    radius: const Radius.circular(2),
                   )
                 : Container(
                     padding: _calculatePadding(),
@@ -96,8 +98,6 @@ class _ButtonState extends State<Button> {
                     ),
                     child: _buildChild(),
                   ),
-            onTapDown: _handleTapDown,
-            onTapUp: _handleTapUp,
           ),
         ),
       ),

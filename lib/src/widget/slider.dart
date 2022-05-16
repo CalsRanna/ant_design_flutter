@@ -93,6 +93,8 @@ class _SliderState extends State<Slider> {
       );
 
       Widget draggableCircle = Listener(
+        onPointerDown: _handlePointerDown,
+        onPointerUp: _handlePointerUp,
         child: GestureDetector(
           child: Container(
             decoration: BoxDecoration(
@@ -108,8 +110,6 @@ class _SliderState extends State<Slider> {
           onHorizontalDragUpdate: (DragUpdateDetails details) =>
               _handleDragUpdate(details, width),
         ),
-        onPointerDown: _handlePointerDown,
-        onPointerUp: _handlePointerUp,
       );
 
       Widget unactivedTrack = Expanded(
@@ -129,6 +129,9 @@ class _SliderState extends State<Slider> {
       );
 
       return MouseRegion(
+        cursor: hovered ? SystemMouseCursors.click : MouseCursor.defer,
+        onEnter: _handleEnter,
+        onExit: _handleExit,
         child: Row(
           children: [
             activedTrack,
@@ -136,9 +139,6 @@ class _SliderState extends State<Slider> {
             unactivedTrack
           ],
         ),
-        cursor: hovered ? SystemMouseCursors.click : MouseCursor.defer,
-        onEnter: _handleEnter,
-        onExit: _handleExit,
       );
     });
   }
@@ -210,15 +210,15 @@ class _SliderState extends State<Slider> {
     var offset = Offset(0, -1 * context.size!.height);
     return OverlayEntry(
       builder: (context) => Positioned(
+        height: 38,
         child: CompositedTransformFollower(
-          child: _SliderOverlayEntry(label: value.roundToDouble().toString()),
           followerAnchor: Alignment.bottomCenter,
           link: link,
           offset: offset,
           showWhenUnlinked: false,
           targetAnchor: Alignment.topCenter,
+          child: _SliderOverlayEntry(label: value.roundToDouble().toString()),
         ),
-        height: 38,
       ),
     );
   }
@@ -238,6 +238,7 @@ class _SliderOverlayEntry extends StatelessWidget {
     return Material(
       child: Stack(
         alignment: AlignmentDirectional.bottomCenter,
+        clipBehavior: Clip.none,
         children: [
           Positioned(
             bottom: -4,
@@ -257,6 +258,11 @@ class _SliderOverlayEntry extends StatelessWidget {
           ),
           Container(
             alignment: AlignmentDirectional.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(2),
+              color: Colors.gray_10,
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
             child: Text(
               label,
               style: const TextStyle(
@@ -265,14 +271,8 @@ class _SliderOverlayEntry extends StatelessWidget {
                 height: 1,
               ),
             ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
-              color: Colors.gray_10,
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
           ),
         ],
-        clipBehavior: Clip.none,
       ),
     );
   }

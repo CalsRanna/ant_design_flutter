@@ -20,16 +20,16 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('You have clicked the button $count times'),
               const SizedBox(height: 8),
               Button(
-                child: const Text('Click'),
                 type: ButtonType.primary,
                 onClick: () => setState(() => count++),
+                child: const Text('Click'),
               ),
             ],
-            mainAxisAlignment: MainAxisAlignment.center,
           ),
         ),
       ),

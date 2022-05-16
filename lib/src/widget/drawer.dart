@@ -31,7 +31,6 @@ class Drawer {
     _state = Overlay.of(context);
     _entry = OverlayEntry(
       builder: (_) => _Drawer(
-        child: child,
         closable: closable,
         closeIcon: closeIcon,
         extra: extra,
@@ -45,6 +44,7 @@ class Drawer {
         title: title,
         width: width,
         onClose: _handleClose,
+        child: child,
       ),
     );
     _state?.insert(_entry!);
@@ -138,23 +138,27 @@ class __DrawerState extends State<_Drawer> {
 
     Widget mask = Expanded(
       child: GestureDetector(
+        onTap: _handleClose,
         child: Container(
           color: Colors.black.withOpacity(0.5),
         ),
-        onTap: _handleClose,
       ),
     );
 
     Widget closeIcon = MouseRegion(
+      cursor: SystemMouseCursors.click,
       child: GestureDetector(
+        onTap: _handleClose,
         child: widget.closeIcon ??
             const Icon(Icons.close, color: Colors.gray_7, size: 16),
-        onTap: _handleClose,
       ),
-      cursor: SystemMouseCursors.click,
     );
 
     Widget title = Container(
+      decoration: const BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.gray_3)),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       child: Row(
         children: [
           widget.closable ? closeIcon : const SizedBox(),
@@ -168,41 +172,37 @@ class __DrawerState extends State<_Drawer> {
           widget.extra ?? const SizedBox(),
         ],
       ),
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.gray_3)),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
     );
 
     Widget child = Container(
+      color: Colors.white,
+      height: height,
+      width: width,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           widget.closable || widget.title != null || widget.extra != null
               ? title
               : const SizedBox(),
           Expanded(
             child: Container(
-              child: widget.child,
               padding: const EdgeInsets.all(24),
+              child: widget.child,
             ),
           ),
           widget.footer ?? const SizedBox(),
         ],
-        crossAxisAlignment: CrossAxisAlignment.start,
       ),
-      color: Colors.white,
-      height: height,
-      width: width,
     );
 
     return Material(
+      color: const Color.fromARGB(0, 255, 255, 255),
       child: Flex(
         direction: direction,
         children: [Placement.bottom, Placement.right].contains(widget.placement)
             ? [mask, child]
             : [child, mask],
       ),
-      color: const Color.fromARGB(0, 255, 255, 255),
     );
   }
 

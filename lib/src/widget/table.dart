@@ -25,11 +25,11 @@ class _TableState extends widgets.State<Table> {
     widgets.TableRow header = widgets.TableRow(
       children: widget.columns.map((column) {
         return widgets.Container(
+          padding: const widgets.EdgeInsets.all(16),
           child: widgets.Text(
             column.title,
             style: const widgets.TextStyle(fontWeight: widgets.FontWeight.w500),
           ),
-          padding: const widgets.EdgeInsets.all(16),
         );
       }).toList(),
       decoration: const widgets.BoxDecoration(
@@ -47,8 +47,8 @@ class _TableState extends widgets.State<Table> {
             return widgets.MouseRegion(
               child: widgets.GestureDetector(
                 child: widgets.Container(
-                  child: _buildCell(widget.dataSource[i], column),
                   padding: const widgets.EdgeInsets.all(16),
+                  child: _buildCell(widget.dataSource[i], column),
                 ),
               ),
               onEnter: (_) => setState(() => hoveredRow = i),

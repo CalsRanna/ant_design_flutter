@@ -23,11 +23,11 @@ class Notification {
     void Function()? onClose,
   }) {
     var tops = GlobalQuery.of(context)?.notificationTops;
-    var _top = top;
+    var realTop = top;
     if (tops != null) {
       var heights = tops.values.toList();
       for (int i = 0; i < heights.length; i++) {
-        _top += heights[i] + 16;
+        realTop += heights[i] + 16;
       }
     }
     var key = GlobalKey();
@@ -42,7 +42,7 @@ class Notification {
         icon: icon,
         message: message,
         placement: placement,
-        top: _top,
+        top: realTop,
         onClick: onClick,
         onClose: onClose,
       ),
@@ -90,21 +90,21 @@ class _Notification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget header = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         DefaultTextStyle.merge(
           child: message,
           style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         MouseRegion(
+          cursor: SystemMouseCursors.click,
           child: GestureDetector(
             child: closeIcon ??
                 const Icon(Icons.close, color: Colors.gray_5, size: 16),
             onTap: () => _handleClose(context),
           ),
-          cursor: SystemMouseCursors.click,
         ),
       ],
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
     );
 
     Widget footer = Align(
@@ -118,27 +118,27 @@ class _Notification extends StatelessWidget {
     return Align(
       alignment: Alignment.topRight,
       child: Padding(
+        padding: EdgeInsets.only(right: bottom, top: top),
         child: Material(
           borderRadius: BorderRadius.circular(2),
+          color: Colors.white,
+          elevation: 8,
+          shadowColor: Colors.gray_1,
           child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            width: 384,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 header,
                 const SizedBox(height: 8),
                 description,
                 if (btn != null) footer,
               ],
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            width: 384,
           ),
-          color: Colors.white,
-          elevation: 8,
-          shadowColor: Colors.gray_1,
         ),
-        padding: EdgeInsets.only(right: bottom, top: top),
       ),
     );
   }

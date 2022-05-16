@@ -43,22 +43,22 @@ class _IconState extends widgets.State<Icon>
 
   @override
   widgets.Widget build(widgets.BuildContext context) {
-    var _icon = widgets.Icon(
+    var icon = widgets.Icon(
       widget.icon,
       color: widget.color,
       size: widget.size,
     );
 
-    var _rotate = widget.rotate != null ? widget.rotate! * pi / 180 : 0.0;
-    var rotateIcon = widgets.Transform.rotate(angle: _rotate, child: _icon);
+    var rotate = widget.rotate != null ? widget.rotate! * pi / 180 : 0.0;
+    var rotateIcon = widgets.Transform.rotate(angle: rotate, child: icon);
 
     return widget.spin
         ? widgets.RotationTransition(
-            child: widget.rotate != null ? rotateIcon : _icon,
             turns: animatedController,
+            child: widget.rotate != null ? rotateIcon : icon,
           )
         : widget.rotate != null
             ? rotateIcon
-            : _icon;
+            : icon;
   }
 }

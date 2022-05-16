@@ -12,7 +12,6 @@ class NestedGestureDetector extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawGestureDetector(
       behavior: HitTestBehavior.opaque,
-      child: child,
       gestures: {
         _AllowNestedGestureRecognizer:
             GestureRecognizerFactoryWithHandlers<_AllowNestedGestureRecognizer>(
@@ -21,6 +20,7 @@ class NestedGestureDetector extends StatelessWidget {
           recognizer.onTap = onTap;
         })
       },
+      child: child,
     );
   }
 }

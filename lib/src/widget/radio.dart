@@ -51,8 +51,8 @@ class _RadioState extends State<Radio> {
 
     Widget text = widget.child != null
         ? Padding(
-            child: widget.child,
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: widget.child,
           )
         : const SizedBox();
 
@@ -63,7 +63,9 @@ class _RadioState extends State<Radio> {
         : SystemMouseCursors.click;
 
     return MouseRegion(
+      cursor: cursor,
       child: GestureDetector(
+        onTap: _handleTap,
         child: DefaultTextStyle.merge(
           child: Row(
             children: [
@@ -76,9 +78,7 @@ class _RadioState extends State<Radio> {
           ),
           style: style,
         ),
-        onTap: _handleTap,
       ),
-      cursor: cursor,
     );
   }
 

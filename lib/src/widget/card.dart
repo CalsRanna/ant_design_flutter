@@ -46,22 +46,22 @@ class _CardState extends State<Card> {
       );
 
       header = Container(
-        child: Row(
-          children: [title, extra],
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        ),
         decoration: const BoxDecoration(
           border: Border(bottom: BorderSide(color: Colors.gray_4)),
         ),
         padding: EdgeInsets.all(
           Size.medium == widget.size ? 24 : 12,
         ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [title, extra],
+        ),
       );
     }
 
     Widget body = Padding(
-      child: widget.child,
       padding: EdgeInsets.all(Size.medium == widget.size ? 24 : 12),
+      child: widget.child,
     );
 
     List<BoxShadow>? boxShadow;
@@ -83,21 +83,21 @@ class _CardState extends State<Card> {
     }
 
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => hovered = true),
+      onExit: (_) => setState(() => hovered = false),
       child: Container(
-        child: Column(
-          children: [header, body],
-          crossAxisAlignment: CrossAxisAlignment.start,
-        ),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.gray_4),
           borderRadius: BorderRadius.circular(2),
           boxShadow: boxShadow,
           color: Colors.white,
         ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [header, body],
+        ),
       ),
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => hovered = true),
-      onExit: (_) => setState(() => hovered = false),
     );
   }
 }

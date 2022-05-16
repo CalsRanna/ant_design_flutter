@@ -49,7 +49,6 @@ class _AntAppState extends State<AntApp> {
     }
 
     return GlobalQuery(
-      child: app,
       messageCount: messageCount,
       tops: tops,
       notificationTops: notificationTops,
@@ -59,6 +58,7 @@ class _AntAppState extends State<AntApp> {
       remove: _remove,
       insertNotification: _insertNotification,
       removeNotification: _removeNotification,
+      child: app,
     );
   }
 

@@ -36,16 +36,16 @@ class PageHeader extends StatelessWidget {
       children: [
         backIcon != null
             ? Padding(
-                child: backIcon,
                 padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: backIcon,
               )
             : const SizedBox(),
         Padding(
+          padding: const EdgeInsets.only(right: 12.0),
           child: DefaultTextStyle.merge(
             child: title,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
-          padding: const EdgeInsets.only(right: 12.0),
         ),
         subtitle != null
             ? DefaultTextStyle.merge(

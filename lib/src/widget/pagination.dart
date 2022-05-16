@@ -69,27 +69,27 @@ class _PaginationState extends State<Pagination> {
     var totalPage = _calculateTotalPage();
 
     return _PaginationInhertedWidget(
-      child: Wrap(
-        children: [
-          const _PaginationArrowItem(arrow: 'left'),
-          Wrap(
-            children: List.generate(
-              totalPage,
-              (index) => _PaginationItem(page: index),
-            ),
-            direction: Axis.horizontal,
-            spacing: 8,
-          ),
-          const _PaginationArrowItem(arrow: 'right'),
-        ],
-        direction: Axis.horizontal,
-        spacing: 8,
-      ),
       current: current,
       handleChange: _handleChange,
       onChange: widget.onChange,
       pageSize: widget.pageSize,
       totalPage: totalPage,
+      child: Wrap(
+        direction: Axis.horizontal,
+        spacing: 8,
+        children: [
+          const _PaginationArrowItem(arrow: 'left'),
+          Wrap(
+            direction: Axis.horizontal,
+            spacing: 8,
+            children: List.generate(
+              totalPage,
+              (index) => _PaginationItem(page: index),
+            ),
+          ),
+          const _PaginationArrowItem(arrow: 'right'),
+        ],
+      ),
     );
   }
 
@@ -126,8 +126,30 @@ class __PaginationArowItemState extends State<_PaginationArrowItem> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: _available()
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.forbidden,
+      onEnter: (_) => setState(() {
+        hovered = true;
+      }),
+      onExit: (_) => setState(() {
+        hovered = false;
+      }),
       child: GestureDetector(
+        onTap: _handleTap,
         child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: _available()
+                  ? hovered
+                      ? Colors.blue_6
+                      : Colors.gray_5
+                  : Colors.gray_5,
+            ),
+            borderRadius: BorderRadius.circular(2),
+          ),
+          height: 32,
+          width: 32,
           child: Center(
             child: IconTheme.merge(
               child: Icon(widget.arrow == 'left'
@@ -142,30 +164,8 @@ class __PaginationArowItemState extends State<_PaginationArrowItem> {
               ),
             ),
           ),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: _available()
-                  ? hovered
-                      ? Colors.blue_6
-                      : Colors.gray_5
-                  : Colors.gray_5,
-            ),
-            borderRadius: BorderRadius.circular(2),
-          ),
-          height: 32,
-          width: 32,
         ),
-        onTap: _handleTap,
       ),
-      cursor: _available()
-          ? SystemMouseCursors.click
-          : SystemMouseCursors.forbidden,
-      onEnter: (_) => setState(() {
-        hovered = true;
-      }),
-      onExit: (_) => setState(() {
-        hovered = false;
-      }),
     );
   }
 
@@ -216,15 +216,16 @@ class __PaginationItemState extends State<_PaginationItem> {
     var current = _PaginationInhertedWidget.of(context)?.current ?? 0;
 
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() {
+        hovered = true;
+      }),
+      onExit: (_) => setState(() {
+        hovered = false;
+      }),
       child: GestureDetector(
+        onTap: _handleTap,
         child: Container(
-          child: Center(
-              child: DefaultTextStyle.merge(
-            child: Text('${widget.page + 1}'),
-            style: TextStyle(
-                color:
-                    current == widget.page || hovered ? Colors.blue_6 : null),
-          )),
           decoration: BoxDecoration(
             border: Border.all(
               color: current == widget.page || hovered
@@ -235,16 +236,15 @@ class __PaginationItemState extends State<_PaginationItem> {
           ),
           height: 32,
           width: 32,
+          child: Center(
+              child: DefaultTextStyle.merge(
+            child: Text('${widget.page + 1}'),
+            style: TextStyle(
+                color:
+                    current == widget.page || hovered ? Colors.blue_6 : null),
+          )),
         ),
-        onTap: _handleTap,
       ),
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() {
-        hovered = true;
-      }),
-      onExit: (_) => setState(() {
-        hovered = false;
-      }),
     );
   }
 

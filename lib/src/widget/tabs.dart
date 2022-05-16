@@ -63,31 +63,31 @@ class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) {
     Widget header = Container(
+      decoration: const BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.gray_3)),
+      ),
+      margin: const EdgeInsets.only(bottom: 16),
       child: Row(
         children: widget.children
             .map((child) => _TabHeader(
                 disabled: child.disabled, name: child.name, tab: child.tab))
             .toList(),
       ),
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: Colors.gray_3)),
-      ),
-      margin: const EdgeInsets.only(bottom: 16),
     );
 
     return _TabsInhertedWidget(
       activeKey: activeKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           header,
           Stack(
             children: widget.children
                 .map((child) =>
-                    Visibility(child: child, visible: child.name == activeKey))
+                    Visibility(visible: child.name == activeKey, child: child))
                 .toList(),
           ),
         ],
-        crossAxisAlignment: CrossAxisAlignment.start,
       ),
       onClick: (name) => setState(() => activeKey = name),
     );
@@ -115,9 +115,24 @@ class __TabHeaderState extends State<_TabHeader> {
     var activeKey = _TabsInhertedWidget.of(context)!.activeKey;
 
     return MouseRegion(
+      cursor: widget.disabled
+          ? SystemMouseCursors.forbidden
+          : SystemMouseCursors.click,
+      onEnter: (_) => setState(() => hovered = true),
+      onExit: (_) => setState(() => hovered = false),
       child: GestureDetector(
+        onTap: _handleTap,
         child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: widget.name == activeKey ? Colors.blue_6 : Colors.white,
+                width: 2,
+              ),
+            ),
+          ),
           child: Padding(
+            padding: const EdgeInsets.all(12),
             child: DefaultTextStyle.merge(
               child: widget.tab,
               style: TextStyle(
@@ -128,24 +143,9 @@ class __TabHeaderState extends State<_TabHeader> {
                         : null,
               ),
             ),
-            padding: const EdgeInsets.all(12),
-          ),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: widget.name == activeKey ? Colors.blue_6 : Colors.white,
-                width: 2,
-              ),
-            ),
           ),
         ),
-        onTap: _handleTap,
       ),
-      cursor: widget.disabled
-          ? SystemMouseCursors.forbidden
-          : SystemMouseCursors.click,
-      onEnter: (_) => setState(() => hovered = true),
-      onExit: (_) => setState(() => hovered = false),
     );
   }
 

@@ -41,7 +41,6 @@ class _AlertState extends State<Alert> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: widget.message,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue_3),
         borderRadius: BorderRadius.circular(2),
@@ -49,6 +48,7 @@ class _AlertState extends State<Alert> {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       width: double.infinity,
+      child: widget.message,
     );
   }
 }

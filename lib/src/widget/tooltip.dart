@@ -39,9 +39,9 @@ class _TooltipState extends State<Tooltip> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      child: CompositedTransformTarget(child: widget.child, link: link),
       onEnter: _handleEnter,
       onExit: _handleExit,
+      child: CompositedTransformTarget(link: link, child: widget.child),
     );
   }
 
@@ -50,18 +50,18 @@ class _TooltipState extends State<Tooltip> {
     var size = context.size;
     entry = OverlayEntry(
       builder: (context) => Positioned(
+        height: 38,
         child: CompositedTransformFollower(
-          child: Material(
-            child: _TooltipOverlayEntry(label: widget.label),
-            elevation: 4,
-          ),
           followerAnchor: Alignment.bottomCenter,
           link: link,
           offset: Offset(0, -1 * size!.height),
           showWhenUnlinked: false,
           targetAnchor: Alignment.topCenter,
+          child: Material(
+            elevation: 4,
+            child: _TooltipOverlayEntry(label: widget.label),
+          ),
         ),
-        height: 38,
       ),
     );
     Overlay.of(context)!.insert(entry);
@@ -71,18 +71,18 @@ class _TooltipState extends State<Tooltip> {
     var size = context.size;
     entry = OverlayEntry(
       builder: (context) => Positioned(
+        height: 38,
         child: CompositedTransformFollower(
-          child: Material(
-            child: _TooltipOverlayEntry(label: widget.label),
-            elevation: 4,
-          ),
           followerAnchor: Alignment.bottomCenter,
           link: link,
           offset: Offset(0, -1 * size!.height),
           showWhenUnlinked: false,
           targetAnchor: Alignment.topCenter,
+          child: Material(
+            elevation: 4,
+            child: _TooltipOverlayEntry(label: widget.label),
+          ),
         ),
-        height: 38,
       ),
     );
     Overlay.of(context)!.insert(entry);
@@ -102,6 +102,7 @@ class _TooltipOverlayEntry extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       alignment: AlignmentDirectional.bottomCenter,
+      clipBehavior: Clip.none,
       children: [
         Positioned(
           bottom: -4,
@@ -121,6 +122,11 @@ class _TooltipOverlayEntry extends StatelessWidget {
         ),
         Container(
           alignment: AlignmentDirectional.center,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: Colors.gray_10,
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
           child: Text(
             label,
             style: const TextStyle(
@@ -129,14 +135,8 @@ class _TooltipOverlayEntry extends StatelessWidget {
               height: 1,
             ),
           ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(2),
-            color: Colors.gray_10,
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
         ),
       ],
-      clipBehavior: Clip.none,
     );
   }
 }

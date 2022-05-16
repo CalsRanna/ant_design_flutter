@@ -140,7 +140,7 @@ class _Message extends StatelessWidget {
       Status.info: Colors.blue_6,
       Status.warning: Colors.orange_6
     };
-    Widget _icon = IconTheme.merge(
+    Widget realIcon = IconTheme.merge(
       data: IconThemeData(color: colors[status], size: 16),
       child: icon ?? Icon(icons[status]),
     );
@@ -148,24 +148,24 @@ class _Message extends StatelessWidget {
     Map<ValueKey, double>? tops = GlobalQuery.of(context)?.tops;
 
     return Positioned(
+      top: tops?[key] ?? 32,
       child: Container(
         alignment: Alignment.center,
+        width: MediaQuery.of(context).size.width,
         child: Material(
           borderRadius: BorderRadius.circular(2),
-          child: Container(
-            child: Row(
-              children: [_icon, const SizedBox(width: 8), content],
-              mainAxisSize: MainAxisSize.min,
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          ),
           color: Colors.white,
           elevation: 8,
           shadowColor: Colors.gray_1,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [realIcon, const SizedBox(width: 8), content],
+            ),
+          ),
         ),
-        width: MediaQuery.of(context).size.width,
       ),
-      top: tops?[key] ?? 32,
     );
   }
 }

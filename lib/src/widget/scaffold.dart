@@ -26,8 +26,8 @@ class Scaffold extends StatelessWidget {
           fontSize: 14,
         ),
         child: IconTheme(
-          child: body,
           data: const IconThemeData(color: Colors.gray_7, size: 16),
+          child: body,
         ),
       ),
       floatingActionButton: floatingActionButton,

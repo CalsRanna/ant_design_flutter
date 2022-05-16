@@ -6,13 +6,12 @@ import 'package:flutter/material.dart'
     show InputBorder, InputDecoration, TextField;
 import 'package:flutter/widgets.dart';
 
-class Select extends StatefulWidget {
+class Select<T> extends StatefulWidget {
   const Select({
     Key? key,
     this.allowClear = false,
     this.autoClearSearchValue = true,
     this.bordered = true,
-    required this.children,
     this.clearIcon,
     this.controller,
     this.defaultActiveFirstOption = true,
@@ -56,12 +55,12 @@ class Select extends StatefulWidget {
     this.tagBuilder,
     this.tokenSeparators,
     this.virtual = true,
+    required this.children,
   }) : super(key: key);
 
   final bool allowClear;
   final bool autoClearSearchValue;
   final bool bordered;
-  final List<Widget> children;
   final Widget? clearIcon;
   final SelectController? controller;
   final bool defaultActiveFirstOption;
@@ -105,6 +104,7 @@ class Select extends StatefulWidget {
   final Widget Function()? tagBuilder;
   final List<String>? tokenSeparators;
   final bool virtual;
+  final List<Option<T>> children;
 
   @override
   State<Select> createState() => _SelectState();
@@ -154,9 +154,56 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: widget.disabled
+          ? SystemMouseCursors.forbidden
+          : SystemMouseCursors.click,
+      onEnter: (_) {
+        if (!widget.disabled) {
+          setState(() {
+            hovered = true;
+          });
+        }
+      },
+      onExit: (_) {
+        if (!widget.disabled) {
+          setState(() {
+            hovered = false;
+          });
+        }
+      },
       child: GestureDetector(
         child: CompositedTransformTarget(
+          link: link,
           child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: widget.disabled
+                    ? Colors.gray_5
+                    : actived || hovered
+                        ? Colors.blue_6
+                        : Colors.gray_5,
+              ),
+              borderRadius: BorderRadius.circular(2),
+              boxShadow: actived
+                  ? const [
+                      BoxShadow(
+                        blurRadius: 1,
+                        color: Colors.blue_6,
+                        offset: Offset(1, 1),
+                        spreadRadius: 0.1,
+                      ),
+                      BoxShadow(
+                        blurRadius: 1,
+                        color: Colors.blue_6,
+                        offset: Offset(-1, -1),
+                        spreadRadius: 0.1,
+                      ),
+                    ]
+                  : null,
+              color: widget.disabled ? Colors.gray_3 : Colors.white,
+            ),
+            height: height[widget.size],
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             child: Row(
               children: [
                 Expanded(
@@ -193,43 +240,13 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
                       )
                     : widget.allowClear && hovered
                         ? GestureDetector(
-                            child: const Icon(Icons.clear),
                             onTap: _handleClear,
+                            child: const Icon(Icons.clear),
                           )
                         : const Icon(Icons.chevron_down)
               ],
             ),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: widget.disabled
-                    ? Colors.gray_5
-                    : actived || hovered
-                        ? Colors.blue_6
-                        : Colors.gray_5,
-              ),
-              borderRadius: BorderRadius.circular(2),
-              boxShadow: actived
-                  ? const [
-                      BoxShadow(
-                        blurRadius: 1,
-                        color: Colors.blue_6,
-                        offset: Offset(1, 1),
-                        spreadRadius: 0.1,
-                      ),
-                      BoxShadow(
-                        blurRadius: 1,
-                        color: Colors.blue_6,
-                        offset: Offset(-1, -1),
-                        spreadRadius: 0.1,
-                      ),
-                    ]
-                  : null,
-              color: widget.disabled ? Colors.gray_3 : Colors.white,
-            ),
-            height: height[widget.size],
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
           ),
-          link: link,
         ),
         onTap: () {
           if (!widget.disabled) {
@@ -237,23 +254,6 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
           }
         },
       ),
-      cursor: widget.disabled
-          ? SystemMouseCursors.forbidden
-          : SystemMouseCursors.click,
-      onEnter: (_) {
-        if (!widget.disabled) {
-          setState(() {
-            hovered = true;
-          });
-        }
-      },
-      onExit: (_) {
-        if (!widget.disabled) {
-          setState(() {
-            hovered = false;
-          });
-        }
-      },
     );
   }
 
@@ -265,24 +265,24 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
       var size = context.size;
       entry = OverlayEntry(
         builder: (context) => Positioned(
+          width: size?.width,
           child: CompositedTransformFollower(
-            child: _SelectDropdown(
-                children: widget.children
-                    .map((child) => GestureDetector(
-                          child: _DecoratedOption(
-                            child: child as Option,
-                            selected: child.value == textEditingController.text,
-                          ),
-                          onTap: () => _handleTap(child),
-                        ))
-                    .toList()),
             followerAnchor: Alignment.topCenter,
             link: link,
             offset: const Offset(0, 8),
             showWhenUnlinked: false,
             targetAnchor: Alignment.bottomCenter,
+            child: _SelectDropdown(
+                children: widget.children
+                    .map((child) => GestureDetector(
+                          child: _DecoratedOption(
+                            selected: child.value == textEditingController.text,
+                            child: child,
+                          ),
+                          onTap: () => _handleTap(child),
+                        ))
+                    .toList()),
           ),
-          width: size?.width,
         ),
       );
       Overlay.of(context)?.insert(entry);
@@ -359,24 +359,6 @@ class __DecoratedOptionState<T> extends State<_DecoratedOption<T>> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      child: Container(
-        child: DefaultTextStyle(
-          child: widget.child,
-          style: TextStyle(
-            color: widget.child.disabled ? Colors.gray_5 : Colors.gray_10,
-            fontSize: 14,
-          ),
-        ),
-        decoration: BoxDecoration(
-          color: widget.selected
-              ? Colors.blue_1
-              : hovered
-                  ? Colors.gray_2
-                  : null,
-        ),
-        height: 32,
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      ),
       cursor: widget.child.disabled
           ? SystemMouseCursors.forbidden
           : SystemMouseCursors.click,
@@ -388,6 +370,24 @@ class __DecoratedOptionState<T> extends State<_DecoratedOption<T>> {
       onExit: (_) => setState(() {
         hovered = false;
       }),
+      child: Container(
+        decoration: BoxDecoration(
+          color: widget.selected
+              ? Colors.blue_1
+              : hovered
+                  ? Colors.gray_2
+                  : null,
+        ),
+        height: 32,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        child: DefaultTextStyle(
+          style: TextStyle(
+            color: widget.child.disabled ? Colors.gray_5 : Colors.gray_10,
+            fontSize: 14,
+          ),
+          child: widget.child,
+        ),
+      ),
     );
   }
 }
@@ -400,10 +400,8 @@ class _SelectDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 256),
       child: Container(
-        child: ListView(
-          children: children ?? <Widget>[],
-        ),
         decoration: const BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(
             blurRadius: 4,
@@ -418,11 +416,14 @@ class _SelectDropdown extends StatelessWidget {
             spreadRadius: 0.1,
           ),
         ]),
+        child: ListView(
+          children: children ?? <Widget>[],
+        ),
       ),
-      constraints: const BoxConstraints(maxHeight: 256),
     );
   }
 }
 
 enum OptionProp { children, label, value }
+
 enum SelectMode { multiple, normal, tags }

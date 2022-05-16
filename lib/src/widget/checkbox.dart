@@ -43,7 +43,15 @@ class _CheckboxState extends State<Checkbox> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() {
+        hovered = true;
+      }),
+      onExit: (_) => setState(() {
+        hovered = false;
+      }),
       child: GestureDetector(
+        onTap: _handleTap,
         child: Row(
           children: [
             Stack(
@@ -60,6 +68,12 @@ class _CheckboxState extends State<Checkbox> {
                 ),
                 checked
                     ? Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadiusDirectional.circular(2),
+                          color: Colors.blue_6,
+                        ),
+                        height: 16,
+                        width: 16,
                         child: const Center(
                           child: Icon(
                             Icons.check,
@@ -67,33 +81,19 @@ class _CheckboxState extends State<Checkbox> {
                             size: 12,
                           ),
                         ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadiusDirectional.circular(2),
-                          color: Colors.blue_6,
-                        ),
-                        height: 16,
-                        width: 16,
                       )
                     : const SizedBox(),
               ],
             ),
             widget.child != null
                 ? Padding(
-                    child: widget.child!,
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: widget.child!,
                   )
                 : const SizedBox(),
           ],
         ),
-        onTap: _handleTap,
       ),
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() {
-        hovered = true;
-      }),
-      onExit: (_) => setState(() {
-        hovered = false;
-      }),
     );
   }
 

@@ -28,7 +28,7 @@ class Breadcrumb extends StatelessWidget {
   }
 
   List<Widget> _buildChildren(BuildContext context) {
-    var _separator = separator ??
+    var realSeparator = separator ??
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Text(
@@ -36,25 +36,23 @@ class Breadcrumb extends StatelessWidget {
             style: TextStyle(color: Colors.gray_7, height: 1),
           ),
         );
-    final List<Widget> _children = <Widget>[];
+    final List<Widget> children = <Widget>[];
     if (itemBuilder != null && itemCount != null) {
       for (int i = 0; i < itemCount!; i++) {
-        _children.add(itemBuilder!(context, i));
+        children.add(itemBuilder!(context, i));
         if (i != itemCount! - 1) {
-          _children.add(_separator);
+          children.add(realSeparator);
         }
       }
     } else {
-      if (children != null) {
-        for (int i = 0; i < children!.length; i++) {
-          _children.add(children![i]);
-          if (i != children!.length - 1) {
-            _children.add(_separator);
-          }
+      for (int i = 0; i < children.length; i++) {
+        children.add(children[i]);
+        if (i != children.length - 1) {
+          children.add(realSeparator);
         }
       }
     }
-    return _children;
+    return children;
   }
 
   String _getCurrent(BuildContext context) {
@@ -92,12 +90,6 @@ class _BreadcrumbItemState extends State<BreadcrumbItem> {
     var current = _BreadcrumbInhertedWidget.of(context)!.current;
     return widget.href != current
         ? MouseRegion(
-            child: DefaultTextStyle.merge(
-              style: TextStyle(
-                color: hovered ? Colors.blue_6 : Colors.gray_7,
-              ),
-              child: widget.child,
-            ),
             cursor: SystemMouseCursors.click,
             onEnter: (_) {
               setState(() {
@@ -109,6 +101,12 @@ class _BreadcrumbItemState extends State<BreadcrumbItem> {
                 hovered = false;
               });
             },
+            child: DefaultTextStyle.merge(
+              style: TextStyle(
+                color: hovered ? Colors.blue_6 : Colors.gray_7,
+              ),
+              child: widget.child,
+            ),
           )
         : DefaultTextStyle.merge(
             style: const TextStyle(color: Colors.black),
