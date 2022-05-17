@@ -226,4 +226,5 @@ class TypographyEllipsis {
 }
 
 enum TypographyType { secondary, success, warning, danger }
+
 enum TypographyEditableTriggerType { icon, text, both }

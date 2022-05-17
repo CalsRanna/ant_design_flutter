@@ -2,6 +2,11 @@ import 'package:ant_design_flutter/src/style/color.dart';
 import 'package:flutter/material.dart' as material show Scaffold;
 import 'package:flutter/widgets.dart';
 
+/// A scaffold of ant design flutter's widget which provides a default text style
+/// and icon theme.
+///
+/// This scaffold only has body and floating action button if you ever need to do
+/// some extra work. Basicly, body is the only widget you should put in this.
 class Scaffold extends StatelessWidget {
   const Scaffold({Key? key, required this.body})
       : floatingActionButton = null,

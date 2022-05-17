@@ -244,8 +244,11 @@ class _DatePickerState extends State<DatePicker> {
 }
 
 enum DatePickerMode { time, date, month, year, decade }
+
 enum Picker { date, week, month, quarter, year }
+
 enum DatePickerSize { large, middle, small }
+
 enum DatePickerStatus { error, warning }
 
 class RangePicker extends StatefulWidget {

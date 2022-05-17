@@ -42,5 +42,7 @@ class _StepsState extends State<Steps> {
 }
 
 enum StepsSize { medium, small }
+
 enum StepsStatus { wait, process, finish, error }
+
 enum StepsType { normal, navigation }

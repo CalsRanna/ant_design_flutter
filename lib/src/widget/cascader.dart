@@ -124,4 +124,5 @@ class ShowSearch {
 }
 
 enum CascaderSize { large, middle, small }
+
 enum CascaderStatus { error, warning }

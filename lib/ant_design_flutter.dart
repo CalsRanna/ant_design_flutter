@@ -1,3 +1,6 @@
+/// Flutter widget implementing Ant Design.
+///
+/// To use, import `package:ant_design_flutter/ant_design_flutter.dart`.
 library ant_design_flutter;
 
 export 'package:ant_design_flutter/src/enum/placement.dart';

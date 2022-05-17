@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart' show MaterialApp;
 import 'package:flutter/widgets.dart';
 
+/// An application that uses Ant Design.
+///
+/// A root widget which should be used as the application entry point. It provide
+/// [GlobalQuery] to solve overlay entry's offset and other feature.
+///
+/// It basic was a sub class of Material App and some few params provided to use.
 class AntApp extends StatefulWidget {
   const AntApp({
     Key? key,
