@@ -102,7 +102,7 @@ class Message {
       builder: (_) =>
           _Message(key: key, content: content, icon: icon, status: status),
     );
-    Overlay.of(context)?.insert(entry);
+    Overlay.of(context).insert(entry);
     var tops = GlobalQuery.of(context)?.tops;
     var top =
         tops != null && tops.isNotEmpty ? tops.length * 56.0 + 32.0 : 32.0;

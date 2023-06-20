@@ -194,7 +194,7 @@ class _SliderState extends State<Slider> {
       hovered = true;
     });
     entry = _buildOverlayEntry();
-    Overlay.of(context)!.insert(entry);
+    Overlay.of(context).insert(entry);
   }
 
   void _handleExit(PointerExitEvent event) {

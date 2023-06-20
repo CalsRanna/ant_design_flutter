@@ -47,7 +47,7 @@ class Notification {
         onClose: onClose,
       ),
     );
-    Overlay.of(context)?.insert(entry);
+    Overlay.of(context).insert(entry);
     var height = key.currentContext?.size?.height ?? 120;
     GlobalQuery.of(context)?.insertNotification(key, height);
     if (duration != null) {

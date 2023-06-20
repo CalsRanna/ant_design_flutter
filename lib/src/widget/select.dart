@@ -285,7 +285,7 @@ class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
           ),
         ),
       );
-      Overlay.of(context)?.insert(entry);
+      Overlay.of(context).insert(entry);
     } else {
       setState(() {
         actived = false;

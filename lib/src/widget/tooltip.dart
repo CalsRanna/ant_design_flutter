@@ -64,7 +64,7 @@ class _TooltipState extends State<Tooltip> {
         ),
       ),
     );
-    Overlay.of(context)!.insert(entry);
+    Overlay.of(context).insert(entry);
   }
 
   void _handleEnter(PointerEnterEvent event) {
@@ -85,7 +85,7 @@ class _TooltipState extends State<Tooltip> {
         ),
       ),
     );
-    Overlay.of(context)!.insert(entry);
+    Overlay.of(context).insert(entry);
   }
 
   void _handleExit(PointerExitEvent event) {
