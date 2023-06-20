@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 
 /// [Button] is completely a [Container] but can be clicked.
 ///
-/// Its height is determined by [size] and [shape], and cann't override.
+/// Its height is determined by [size] and [shape], and can't override.
 ///
 /// At least one of [child], [icon] must be non-null.
 class Button extends StatefulWidget {
@@ -17,10 +17,11 @@ class Button extends StatefulWidget {
     this.danger = false,
     this.disabled = false,
     this.ghost = false,
+    this.href,
     this.icon,
     this.loading = false,
     this.shape = ButtonShape.square,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.type = ButtonType.normal,
     this.onClick,
     this.child,
@@ -32,6 +33,7 @@ class Button extends StatefulWidget {
   final bool danger;
   final bool disabled;
   final bool ghost;
+  final String? href;
   final Widget? icon;
   final bool loading;
   final ButtonShape shape;
@@ -314,4 +316,4 @@ class _ButtonState extends State<Button> with SingleTickerProviderStateMixin {
 
 enum ButtonShape { circle, round, square }
 
-enum ButtonType { dashed, link, normal, primary, text }
+enum ButtonType { dashed, ghost, link, normal, primary, text }

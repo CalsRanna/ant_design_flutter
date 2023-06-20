@@ -23,7 +23,7 @@ class Drawer {
     this.mask = true,
     this.maskClosable = true,
     this.placement = Placement.right,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.title,
     this.width,
     this.onClose,

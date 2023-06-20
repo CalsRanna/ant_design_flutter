@@ -11,7 +11,7 @@ class Steps extends StatefulWidget {
     this.percent,
     this.progressDot,
     this.responsive = true,
-    this.size = StepsSize.medium,
+    this.size = StepsSize.middle,
     this.status = StepsStatus.process,
     this.type = StepsType.normal,
     this.onChange,
@@ -41,7 +41,7 @@ class _StepsState extends State<Steps> {
   }
 }
 
-enum StepsSize { medium, small }
+enum StepsSize { middle, small }
 
 enum StepsStatus { wait, process, finish, error }
 

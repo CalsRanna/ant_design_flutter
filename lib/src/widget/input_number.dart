@@ -31,7 +31,7 @@ class InputNumber extends StatefulWidget {
     this.readOnly = false,
     this.stringMode = false,
     this.status,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.step = 1,
   }) : super(key: key);
 
@@ -67,7 +67,7 @@ class InputNumber extends StatefulWidget {
 class _InputNumberState extends State<InputNumber> {
   static const height = {
     Size.small: 24.0,
-    Size.medium: 32.0,
+    Size.middle: 32.0,
     Size.large: 40.0,
   };
 

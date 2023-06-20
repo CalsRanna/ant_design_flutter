@@ -34,7 +34,7 @@ class Space extends StatelessWidget {
 
   double _calculateSpacing() {
     var spacing = 8.0;
-    if (Size.medium == size) {
+    if (Size.middle == size) {
       spacing = 16.0;
     } else if (Size.large == size) {
       spacing = 24.0;

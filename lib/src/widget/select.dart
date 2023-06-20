@@ -49,7 +49,7 @@ class Select<T> extends StatefulWidget {
     this.removeIcon,
     this.showArrow,
     this.showSearch = false,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.status,
     this.suffixIcon,
     this.tagBuilder,
@@ -113,7 +113,7 @@ class Select<T> extends StatefulWidget {
 class _SelectState extends State<Select> with SingleTickerProviderStateMixin {
   static const height = {
     Size.small: 24.0,
-    Size.medium: 32.0,
+    Size.middle: 32.0,
     Size.large: 40.0,
   };
 

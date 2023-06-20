@@ -14,7 +14,7 @@ class Tabs extends StatefulWidget {
     this.hideAdd = false,
     this.moreIcon,
     this.renderTabBar,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.tabBarExtraContent,
     this.tabBarGutter,
     this.tabPosition = Placement.top,

@@ -11,7 +11,7 @@ class Switch extends StatefulWidget {
     this.controller,
     this.disabled = false,
     this.loading = false,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.uncheckedChildren,
     this.onChange,
     this.onClick,

@@ -53,7 +53,7 @@ class DropdownButton extends StatefulWidget {
       this.icon,
       required this.overlay,
       this.placement = Alignment.bottomLeft,
-      this.size = Size.medium,
+      this.size = Size.middle,
       this.trigger = const [DropdownTrigger.hover],
       this.type = ButtonType.normal,
       required this.visible,

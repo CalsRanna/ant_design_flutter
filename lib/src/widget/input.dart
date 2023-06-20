@@ -20,7 +20,7 @@ class Input extends StatefulWidget {
     this.status,
     this.placeholder,
     this.prefix,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.suffix,
     this.type = InputType.text,
     this.value,
@@ -50,7 +50,7 @@ class Input extends StatefulWidget {
 class _InputState extends State<Input> {
   static const height = {
     Size.small: 24.0,
-    Size.medium: 32.0,
+    Size.middle: 32.0,
     Size.large: 40.0,
   };
 

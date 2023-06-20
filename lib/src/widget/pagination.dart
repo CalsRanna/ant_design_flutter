@@ -21,7 +21,7 @@ class Pagination extends StatefulWidget {
     this.showSizeChanger,
     this.showTitle = true,
     this.simple,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.total = 0,
     this.onChange,
     this.onShowSizeChange,

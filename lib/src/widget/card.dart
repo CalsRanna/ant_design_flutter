@@ -8,7 +8,7 @@ class Card extends StatefulWidget {
     required this.child,
     this.extra,
     this.hoverable = false,
-    this.size = Size.medium,
+    this.size = Size.middle,
     this.title,
   }) : super(key: key);
 
@@ -50,7 +50,7 @@ class _CardState extends State<Card> {
           border: Border(bottom: BorderSide(color: Colors.gray_4)),
         ),
         padding: EdgeInsets.all(
-          Size.medium == widget.size ? 24 : 12,
+          Size.middle == widget.size ? 24 : 12,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +60,7 @@ class _CardState extends State<Card> {
     }
 
     Widget body = Padding(
-      padding: EdgeInsets.all(Size.medium == widget.size ? 24 : 12),
+      padding: EdgeInsets.all(Size.middle == widget.size ? 24 : 12),
       child: widget.child,
     );
 
