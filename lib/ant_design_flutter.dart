@@ -41,7 +41,7 @@ export 'package:ant_design_flutter/src/widget/scaffold.dart';
 export 'package:ant_design_flutter/src/widget/select.dart';
 export 'package:ant_design_flutter/src/widget/slider.dart';
 export 'package:ant_design_flutter/src/widget/space.dart';
-export 'package:ant_design_flutter/src/widget/step.dart';
+export 'package:ant_design_flutter/src/widget/steps.dart';
 export 'package:ant_design_flutter/src/widget/switch.dart';
 export 'package:ant_design_flutter/src/widget/table.dart';
 export 'package:ant_design_flutter/src/widget/tabs.dart';
