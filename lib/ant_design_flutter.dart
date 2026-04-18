@@ -10,6 +10,7 @@ export 'src/components/_shared/component_size.dart' show AntComponentSize;
 export 'src/components/_shared/component_status.dart' show AntStatus;
 export 'src/components/button/ant_button.dart'
     show AntButton, AntButtonShape, AntButtonType;
+export 'src/components/checkbox/ant_option.dart' show AntOption;
 export 'src/components/icon/ant_icon.dart' show AntIcon;
 export 'src/components/input/ant_input.dart' show AntInput;
 export 'src/components/typography/ant_link.dart' show AntLink;
