@@ -36,6 +36,13 @@ class AntPortal extends StatefulWidget {
 class _AntPortalState extends State<AntPortal> {
   final LayerLink _link = LayerLink();
   final OverlayPortalController _controller = OverlayPortalController();
+  final GlobalKey _followerKey = GlobalKey();
+
+  /// 翻转后的有效 placement；null 表示尚未计算，使用 widget.placement。
+  AntPlacement? _effectivePlacement;
+
+  /// 本次挂载是否已评估过翻转（locked once per mount）。
+  bool _adjusted = false;
 
   @override
   void initState() {
@@ -52,6 +59,12 @@ class _AntPortalState extends State<AntPortal> {
       } else {
         _scheduleHide();
       }
+    } else if (old.placement != widget.placement ||
+        old.autoAdjustOverflow != widget.autoAdjustOverflow) {
+      // placement 改变：重置翻转状态，重新评估
+      _effectivePlacement = null;
+      _adjusted = false;
+      if (widget.visible) _scheduleAdjust();
     }
   }
 
@@ -62,12 +75,18 @@ class _AntPortalState extends State<AntPortal> {
   }
 
   void _scheduleShow() {
+    // 每次显示重置翻转锁与结果，让 _maybeFlip 基于本次新的 target 位置重判。
+    _effectivePlacement = null;
+    _adjusted = false;
     if (_inBuildPhase) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
-        if (mounted && widget.visible) _controller.show();
+        if (!mounted || !widget.visible) return;
+        _controller.show();
+        _scheduleAdjust();
       });
     } else {
       _controller.show();
+      _scheduleAdjust();
     }
   }
 
@@ -81,8 +100,69 @@ class _AntPortalState extends State<AntPortal> {
     }
   }
 
+  void _scheduleAdjust() {
+    if (!widget.autoAdjustOverflow) return;
+    if (_adjusted) return;
+    _adjusted = true;
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _maybeFlip();
+    });
+  }
+
+  void _maybeFlip() {
+    final ctx = _followerKey.currentContext;
+    if (ctx == null) return;
+    final renderObj = ctx.findRenderObject();
+    if (renderObj is! RenderBox || !renderObj.hasSize) return;
+    final origin = renderObj.localToGlobal(Offset.zero);
+    final size = renderObj.size;
+    final screen = MediaQuery.of(context).size;
+
+    final overflowsTop = origin.dy < 0;
+    final overflowsBottom = origin.dy + size.height > screen.height;
+    final overflowsLeft = origin.dx < 0;
+    final overflowsRight = origin.dx + size.width > screen.width;
+
+    final current = _effectivePlacement ?? widget.placement;
+    var next = current;
+
+    const verticalAxis = <AntPlacement>{
+      AntPlacement.top,
+      AntPlacement.topLeft,
+      AntPlacement.topRight,
+      AntPlacement.bottom,
+      AntPlacement.bottomLeft,
+      AntPlacement.bottomRight,
+    };
+    if (verticalAxis.contains(current)) {
+      final isTopSide = current == AntPlacement.top ||
+          current == AntPlacement.topLeft ||
+          current == AntPlacement.topRight;
+      if (isTopSide && overflowsTop && !overflowsBottom) {
+        next = flipAntPlacement(current, vertical: true);
+      } else if (!isTopSide && overflowsBottom && !overflowsTop) {
+        next = flipAntPlacement(current, vertical: true);
+      }
+    } else {
+      final isLeftSide = current == AntPlacement.left ||
+          current == AntPlacement.leftTop ||
+          current == AntPlacement.leftBottom;
+      if (isLeftSide && overflowsLeft && !overflowsRight) {
+        next = flipAntPlacement(current, vertical: false);
+      } else if (!isLeftSide && overflowsRight && !overflowsLeft) {
+        next = flipAntPlacement(current, vertical: false);
+      }
+    }
+
+    if (next != current) {
+      setState(() => _effectivePlacement = next);
+    }
+  }
+
   Widget _buildOverlay(BuildContext context) {
-    final anchors = antPlacementAnchors[widget.placement]!;
+    final placement = _effectivePlacement ?? widget.placement;
+    final anchors = antPlacementAnchors[placement]!;
     return Positioned(
       left: 0,
       top: 0,
@@ -92,7 +172,10 @@ class _AntPortalState extends State<AntPortal> {
         targetAnchor: anchors.target,
         followerAnchor: anchors.follower,
         offset: widget.offset,
-        child: widget.overlayBuilder(context),
+        child: KeyedSubtree(
+          key: _followerKey,
+          child: widget.overlayBuilder(context),
+        ),
       ),
     );
   }
