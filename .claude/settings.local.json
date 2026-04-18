@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(awk '$5 == 0 {print $NF}')"
+    ]
+  }
+}
