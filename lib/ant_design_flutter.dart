@@ -9,7 +9,7 @@ export 'src/app/ant_config_provider.dart' show AntConfigProvider, AntTheme;
 export 'src/components/_shared/component_size.dart' show AntComponentSize;
 export 'src/components/_shared/component_status.dart' show AntStatus;
 export 'src/components/button/ant_button.dart'
-    show AntButtonShape, AntButtonType;
+    show AntButton, AntButtonShape, AntButtonType;
 export 'src/components/icon/ant_icon.dart' show AntIcon;
 export 'src/components/typography/ant_link.dart' show AntLink;
 export 'src/components/typography/ant_paragraph.dart' show AntParagraph;
