@@ -82,14 +82,16 @@ class _AntPortalState extends State<AntPortal> {
   }
 
   Widget _buildOverlay(BuildContext context) {
-    // Task 8 will replace with precise CompositedTransformFollower positioning;
-    // for now overlay is positioned at the linked target via bare follower.
+    final anchors = antPlacementAnchors[widget.placement]!;
     return Positioned(
       left: 0,
       top: 0,
       child: CompositedTransformFollower(
         link: _link,
         showWhenUnlinked: false,
+        targetAnchor: anchors.target,
+        followerAnchor: anchors.follower,
+        offset: widget.offset,
         child: widget.overlayBuilder(context),
       ),
     );
