@@ -435,15 +435,15 @@ Expected: 编译错误
 ```dart
 import 'dart:ui';
 
-import 'hsv.dart';
+import 'package:ant_design_flutter/src/foundation/color/hsv.dart';
 
-// AntD generate 算法常量，与 @ant-design/colors 源码一致。
+// 算法常量与 npm `@ant-design/colors` v7 一致。
+// 均为 0-1 的饱和度 / 明度增量，而非 0-100 百分比。
 const double _hueStep = 2;
-const double _saturationStepLight = 16;
-const double _saturationStepDark = 5;
-const double _saturationStep2Dark = 15;
-const double _brightnessStep1 = 5;
-const double _brightnessStep2 = 15;
+const double _saturationStep = 0.16;
+const double _saturationStep2 = 0.05;
+const double _brightnessStep1 = 0.05;
+const double _brightnessStep2 = 0.15;
 const int _lightColorCount = 5;
 const int _darkColorCount = 4;
 
@@ -472,12 +472,12 @@ Color _getShade(Hsv hsv, int index, {required bool light}) {
 }
 
 double _computeHue(Hsv hsv, int i, {required bool light}) {
+  final hRounded = hsv.hue.round();
   double hue;
-  final h = hsv.hue.round();
-  if (h >= 60 && h <= 240) {
-    hue = light ? hsv.hue - _hueStep * i : hsv.hue + _hueStep * i;
+  if (hRounded >= 60 && hRounded <= 240) {
+    hue = light ? hRounded - _hueStep * i : hRounded + _hueStep * i;
   } else {
-    hue = light ? hsv.hue + _hueStep * i : hsv.hue - _hueStep * i;
+    hue = light ? hRounded + _hueStep * i : hRounded - _hueStep * i;
   }
   if (hue < 0) {
     hue += 360;
@@ -494,28 +494,31 @@ double _computeSaturation(Hsv hsv, int i, {required bool light}) {
   }
   double saturation;
   if (light) {
-    saturation = hsv.saturation * 100 - _saturationStepLight * i;
+    saturation = hsv.saturation - _saturationStep * i;
   } else if (i == _darkColorCount) {
-    saturation = hsv.saturation * 100 + _saturationStepDark;
+    saturation = hsv.saturation + _saturationStep;
   } else {
-    saturation = hsv.saturation * 100 + _saturationStep2Dark * i;
+    saturation = hsv.saturation + _saturationStep2 * i;
   }
-  if (saturation > 100) saturation = 100;
-  if (light && i == _lightColorCount && saturation > 10) saturation = 10;
-  if (saturation < 6) saturation = 6;
-  return saturation / 100;
+  if (saturation > 1) saturation = 1;
+  if (light && i == _lightColorCount && saturation > 0.1) saturation = 0.1;
+  if (saturation < 0.06) saturation = 0.06;
+  return _truncate2(saturation);
 }
 
 double _computeValue(Hsv hsv, int i, {required bool light}) {
   double value;
   if (light) {
-    value = hsv.value * 100 + _brightnessStep1 * i;
+    value = hsv.value + _brightnessStep1 * i;
   } else {
-    value = hsv.value * 100 - _brightnessStep2 * i;
+    value = hsv.value - _brightnessStep2 * i;
   }
-  if (value > 100) value = 100;
-  return value / 100;
+  if (value > 1) value = 1;
+  return _truncate2(value);
 }
+
+/// 对齐 JS `Number(x.toFixed(2))` 的语义：保留 2 位小数。
+double _truncate2(double x) => (x * 100).round() / 100;
 ```
 
 - [ ] **Step 4: 运行测试确认通过**
@@ -523,7 +526,10 @@ double _computeValue(Hsv hsv, int i, {required bool light}) {
 Run: `flutter test test/unit/foundation/generate_test.dart`
 Expected: `All tests passed!`
 
-如果某阶 RGB 差 > 1：检查 `_getShade` 中的浮点运算顺序；AntD JS 版本的 `round` 行为是 `Math.round(value * 100)` 再 `/ 100`。
+**算法核心注意事项**：
+- 常量按 0-1 范围（非 0-100 百分比）：`_saturationStep = 0.16, _saturationStep2 = 0.05, _brightnessStep1 = 0.05, _brightnessStep2 = 0.15`
+- 每步 s / v 算完要 `_truncate2` 截到 2 位小数（对齐 JS `Number(x.toFixed(2))`）
+- 早期版本 @ant-design/colors 用整数百分比 + `Math.round`，v7 起切到 0-1 float + toFixed(2)——必须用 v7 语义才能跟 AntD v5 preset 色板完全对拍
 
 - [ ] **Step 5: 建议 commit**
 
