@@ -83,10 +83,33 @@ class AntOverlayHostState extends State<AntOverlayHost> {
           ),
         );
       case AntOverlaySlot.modal:
-      case AntOverlaySlot.drawer:
-        // Task 13 replaces with barrier + positioned content.
         return Positioned.fill(
-          child: Stack(alignment: Alignment.center, children: children),
+          child: Stack(
+            children: [
+              const Positioned.fill(
+                child: ColoredBox(color: Color(0x80000000)),
+              ),
+              Positioned.fill(
+                child: Center(child: children.last),
+              ),
+            ],
+          ),
+        );
+      case AntOverlaySlot.drawer:
+        return Positioned.fill(
+          child: Stack(
+            children: [
+              const Positioned.fill(
+                child: ColoredBox(color: Color(0x80000000)),
+              ),
+              Positioned.fill(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: children.last,
+                ),
+              ),
+            ],
+          ),
         );
     }
   }

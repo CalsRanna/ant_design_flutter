@@ -89,4 +89,74 @@ void main() {
       expect(b.top - a.bottom, closeTo(8, 0.5));
     });
   });
+
+  group('AntOverlayHost — modal slot', () {
+    testWidgets('show replaces previous modal (singleton)', (tester) async {
+      final ctx = await _pumpHost(tester);
+
+      AntOverlayManager.show(
+        context: ctx,
+        slot: AntOverlaySlot.modal,
+        builder: (_) => const SizedBox(
+          key: ValueKey('modal-a'),
+          width: 200,
+          height: 120,
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('modal-a')), findsOneWidget);
+
+      AntOverlayManager.show(
+        context: ctx,
+        slot: AntOverlaySlot.modal,
+        builder: (_) => const SizedBox(
+          key: ValueKey('modal-b'),
+          width: 200,
+          height: 120,
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('modal-a')), findsNothing);
+      expect(find.byKey(const ValueKey('modal-b')), findsOneWidget);
+    });
+
+    testWidgets('modal content is centered', (tester) async {
+      final ctx = await _pumpHost(tester);
+
+      AntOverlayManager.show(
+        context: ctx,
+        slot: AntOverlaySlot.modal,
+        builder: (_) => const SizedBox(
+          key: ValueKey('m'),
+          width: 200,
+          height: 100,
+        ),
+      );
+      await tester.pumpAndSettle();
+      final rect = tester.getRect(find.byKey(const ValueKey('m')));
+      expect(rect.center.dx, closeTo(400, 0.5));
+      expect(rect.center.dy, closeTo(300, 0.5));
+    });
+  });
+
+  group('AntOverlayHost — drawer slot', () {
+    testWidgets('drawer sits on the right edge', (tester) async {
+      final ctx = await _pumpHost(tester);
+
+      AntOverlayManager.show(
+        context: ctx,
+        slot: AntOverlaySlot.drawer,
+        builder: (_) => const SizedBox(
+          key: ValueKey('d'),
+          width: 240,
+          height: 600,
+        ),
+      );
+      await tester.pumpAndSettle();
+      final rect = tester.getRect(find.byKey(const ValueKey('d')));
+      expect(rect.right, closeTo(800, 0.5));
+      expect(rect.top, closeTo(0, 0.5));
+      expect(rect.bottom, closeTo(600, 0.5));
+    });
+  });
 }
