@@ -8,6 +8,7 @@ export 'src/app/ant_app.dart' show AntApp;
 export 'src/app/ant_config_provider.dart' show AntConfigProvider, AntTheme;
 export 'src/primitives/interaction/ant_interaction_detector.dart'
     show AntInteractionBuilder, AntInteractionDetector;
+export 'src/primitives/overlay/ant_overlay_manager.dart' show AntOverlayManager;
 export 'src/primitives/overlay/ant_overlay_slot.dart' show AntOverlaySlot;
 export 'src/primitives/overlay/overlay_entry_handle.dart'
     show OverlayEntryHandle;
