@@ -15,12 +15,12 @@
 | 组件总数 | 8 个：AntIcon、AntTypography（Title/Text/Paragraph/Link 四子）、AntButton、AntInput、AntCheckbox（+Group）、AntRadio（+Group）、AntSwitch、AntTag |
 | AntIcons 字体 | **不打包**字体文件；AntIcon 只是 `IconData` 包装；推荐用户配合社区包 `ant_icons_plus`（**偏离父 spec §0 / §6.1 / §7.1**） |
 | size 变体 | small / middle / large 三档全做（middle 默认）；尺寸值由 alias 派生（24/32/40） |
-| 文件结构 | 每组件 `components/<name>/ant_<name>.dart`（Widget）+ `components/<name>/<name>_style.dart`（纯函数：alias + props → 视觉值） |
+| 文件结构 | 每组件 `components/<name>/ant_<name>.dart`（Widget）+ `components/<name>/<name>_style.dart`（纯函数：alias + properties → 视觉值） |
 | Form 集成 | Phase 3 只做受控 API（`value` + `onChanged`）；`AntFormField` mixin 推 Phase 6 |
 | Token 消费 | 组件**只**调用 `AntTheme.aliasOf(context)`；禁止读 seed/map（沿用父 spec §3.4） |
 | Group 组件 API | CheckboxGroup / RadioGroup 只提供 `options: List<AntOption<T>>` API；不接 children |
-| 临界 prop 包 | 均衡包：Button(loading)、Input(prefix/suffix/allowClear)、Tag(closable+checkable+color)、Switch(loading) |
-| 推迟 prop | Button.icon、Input.password、Input.textarea、Checkbox.indeterminate、Tag preset color、AntD 已 deprecated 的 prop |
+| 临界属性包 | 均衡包：Button(loading)、Input(prefix/suffix/allowClear)、Tag(closable+checkable+color)、Switch(loading) |
+| 推迟属性 | Button.icon、Input.password、Input.textarea、Checkbox.indeterminate、Tag preset color、AntD 已 deprecated 的属性 |
 | 第三方依赖 | 零；TextField 用 Flutter 内置 `EditableText` 路径 |
 | widget test 阈值 | 沿用 Phase 2：Widget ≥80% / Unit ≥90% / 总体 ≥85% |
 | Gallery DoD | 8 组件 × ≥3 story = 至少 24 个 widgetbook 用例 |
@@ -212,7 +212,7 @@ enum AntStatus { defaultStatus, error, warning }
 
 每个 Round 2 组件提供 `<Name>Style`：
 
-- 构造：`const <Name>Style.from({required AntAliasToken alias, required props...})`
+- 构造：`const <Name>Style.from({required AntAliasToken alias, required properties...})`
 - 字段：UI 实际渲染所需的派生值（`Color background`、`Color foreground`、`BorderSide border`、`EdgeInsets padding`、`TextStyle textStyle`、`double height`、可选 `BoxDecoration` 整包）
 - **纯**：无 BuildContext 依赖；可 unit-test
 - **不**导出（`show` 列表里只有 widget 类）；style 类是 `library private`
@@ -290,17 +290,17 @@ Widget build(BuildContext context) {
 - README 新增"使用图标字体"小节，明文写：本库不内置字体，推荐 `ant_icons_plus` 或用户自制 IconData
 - AntIcon 公开 API 不出现 `package` 参数
 
-### 4.4 实现 / 推迟 prop
+### 4.4 实现 / 推迟属性
 
-| Prop | 状态 | 备注 |
+| 属性 | 状态 | 备注 |
 | --- | --- | --- |
 | icon (IconData) | ✅ MVP | 必填 |
 | size (AntComponentSize) | ✅ MVP | 三档 |
 | color | ✅ MVP | null 透传 IconTheme |
-| semanticLabel | ✅ MVP | a11y |
+| semanticLabel | ✅ MVP | 可访问性 |
 | spin (旋转动画) | 推迟 2.1 | Loading 场景由 AntButton.loading 内部实现 |
 | rotate (静态旋转角度) | 推迟 2.1 | |
-| 双色 / TwoTone | 不做 | AntD web 是 SVG 双色叠加，TTF 字体方案不支持 |
+| 双色 / TwoTone | 不做 | AntD web 是 SVG 双色叠加，TrueType 字体方案不支持 |
 
 ### 4.5 widget test 关键断言
 
@@ -408,7 +408,7 @@ class AntLink extends StatelessWidget {
 
 唯一一个用 `AntInteractionDetector` 的 Typography 子类——hover 时 `colorPrimaryHover`、normal 时 `colorPrimary`、disabled 时 `colorTextDisabled`。默认无下划线；`focused` 状态下加下划线（键盘导航可见性）。
 
-### 5.5 推迟 prop
+### 5.5 推迟属性
 
 - AntTitle.copyable / editable / ellipsis / mark / keyboard
 - AntText.ellipsis / copyable / editable
@@ -467,19 +467,19 @@ class AntButton extends StatelessWidget {
 
 派生表（`d=defaultStyle`，`p=primary`）：
 
-| type | normal bg | normal fg | hover bg | hover fg | active bg | active fg | border |
+| type | normal background | normal foreground | hover background | hover foreground | active background | active foreground | border |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `p` | `colorPrimary` | white | `colorPrimaryHover` | white | `colorPrimaryActive` | white | none |
-| `d` | `colorBackgroundContainer` | `colorText` | 同 normal | `colorPrimaryHover` | 同 normal | `colorPrimaryActive` | `colorPrimaryHover` on hover, `colorBorder` normal |
-| `dashed` | 同 `d` | 同 `d` | 同 `d` | 同 `d` | 同 `d` | 同 `d` | 同 `d` 但 dashed 样式（Flutter `BorderSide` 不支持 dashed，由 `CustomPaint` 在外层自绘） |
+| `primary` | `colorPrimary` | white | `colorPrimaryHover` | white | `colorPrimaryActive` | white | none |
+| `defaultStyle` | `colorBackgroundContainer` | `colorText` | 同 normal | `colorPrimaryHover` | 同 normal | `colorPrimaryActive` | `colorPrimaryHover` on hover, `colorBorder` normal |
+| `dashed` | 同 `defaultStyle` | 同 `defaultStyle` | 同 `defaultStyle` | 同 `defaultStyle` | 同 `defaultStyle` | 同 `defaultStyle` | 同 `defaultStyle` 但 dashed 样式（Flutter `BorderSide` 不支持 dashed，由 `CustomPaint` 在外层自绘） |
 | `text` | transparent | `colorText` | `colorFillSecondary` | `colorText` | `colorFill` | `colorText` | none |
 | `link` | transparent | `colorPrimary` | transparent | `colorPrimaryHover` | transparent | `colorPrimaryActive` | none |
 
 `danger=true` 时把上表中所有 `colorPrimary*` 替换为 `colorError`/`colorErrorHover`/`colorErrorActive`（**alias 当前没有 errorHover/Active；MVP 用 alias.colorError 单一色，2.1 补全派生**）。
 
-`ghost=true` 时（仅对 type=primary/default 有效）：bg 变 transparent，fg 反色（取 normal 的 bg 颜色作为 fg）。
+`ghost=true` 时（仅对 type=primary/default 有效）：background 变 transparent，foreground 反色（取 normal 的 background 颜色作为 foreground）。
 
-`disabled=true`：bg = `colorFillSecondary`、fg = `colorTextDisabled`、border = `colorBorder`、cursor = forbidden。
+`disabled=true`：background = `colorFillSecondary`、foreground = `colorTextDisabled`、border = `colorBorder`、cursor = forbidden。
 
 `loading=true`：等同 disabled 视觉 + 在 child 左侧渲染一个旋转的 `_LoadingSpinner`（自绘 CustomPaint，见 § 6.3）。
 
@@ -509,9 +509,9 @@ class LoadingSpinner extends StatefulWidget {
 
 `block=true` 时 `width: double.infinity`；circle shape 时 width = height。
 
-### 6.5 实现 / 推迟 prop
+### 6.5 实现 / 推迟属性
 
-| Prop | 状态 |
+| 属性 | 状态 |
 | --- | --- |
 | type / size / shape / disabled / loading / danger / ghost / block / onPressed / child | ✅ MVP |
 | icon / iconPosition | 推迟 2.1（用户用 `Row(children: [AntIcon, SizedBox, child])` 手拼） |
@@ -582,20 +582,20 @@ class AntInput extends StatefulWidget {
 - maxLength 通过 `LengthLimitingTextInputFormatter`
 ### 7.3 视觉派生（InputStyle）
 
-| 状态 | border | bg |
+| 状态 | border | background |
 | --- | --- | --- |
 | normal | `colorBorder` | `colorBackgroundContainer` |
 | hover | `colorPrimaryHover` | 同上 |
-| focus | `colorPrimary` + 2px outer ring（`colorPrimaryBackground` w/ alpha 0.2） | 同上 |
+| focus | `colorPrimary` + 2px outer ring（`colorPrimaryBackground` 透明度 0.2） | 同上 |
 | disabled | `colorBorder` | `colorFillSecondary` |
 | status=error | `colorError` (其余照常) | 同上 |
 | status=warning | `colorWarning` | 同上 |
 
 allowClear: hover 时在 suffix 位置之前插入一个 8×8 的 × 号图标（**自绘 CustomPainter**，不依赖 material 的 `Icons.cancel`），点击触发 `onChanged('')` 和 controller 清空。Phase 3 在 `lib/src/components/input/_clear_icon.dart` 内置（library private，不导出）。
 
-### 7.4 实现 / 推迟 prop
+### 7.4 实现 / 推迟属性
 
-| Prop | 状态 |
+| 属性 | 状态 |
 | --- | --- |
 | value/onChanged/onSubmitted/placeholder/size/status/disabled/readOnly/allowClear/maxLength/prefix/suffix/controller/focusNode | ✅ MVP |
 | password (visibilityToggle) | 推迟 2.1 |
@@ -631,14 +631,14 @@ class AntCheckbox extends StatelessWidget {
 
   final bool checked;
   final ValueChanged<bool>? onChanged;
-  final Widget? label;          // 通常 Text；null 时只渲染方块
+  final Widget? label;          // 通常是 Text；null 时只渲染方块
   final bool disabled;
 }
 ```
 
 视觉：14×14 方框，圆角 4。状态：
 
-| 状态 | 方框边框 | 方框填充 | √ 颜色 | label 颜色 |
+| 状态 | 方框边框 | 方框填充 | √ 颜色 | 标签颜色 |
 | --- | --- | --- | --- | --- |
 | unchecked | `colorBorder` | white | — | `colorText` |
 | unchecked + hover | `colorPrimary` | white | — | `colorText` |
@@ -684,9 +684,9 @@ class AntCheckboxGroup<T> extends StatelessWidget {
 
 实现：根据 `direction` 用 `Wrap`（horizontal）或 `Column`（vertical）；每个 option 渲染一个 `AntCheckbox`，其 `onChanged` 内部对 `value` 做 add/remove 后回调 `onChanged(newList)`。
 
-### 8.4 推迟 prop
+### 8.4 推迟属性
 
-| Prop | 状态 |
+| 属性 | 状态 |
 | --- | --- |
 | indeterminate | 推迟 2.1 |
 | autoFocus | 推迟 2.1 |
@@ -746,9 +746,9 @@ class AntRadioGroup<T> extends StatelessWidget {
 
 `AntRadio` **不**对外要求与 Group 配合使用（与 Group 解耦：`AntRadio.groupValue` 可由用户独立维护）；Group 只是 sugar。
 
-### 9.3 推迟 prop
+### 9.3 推迟属性
 
-| Prop | 状态 |
+| 属性 | 状态 |
 | --- | --- |
 | Radio.Button (按钮组样式) | 推迟 2.1 |
 | optionType="button" | 推迟 2.1（同上） |
@@ -790,13 +790,13 @@ class AntSwitch extends StatefulWidget {
 
 ### 10.2 视觉
 
-- 圆角胶囊：unchecked bg = `colorTextTertiary`、checked bg = `colorPrimary`；hover 时变深一档
+- 圆角胶囊：unchecked background = `colorTextTertiary`、checked background = `colorPrimary`；hover 时变深一档
 - 滑块（thumb）：白色圆，14×14（middle）/ 12×12 (small)；切换时 200ms 平滑动画（`AnimatedAlign`）
-- loading=true：thumb 内画 _LoadingSpinner（复用 button 的内置 spinner）；按钮整体暗一档；不响应点击
+- loading=true：thumb 内画 LoadingSpinner（复用 § 6.3 的共享内置 spinner）；整体暗一档；不响应点击
 
-### 10.3 推迟 prop
+### 10.3 推迟属性
 
-| Prop | 状态 |
+| 属性 | 状态 |
 | --- | --- |
 | checkedChildren / unCheckedChildren | 推迟 2.1 |
 | autoFocus | 推迟 2.1 |
@@ -850,25 +850,25 @@ class AntCheckableTag extends StatelessWidget {
 }
 ```
 
-`AntCheckableTag.checked` 决定背景：true → `colorPrimary` + white text；false → `colorFillSecondary` + `colorText`。点击 toggle。
+`AntCheckableTag.checked` 决定背景：true → `colorPrimary` + white 文字；false → `colorFillSecondary` + `colorText`。点击切换。
 
 ### 11.2 视觉
 
-- 默认：bg=`colorFillSecondary`、border=`colorBorder`、padding=`EdgeInsets.symmetric(h:8, v:0)`、height=22、fontSize=12、borderRadius=4
-- `color` 非 null 时：bg = color、border = color.withOpacity(0.4)、textColor = `_pickContrast(color)` （亮色背景用 `colorText`，暗色用 white；阈值为 luminance > 0.5）
+- 默认：background = `colorFillSecondary`、border = `colorBorder`、padding = `EdgeInsets.symmetric(horizontal: 8, vertical: 0)`、height = 22、fontSize = 12、borderRadius = 4
+- `color` 非 null 时：background = color、border = color.withOpacity(0.4)、textColor = `_pickContrast(color)` （亮色背景用 `colorText`，暗色用 white；阈值为 luminance > 0.5）
 - closable=true：右侧渲染一个 8px × 号 (CustomPainter)，点击触发 `onClose?.call()`；不内置移除动画（推 Phase 4 用 `AnimatedSize` + AnimatedSwitcher 包装）
 
-### 11.3 推迟 prop
+### 11.3 推迟属性
 
-| Prop | 状态 |
+| 属性 | 状态 |
 | --- | --- |
 | color: 13 个 preset 名（magenta/red/volcano/...） | 推迟 2.1（需 foundation 增 preset palette） |
-| icon (左侧图标 prop) | 推迟 2.1（用户传 child=Row 自拼） |
-| closeIcon (自定义关闭 icon) | 推迟 2.1 |
+| icon (左侧图标属性) | 推迟 2.1（用户传 child=Row 自拼） |
+| closeIcon (自定义关闭图标) | 推迟 2.1 |
 
 ### 11.4 widget test 关键断言
 
-- 默认 Tag 渲染 + 自定义 color 改 bg
+- 默认 Tag 渲染 + 自定义 color 改 background
 - closable=true 显示 × ；点击触发 onClose
 - AntCheckableTag：tap toggle、不同 checked 视觉差异
 
@@ -918,8 +918,8 @@ group('ButtonStyle.from', () {
 
 ### 12.4 widget test 限制
 
-- 只在默认 DPR (1.0) / 默认 size 下断言
-- Input 的输入法 / IME 集成不在 widget test 覆盖（VM 平台不支持）；放 manual 检查列表
+- 只在默认设备像素比 (1.0) / 默认 size 下断言
+- Input 的输入法集成不在 widget test 覆盖（Dart VM 平台不支持原生输入法）；放 manual 检查列表
 
 ### 12.5 不做
 
@@ -1066,11 +1066,11 @@ export 'src/components/tag/ant_tag.dart' show AntTag, AntCheckableTag;
 
 | 风险 | 级别 | 缓解 |
 | --- | --- | --- |
-| AntInput 的 `EditableText` 在桌面 / web 选区行为差异 | 中 | MVP 默认行为即可；caret 闪烁与 IME 在 widget test 不验证；列入 manual checklist |
+| AntInput 的 `EditableText` 在桌面 / web 选区行为差异 | 中 | MVP 默认行为即可；caret 闪烁与输入法在 widget test 不验证；列入 manual checklist |
 | Tag 自定义 color 的对比色挑选（`_pickContrast`）在中等亮度色（蓝/紫）容易选错 | 中 | 用 sRGB luminance 公式 + 0.5 阈值；2.1 引入 preset palette 时一并按 AntD 规则做正确派生 |
 | AntButton 的 ButtonStyle 视觉派生表（5 type × danger × ghost）爆炸 | 中 | unit test 覆盖**全部**派生分支；style 类设计成纯函数便于穷举测试 |
 | Switch 切换动画与 loading 状态切换同时发生时 thumb 位置错乱 | 低 | loading=true 时 thumb 不参与 AnimatedAlign，固定居中位置 |
-| Round 2 大量复用 InteractionDetector 后，Phase 2 的 API 暴露不足（如缺 cursor 默认行为） | 低 | 真出现时回 Phase 2 增补 prop（依父 spec §10 偏离原则） |
+| Round 2 大量复用 InteractionDetector 后，Phase 2 的 API 暴露不足（如缺 cursor 默认行为） | 低 | 真出现时回 Phase 2 增补属性（依父 spec §10 偏离原则） |
 | 不打包字体后用户首次试用看到所有 AntIcon 都不显示 | 低 | README 章节用大字标明；example 不依赖任何 IconData（避免破窗） |
 | `EditableText` 在不引入 material 时的工具栏（cut/copy/paste）默认空白 | 低 | MVP 接受默认行为（长按弹出原生菜单，桌面快捷键可用）；2.1 评估是否补 widget-only 工具栏 |
 
@@ -1079,8 +1079,8 @@ export 'src/components/tag/ant_tag.dart' show AntTag, AntCheckableTag;
 ## 18. 与父 Spec 的偏离
 
 1. **AntIcons 字体不打包**（父 spec §0、§6.1、§7.1 要求"自带 AntD 官方图标字体子集（约 80 个）"）。理由：业余预算下，子集制作 + LICENSE 维护 + 后续字体升级负担过大；社区已有 `ant_icons_plus`；本库专注组件，图标资源解耦。父 spec §11 的"AntIcons 字体覆盖不全"风险条目随之删除（移到本 spec §17 的字体相关条目）。
-2. **Phase 3 工时调整为 53h / 7 周**（父 spec §10 排 45h / 6 周）。理由：size 三档 + 均衡 prop 包 + Gallery 24 use cases + example 重写超出原估算。这是预算微调，不影响后续 Phase 起始时间——父 spec §10.1 明确允许"砍 prop / 缩范围保持节奏"，反向也允许"延 1 周保实现质量"。
-3. **AntCheckableTag 拆为独立 widget**（父 spec §6.1 把 Tag 算作单组件）。理由：可关闭 Tag 与可选中 Tag 的语义差异大（一个有 onClose、另一个有 checked），合并签名会出现互斥 prop。拆分后两个类各自职责明确。
+2. **Phase 3 工时调整为 53h / 7 周**（父 spec §10 排 45h / 6 周）。理由：size 三档 + 均衡属性包 + Gallery 24 use cases + example 重写超出原估算。这是预算微调，不影响后续 Phase 起始时间——父 spec §10.1 明确允许"砍属性 / 缩范围保持节奏"，反向也允许"延 1 周保实现质量"。
+3. **AntCheckableTag 拆为独立 widget**（父 spec §6.1 把 Tag 算作单组件）。理由：可关闭 Tag 与可选中 Tag 的语义差异大（一个有 onClose、另一个有 checked），合并签名会出现互斥属性。拆分后两个类各自职责明确。
 4. **AntButton.icon 推迟 2.1**（父 spec §6.3 说"icon 推迟 2.1"已含此意）。本 spec 明示。
 
 ---
