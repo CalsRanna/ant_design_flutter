@@ -49,6 +49,9 @@ class _AntInteractionDetectorState extends State<AntInteractionDetector> {
     super.didUpdateWidget(old);
     if (old.enabled != widget.enabled) {
       _controller.update(WidgetState.disabled, !widget.enabled);
+      if (!widget.enabled) {
+        _controller.update(WidgetState.pressed, false);
+      }
     }
   }
 

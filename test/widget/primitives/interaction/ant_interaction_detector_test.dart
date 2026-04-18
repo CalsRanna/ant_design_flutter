@@ -229,5 +229,37 @@ void main() {
       expect(captured, isNot(contains(WidgetState.pressed)));
       expect(taps, 0);
     });
+
+    testWidgets('pressed clears when enabled flips to false mid-press',
+        (tester) async {
+      var captured = <WidgetState>{};
+      Widget buildApp({required bool enabled}) => Directionality(
+            textDirection: TextDirection.ltr,
+            child: Center(
+              child: AntInteractionDetector(
+                enabled: enabled,
+                onTap: () {},
+                builder: (_, states) {
+                  captured = states;
+                  return const SizedBox(width: 50, height: 50);
+                },
+              ),
+            ),
+          );
+
+      await tester.pumpWidget(buildApp(enabled: true));
+      final gesture =
+          await tester.startGesture(tester.getCenter(find.byType(SizedBox)));
+      await tester.pump();
+      expect(captured, contains(WidgetState.pressed));
+
+      // disable while still pressed — pressed must clear
+      await tester.pumpWidget(buildApp(enabled: false));
+      await tester.pump();
+      expect(captured, isNot(contains(WidgetState.pressed)));
+      expect(captured, contains(WidgetState.disabled));
+
+      await gesture.up();
+    });
   });
 }
