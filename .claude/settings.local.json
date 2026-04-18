@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "Bash(awk '$5 == 0 {print $NF}')"
+      "Bash(awk '$5 == 0 {print $NF}')",
+      "Bash(grep -E '^\\\\.packages$|^pubspec\\\\.lock$')",
+      "Bash(:)",
+      "Bash(flutter --version)",
+      "Bash(flutter pub *)",
+      "Bash(flutter analyze *)",
+      "Bash(flutter doctor *)",
+      "Bash(flutter test *)",
+      "Bash(dart format *)"
     ]
   }
 }

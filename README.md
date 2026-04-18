@@ -1,88 +1,76 @@
 <p align="center">
-  <a href="https://doc.antdf.xyz">
+  <a href="https://github.com/CalsRanna/ant_design_flutter">
     <img width="200" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">
   </a>
 </p>
 
-<h1 align="center">Ant Design Flutter</h1>
+<h1 align="center">ant_design_flutter 2.0</h1>
 
 <div align="center">
 
-A Flutter UI framework designed for web / pc application, contains some high quality widgets.
+A Flutter component library aligned with **Ant Design v5**, designed for web
+and desktop applications. Pure Dart, zero runtime dependencies.
 
-Since antdf is designed for pc application at very first, so it wasn't recommand to use in mobile application even can be used.
-
-![Status](https://img.shields.io/badge/STATUS-WIP-orange?style=for-the-badge&color=blue) ![Pub Version](https://img.shields.io/pub/v/ant_design_flutter?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/CalsRanna/ant_design_flutter?style=for-the-badge)
+![Status](https://img.shields.io/badge/STATUS-2.0--dev-orange?style=for-the-badge&color=orange)
+![Pub Version](https://img.shields.io/pub/v/ant_design_flutter?style=for-the-badge&include_prereleases)
+![GitHub](https://img.shields.io/github/license/CalsRanna/ant_design_flutter?style=for-the-badge)
 
 </div>
 
-[![](https://gw.alipayobjects.com/mdn/rms_08e378/afts/img/A*Yl83RJhUE7kAAAAAAAAAAABkARQnAQ)](https://doc.antdf.xyz)
+---
 
-## ✨ Features
+> **⚠️ Development status**
+>
+> 2.0 is a full rewrite. The `main` branch targets `2.0.0-dev.x` releases —
+> no components have landed yet. For a stable (but unmaintained) 1.x release
+> see tag `v1-legacy` or version `0.0.1+5`.
+>
+> Roadmap and design live in
+> [`docs/superpowers/specs/2026-04-18-antdf-2.0-design.md`](docs/superpowers/specs/2026-04-18-antdf-2.0-design.md).
 
-- 🌈 Enterprise-class UI designed for web / desktop applications.
-- 📦 A set of high-quality Flutter widgets out of the box.
-- 🛡 Written in pure Dart with null safety.
+## ✨ Features (MVP goals)
 
-## 🖥 Environment Support
+- 🎯 Aligned with Ant Design v5 design language
+- 🖥 Web + desktop first (Windows / macOS / Linux / Web); mobile out of scope
+- 🎨 Token-based theming (Seed → Map → Alias) compatible with `theme.algorithm` extension
+- 📦 Zero runtime dependencies — pure Dart on top of `package:flutter/widgets.dart`
+- 🌐 Built-in `zh_CN` and `en_US` locales
+- 🧩 17 core components in MVP (Button, Input, Select, DatePicker, Form, Table, and more)
 
-- Working on Windows and Mac OS
+## 📦 Installation
 
-## 📦 Install
+**Not yet on pub.dev for 2.0.** While 2.0 is in development, pin to git:
 
-```bash
-flutter pub add ant_design_flutter
+```yaml
+dependencies:
+  ant_design_flutter:
+    git:
+      url: https://github.com/CalsRanna/ant_design_flutter
+      ref: main
 ```
+
+Once `2.0.0-dev.2` ships (Phase 3 complete) it will be published to pub.dev.
 
 ## 🔨 Usage
 
-```dart
-import 'package:ant_design_flutter/antdf.dart';
+Components land in subsequent phases — see
+[`doc/PROGRESS.md`](doc/PROGRESS.md) for current status.
 
-void main() {
-  runApp(const AntApp(
-    home: Scaffold(
-      body: Center(
-        child: Button(
-          type: ButtonType.primary,
-          child: Text("Click Me"),
-        ),
-      )
-    ),
-  ));
-}
-```
+## 🖥 Requirements
 
-### Null Safety
+- Flutter `>= 3.38.0`
+- Dart `>= 3.10.0`
 
-`antdf` is written in dart with null safety, check [Sound Null Safety](https://flutter.cn/posts/announcing-dart-2-12#%E5%81%A5%E5%85%A8%E7%9A%84%E7%A9%BA%E5%AE%89%E5%85%A8) to get started.
+## 🗺 Migration from 1.x
 
-## 🔗 Links
+2.0 is a breaking rewrite. See
+[`doc/MIGRATION.md`](doc/MIGRATION.md). If you are on 1.x and do not plan to
+migrate, pin to `ant_design_flutter: 0.0.1+5` (tag `v1-legacy`).
 
-- [Home page](https://doc.antdf.xyz)
-- [Widgets Overview](https://doc.antdf.xyz/#/overview)
+## 🤝 Contributing
 
-## ⌨️ Development
+See [`doc/CONTRIBUTING.md`](doc/CONTRIBUTING.md).
 
-Use Gitpod, a free online dev environment for GitHub.
+## 📄 License
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CalsRanna/ant_design_flutter)
-
-Or clone locally:
-
-```bash
-$ git git@github.com:CalsRanna/ant_design_flutter
-$ cd ant_design_flutter
-$ flutter pub get
-$ flutter run
-```
-
-Now flutter will run on the connected device in your environment.
-
-## 🤝 Contributing [![PR Welcome](https://img.shields.io/badge/PR-WELCOME-brightgreen.svg?style=flat-square)](https://github.com/CalsRanna/ant_design_flutter/pulls)
-
-We welcome all contributions. You can submit any ideas as [pull requests](https://github.com/CalsRanna/ant_design_flutter/pulls) or as [GitHub issues](https://github.com/CalsRanna/ant_design_flutter/issues).
-
-[![Let's fund issues in this repository](https://issuehunt.io/static/embed/issuehunt-button-v1.svg)](https://issuehunt.io/r/CalsRanna/ant_design_flutter)
-
-## ❤️ Sponsors and Backers
+[MIT](LICENSE)
