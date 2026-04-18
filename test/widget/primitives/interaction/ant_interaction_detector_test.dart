@@ -44,7 +44,7 @@ void main() {
   group('AntInteractionDetector — hover', () {
     testWidgets('states include hovered while pointer is inside',
         (tester) async {
-      Set<WidgetState> captured = <WidgetState>{};
+      var captured = <WidgetState>{};
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
@@ -81,7 +81,7 @@ void main() {
           child: Center(
             child: AntInteractionDetector(
               onHover: transitions.add,
-              builder: (_, __) => const SizedBox(width: 50, height: 50),
+              builder: (_, _) => const SizedBox(width: 50, height: 50),
             ),
           ),
         ),
@@ -104,7 +104,7 @@ void main() {
 
     testWidgets('hover suppressed when disabled', (tester) async {
       final transitions = <bool>[];
-      Set<WidgetState> captured = <WidgetState>{};
+      var captured = <WidgetState>{};
       await tester.pumpWidget(
         Directionality(
           textDirection: TextDirection.ltr,
