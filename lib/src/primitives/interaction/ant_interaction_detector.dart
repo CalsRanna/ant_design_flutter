@@ -1,3 +1,5 @@
+import 'package:flutter/gestures.dart'
+    show PointerEnterEvent, PointerExitEvent;
 import 'package:flutter/widgets.dart';
 
 /// Builder 签名：拿到当前合成好的 widget states 集合。
@@ -60,7 +62,29 @@ class _AntInteractionDetectorState extends State<AntInteractionDetector> {
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _controller,
-      builder: (context, _) => widget.builder(context, _controller.value),
+      builder: (context, _) => MouseRegion(
+        cursor: _resolveCursor(),
+        onEnter: widget.enabled ? _handleMouseEnter : null,
+        onExit: widget.enabled ? _handleMouseExit : null,
+        child: widget.builder(context, _controller.value),
+      ),
     );
+  }
+
+  MouseCursor _resolveCursor() {
+    if (!widget.enabled) return SystemMouseCursors.forbidden;
+    return widget.cursor ?? MouseCursor.defer;
+  }
+
+  void _handleMouseEnter(PointerEnterEvent _) {
+    if (_controller.value.contains(WidgetState.hovered)) return;
+    _controller.update(WidgetState.hovered, true);
+    widget.onHover?.call(true);
+  }
+
+  void _handleMouseExit(PointerExitEvent _) {
+    if (!_controller.value.contains(WidgetState.hovered)) return;
+    _controller.update(WidgetState.hovered, false);
+    widget.onHover?.call(false);
   }
 }
