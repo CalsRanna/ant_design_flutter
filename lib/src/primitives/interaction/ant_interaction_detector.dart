@@ -10,8 +10,8 @@ typedef AntInteractionBuilder = Widget Function(
 /// `Set<WidgetState>` 透传给 builder。详见 Phase 2 spec § 3。
 class AntInteractionDetector extends StatefulWidget {
   const AntInteractionDetector({
-    super.key,
     required this.builder,
+    super.key,
     this.onTap,
     this.onHover,
     this.enabled = true,
