@@ -18,7 +18,24 @@
       "Bash(git commit *)",
       "mcp__dart-mcp-server__add_roots",
       "mcp__dart-mcp-server__run_tests",
-      "mcp__dart-mcp-server__analyze_files"
+      "mcp__dart-mcp-server__analyze_files",
+      "Bash(python3)",
+      "Bash(dart analyze:*)",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(git show:*)",
+      "Bash(dart test:*)",
+      "Bash(grep -n \"addPostFrameCallback\\\\|postFrameCallbacks\\\\|_persistentCallbacks\\\\|_postFrameCallbacks\" /Users/cals/.pub-cache/hosted/pub.dev/flutter_test-*/lib/src/binding.dart)",
+      "Bash(flutter sdk-path:*)",
+      "Bash(fvm flutter:*)",
+      "Bash(dart run:*)",
+      "Bash(git stash:*)",
+      "Bash(git merge:*)",
+      "Bash(dart pub:*)",
+      "Bash(flutter --print-flutter-sdk-path)",
+      "Bash(dart --version)",
+      "Bash(flutter --print-cache-dir)",
+      "Bash(dart info:*)"
     ]
   }
 }

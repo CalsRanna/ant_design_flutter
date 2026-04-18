@@ -9,6 +9,7 @@ export 'src/app/ant_config_provider.dart' show AntConfigProvider, AntTheme;
 export 'src/primitives/interaction/ant_interaction_detector.dart'
     show AntInteractionBuilder, AntInteractionDetector;
 export 'src/primitives/portal/ant_placement.dart' show AntPlacement;
+export 'src/primitives/portal/ant_portal.dart' show AntPortal;
 export 'src/theme/algorithm/default_algorithm.dart' show DefaultAlgorithm;
 export 'src/theme/algorithm/theme_algorithm.dart' show AntThemeAlgorithm;
 export 'src/theme/alias_token.dart' show AntAliasToken;
