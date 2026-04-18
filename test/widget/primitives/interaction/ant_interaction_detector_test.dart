@@ -133,4 +133,101 @@ void main() {
       expect(captured, contains(WidgetState.disabled));
     });
   });
+
+  group('AntInteractionDetector — tap & pressed', () {
+    testWidgets('pressed state toggles around tap', (tester) async {
+      final snapshots = <Set<WidgetState>>[];
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Center(
+            child: AntInteractionDetector(
+              onTap: () {},
+              builder: (_, states) {
+                snapshots.add(Set.of(states));
+                return const SizedBox(width: 50, height: 50);
+              },
+            ),
+          ),
+        ),
+      );
+
+      final gesture =
+          await tester.startGesture(tester.getCenter(find.byType(SizedBox)));
+      await tester.pump();
+      expect(snapshots.last, contains(WidgetState.pressed));
+
+      await gesture.up();
+      await tester.pump();
+      expect(snapshots.last, isNot(contains(WidgetState.pressed)));
+    });
+
+    testWidgets('onTap fires when enabled', (tester) async {
+      var taps = 0;
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Center(
+            child: AntInteractionDetector(
+              onTap: () => taps++,
+              builder: (_, _) => const SizedBox(width: 50, height: 50),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byType(SizedBox));
+      await tester.pump();
+      expect(taps, 1);
+    });
+
+    testWidgets('onTap suppressed when disabled', (tester) async {
+      var taps = 0;
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Center(
+            child: AntInteractionDetector(
+              enabled: false,
+              onTap: () => taps++,
+              builder: (_, _) => const SizedBox(width: 50, height: 50),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.byType(SizedBox));
+      await tester.pump();
+      expect(taps, 0);
+    });
+
+    testWidgets('pressed clears on tap cancel', (tester) async {
+      var taps = 0;
+      var captured = <WidgetState>{};
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Center(
+            child: AntInteractionDetector(
+              onTap: () => taps++,
+              builder: (_, states) {
+                captured = states;
+                return const SizedBox(width: 50, height: 50);
+              },
+            ),
+          ),
+        ),
+      );
+
+      final gesture =
+          await tester.startGesture(tester.getCenter(find.byType(SizedBox)));
+      await tester.pump();
+      expect(captured, contains(WidgetState.pressed));
+
+      await gesture.cancel();
+      await tester.pump();
+      expect(captured, isNot(contains(WidgetState.pressed)));
+      expect(taps, 0);
+    });
+  });
 }

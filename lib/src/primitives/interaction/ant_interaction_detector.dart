@@ -66,9 +66,28 @@ class _AntInteractionDetectorState extends State<AntInteractionDetector> {
         cursor: _resolveCursor(),
         onEnter: widget.enabled ? _handleMouseEnter : null,
         onExit: widget.enabled ? _handleMouseExit : null,
-        child: widget.builder(context, _controller.value),
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTapDown: widget.enabled ? _handleTapDown : null,
+          onTapUp: widget.enabled ? _handleTapUp : null,
+          onTapCancel: widget.enabled ? _handleTapCancel : null,
+          onTap: widget.enabled ? widget.onTap : null,
+          child: widget.builder(context, _controller.value),
+        ),
       ),
     );
+  }
+
+  void _handleTapDown(TapDownDetails _) {
+    _controller.update(WidgetState.pressed, true);
+  }
+
+  void _handleTapUp(TapUpDetails _) {
+    _controller.update(WidgetState.pressed, false);
+  }
+
+  void _handleTapCancel() {
+    _controller.update(WidgetState.pressed, false);
   }
 
   MouseCursor _resolveCursor() {
