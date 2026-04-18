@@ -23,8 +23,9 @@ void main() {
       expect(observed, isEmpty);
     });
 
-    testWidgets('builder receives {disabled} when enabled: false',
-        (tester) async {
+    testWidgets('builder receives {disabled} when enabled: false', (
+      tester,
+    ) async {
       Set<WidgetState>? observed;
       await tester.pumpWidget(
         Directionality(
@@ -43,8 +44,9 @@ void main() {
   });
 
   group('AntInteractionDetector — hover', () {
-    testWidgets('states include hovered while pointer is inside',
-        (tester) async {
+    testWidgets('states include hovered while pointer is inside', (
+      tester,
+    ) async {
       var captured = <WidgetState>{};
       await tester.pumpWidget(
         Directionality(
@@ -153,8 +155,9 @@ void main() {
         ),
       );
 
-      final gesture =
-          await tester.startGesture(tester.getCenter(find.byType(SizedBox)));
+      final gesture = await tester.startGesture(
+        tester.getCenter(find.byType(SizedBox)),
+      );
       await tester.pump();
       expect(snapshots.last, contains(WidgetState.pressed));
 
@@ -220,8 +223,9 @@ void main() {
         ),
       );
 
-      final gesture =
-          await tester.startGesture(tester.getCenter(find.byType(SizedBox)));
+      final gesture = await tester.startGesture(
+        tester.getCenter(find.byType(SizedBox)),
+      );
       await tester.pump();
       expect(captured, contains(WidgetState.pressed));
 
@@ -231,26 +235,28 @@ void main() {
       expect(taps, 0);
     });
 
-    testWidgets('pressed clears when enabled flips to false mid-press',
-        (tester) async {
+    testWidgets('pressed clears when enabled flips to false mid-press', (
+      tester,
+    ) async {
       var captured = <WidgetState>{};
       Widget buildApp({required bool enabled}) => Directionality(
-            textDirection: TextDirection.ltr,
-            child: Center(
-              child: AntInteractionDetector(
-                enabled: enabled,
-                onTap: () {},
-                builder: (_, states) {
-                  captured = states;
-                  return const SizedBox(width: 50, height: 50);
-                },
-              ),
-            ),
-          );
+        textDirection: TextDirection.ltr,
+        child: Center(
+          child: AntInteractionDetector(
+            enabled: enabled,
+            onTap: () {},
+            builder: (_, states) {
+              captured = states;
+              return const SizedBox(width: 50, height: 50);
+            },
+          ),
+        ),
+      );
 
       await tester.pumpWidget(buildApp(enabled: true));
-      final gesture =
-          await tester.startGesture(tester.getCenter(find.byType(SizedBox)));
+      final gesture = await tester.startGesture(
+        tester.getCenter(find.byType(SizedBox)),
+      );
       await tester.pump();
       expect(captured, contains(WidgetState.pressed));
 
@@ -293,8 +299,7 @@ void main() {
       expect(captured, isNot(contains(WidgetState.focused)));
     });
 
-    testWidgets('Enter and Space trigger onTap while focused',
-        (tester) async {
+    testWidgets('Enter and Space trigger onTap while focused', (tester) async {
       final node = FocusNode();
       addTearDown(node.dispose);
       var taps = 0;
@@ -341,8 +346,9 @@ void main() {
       expect(node.hasFocus, isFalse);
     });
 
-    testWidgets('disabled widget drops focus and ignores key events',
-        (tester) async {
+    testWidgets('disabled widget drops focus and ignores key events', (
+      tester,
+    ) async {
       final node = FocusNode();
       addTearDown(node.dispose);
       var taps = 0;

@@ -19,8 +19,9 @@ Widget _host({required Widget child}) {
 
 void main() {
   group('AntPortal — lifecycle', () {
-    testWidgets('overlayBuilder not invoked when visible: false',
-        (tester) async {
+    testWidgets('overlayBuilder not invoked when visible: false', (
+      tester,
+    ) async {
       var built = 0;
       await tester.pumpWidget(
         _host(
@@ -130,8 +131,9 @@ void main() {
           ),
         );
 
-    testWidgets('top: overlay bottom edge aligns with target top',
-        (tester) async {
+    testWidgets('top: overlay bottom edge aligns with target top', (
+      tester,
+    ) async {
       await tester.pumpWidget(buildCase(AntPlacement.top));
       await tester.pumpAndSettle();
       final target = tester.getRect(find.byKey(targetKey));
@@ -141,18 +143,20 @@ void main() {
     });
 
     testWidgets(
-        'bottomRight: overlay top-right aligns with target bottom-right',
-        (tester) async {
-      await tester.pumpWidget(buildCase(AntPlacement.bottomRight));
-      await tester.pumpAndSettle();
-      final target = tester.getRect(find.byKey(targetKey));
-      final overlay = tester.getRect(find.byKey(overlayKey));
-      expect(overlay.top, closeTo(target.bottom, 0.5));
-      expect(overlay.right, closeTo(target.right, 0.5));
-    });
+      'bottomRight: overlay top-right aligns with target bottom-right',
+      (tester) async {
+        await tester.pumpWidget(buildCase(AntPlacement.bottomRight));
+        await tester.pumpAndSettle();
+        final target = tester.getRect(find.byKey(targetKey));
+        final overlay = tester.getRect(find.byKey(overlayKey));
+        expect(overlay.top, closeTo(target.bottom, 0.5));
+        expect(overlay.right, closeTo(target.right, 0.5));
+      },
+    );
 
-    testWidgets('left: overlay right edge aligns with target left',
-        (tester) async {
+    testWidgets('left: overlay right edge aligns with target left', (
+      tester,
+    ) async {
       await tester.pumpWidget(buildCase(AntPlacement.left));
       await tester.pumpAndSettle();
       final target = tester.getRect(find.byKey(targetKey));

@@ -1,13 +1,13 @@
-import 'package:flutter/gestures.dart'
-    show PointerEnterEvent, PointerExitEvent;
+import 'package:flutter/gestures.dart' show PointerEnterEvent, PointerExitEvent;
 import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'package:flutter/widgets.dart';
 
 /// Builder 签名：拿到当前合成好的 widget states 集合。
-typedef AntInteractionBuilder = Widget Function(
-  BuildContext context,
-  Set<WidgetState> states,
-);
+typedef AntInteractionBuilder =
+    Widget Function(
+      BuildContext context,
+      Set<WidgetState> states,
+    );
 
 /// 统一的交互检测器：把 hover / focus / pressed / disabled 四态合成成
 /// `Set<WidgetState>` 透传给 builder。详见 Phase 2 spec § 3。
@@ -32,8 +32,7 @@ class AntInteractionDetector extends StatefulWidget {
   final FocusNode? focusNode;
 
   @override
-  State<AntInteractionDetector> createState() =>
-      _AntInteractionDetectorState();
+  State<AntInteractionDetector> createState() => _AntInteractionDetectorState();
 }
 
 class _AntInteractionDetectorState extends State<AntInteractionDetector> {
@@ -100,8 +99,7 @@ class _AntInteractionDetectorState extends State<AntInteractionDetector> {
         },
         child: Actions(
           actions: <Type, Action<Intent>>{
-            ActivateIntent:
-                CallbackAction<ActivateIntent>(onInvoke: _activate),
+            ActivateIntent: CallbackAction<ActivateIntent>(onInvoke: _activate),
           },
           child: Focus(
             focusNode: _effectiveNode,

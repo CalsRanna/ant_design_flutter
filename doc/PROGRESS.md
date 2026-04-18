@@ -4,7 +4,7 @@ Lightweight running log so Phase work survives calendar gaps. Update the
 "Last updated" line and the current Phase's checklist whenever you stop a
 session.
 
-**Last updated:** 2026-04-18 (Phase 1 delivery)
+**Last updated:** 2026-04-18 (Phase 2 delivery)
 
 ## Phase status
 
@@ -12,7 +12,7 @@ session.
 | --- | --- | --- | --- |
 | 0 | Scaffold (pubspec/lint/CI/gallery shell) | [plans/2026-04-18-phase-0-scaffold.md](../docs/superpowers/plans/2026-04-18-phase-0-scaffold.md) | complete |
 | 1 | Foundation + Theme | [plans/2026-04-18-phase-1-token-system.md](../docs/superpowers/plans/2026-04-18-phase-1-token-system.md) | complete |
-| 2 | Primitives (Interaction / Portal / Overlay) | — | not started |
+| 2 | Primitives (Interaction / Portal / Overlay) | [plans/2026-04-18-phase-2-primitives.md](../docs/superpowers/plans/2026-04-18-phase-2-primitives.md) | complete |
 | 3 | Round 1+2 atoms | — | not started |
 | 4 | Round 3 feedback widgets | — | not started |
 | 5 | Round 4 composites | — | not started |
@@ -26,6 +26,7 @@ _What you were working on when you last stopped. Makes coming back easy._
 
 - 2026-04-18: Phase 0 plan written. Executed Tasks 1-9 end-to-end (code, config, docs). Next: write Phase 1 plan (Foundation + Theme).
 - 2026-04-18: Phase 1 complete. Token system (Seed/Map/Alias) + DefaultAlgorithm + AntConfigProvider + AntApp shell landed. 46 tests pass, `flutter analyze --fatal-infos` clean. Next: write Phase 2 plan (Primitives: Interaction / Portal / Overlay).
+- 2026-04-18: Phase 2 complete. AntInteractionDetector (4 WidgetStates + keyboard activation), AntPortal (OverlayPortal-backed, 12 placements with once-per-mount flip), AntOverlayManager (4 slots with per-(Overlay × slot) host model). 104 tests pass, `flutter analyze --fatal-infos` clean. Primitives deliberately do not consume AntTheme. Next: write Phase 3 plan for Round 1+2 atomic components (Icon / Typography / Button / Input / Checkbox / Radio / Switch / Tag).
 
 ## Blockers / parked ideas
 

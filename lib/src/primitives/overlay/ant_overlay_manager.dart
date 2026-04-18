@@ -10,7 +10,7 @@ abstract final class AntOverlayManager {
 
   /// Overlay → (slot → host GlobalKey)。
   static final Expando<Map<AntOverlaySlot, GlobalKey<AntOverlayHostState>>>
-      _hostsByOverlay = Expando();
+  _hostsByOverlay = Expando();
 
   /// Overlay → (slot → host OverlayEntry)。仅用于生命周期持有。
   static final Expando<Map<AntOverlaySlot, OverlayEntry>> _entriesByOverlay =

@@ -3,23 +3,27 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 Widget _host({required Widget child}) => Directionality(
-      textDirection: TextDirection.ltr,
-      child: MediaQuery(
-        data: const MediaQueryData(size: Size(800, 600)),
-        child: Overlay(
-          initialEntries: [OverlayEntry(builder: (_) => child)],
-        ),
-      ),
-    );
+  textDirection: TextDirection.ltr,
+  child: MediaQuery(
+    data: const MediaQueryData(size: Size(800, 600)),
+    child: Overlay(
+      initialEntries: [OverlayEntry(builder: (_) => child)],
+    ),
+  ),
+);
 
 Future<BuildContext> _pumpHost(WidgetTester tester) async {
   late BuildContext capturedContext;
-  await tester.pumpWidget(_host(
-    child: Builder(builder: (ctx) {
-      capturedContext = ctx;
-      return const SizedBox.shrink();
-    }),
-  ));
+  await tester.pumpWidget(
+    _host(
+      child: Builder(
+        builder: (ctx) {
+          capturedContext = ctx;
+          return const SizedBox.shrink();
+        },
+      ),
+    ),
+  );
   return capturedContext;
 }
 
@@ -45,8 +49,9 @@ void main() {
       expect(find.byKey(const ValueKey('msg-1')), findsNothing);
     });
 
-    testWidgets('dismiss is idempotent on already-dismissed handle',
-        (tester) async {
+    testWidgets('dismiss is idempotent on already-dismissed handle', (
+      tester,
+    ) async {
       final ctx = await _pumpHost(tester);
 
       final handle = AntOverlayManager.show(

@@ -8,30 +8,54 @@ void main() {
   group('AntPlacement anchor table', () {
     // 语义对齐 Phase 2 spec § 4.3
     const expected = <AntPlacement, AntPlacementAnchors>{
-      AntPlacement.top:
-          AntPlacementAnchors(Alignment.topCenter, Alignment.bottomCenter),
-      AntPlacement.topLeft:
-          AntPlacementAnchors(Alignment.topLeft, Alignment.bottomLeft),
-      AntPlacement.topRight:
-          AntPlacementAnchors(Alignment.topRight, Alignment.bottomRight),
-      AntPlacement.bottom:
-          AntPlacementAnchors(Alignment.bottomCenter, Alignment.topCenter),
-      AntPlacement.bottomLeft:
-          AntPlacementAnchors(Alignment.bottomLeft, Alignment.topLeft),
-      AntPlacement.bottomRight:
-          AntPlacementAnchors(Alignment.bottomRight, Alignment.topRight),
-      AntPlacement.left:
-          AntPlacementAnchors(Alignment.centerLeft, Alignment.centerRight),
-      AntPlacement.leftTop:
-          AntPlacementAnchors(Alignment.topLeft, Alignment.topRight),
-      AntPlacement.leftBottom:
-          AntPlacementAnchors(Alignment.bottomLeft, Alignment.bottomRight),
-      AntPlacement.right:
-          AntPlacementAnchors(Alignment.centerRight, Alignment.centerLeft),
-      AntPlacement.rightTop:
-          AntPlacementAnchors(Alignment.topRight, Alignment.topLeft),
-      AntPlacement.rightBottom:
-          AntPlacementAnchors(Alignment.bottomRight, Alignment.bottomLeft),
+      AntPlacement.top: AntPlacementAnchors(
+        Alignment.topCenter,
+        Alignment.bottomCenter,
+      ),
+      AntPlacement.topLeft: AntPlacementAnchors(
+        Alignment.topLeft,
+        Alignment.bottomLeft,
+      ),
+      AntPlacement.topRight: AntPlacementAnchors(
+        Alignment.topRight,
+        Alignment.bottomRight,
+      ),
+      AntPlacement.bottom: AntPlacementAnchors(
+        Alignment.bottomCenter,
+        Alignment.topCenter,
+      ),
+      AntPlacement.bottomLeft: AntPlacementAnchors(
+        Alignment.bottomLeft,
+        Alignment.topLeft,
+      ),
+      AntPlacement.bottomRight: AntPlacementAnchors(
+        Alignment.bottomRight,
+        Alignment.topRight,
+      ),
+      AntPlacement.left: AntPlacementAnchors(
+        Alignment.centerLeft,
+        Alignment.centerRight,
+      ),
+      AntPlacement.leftTop: AntPlacementAnchors(
+        Alignment.topLeft,
+        Alignment.topRight,
+      ),
+      AntPlacement.leftBottom: AntPlacementAnchors(
+        Alignment.bottomLeft,
+        Alignment.bottomRight,
+      ),
+      AntPlacement.right: AntPlacementAnchors(
+        Alignment.centerRight,
+        Alignment.centerLeft,
+      ),
+      AntPlacement.rightTop: AntPlacementAnchors(
+        Alignment.topRight,
+        Alignment.topLeft,
+      ),
+      AntPlacement.rightBottom: AntPlacementAnchors(
+        Alignment.bottomRight,
+        Alignment.bottomLeft,
+      ),
     };
 
     for (final entry in expected.entries) {
@@ -43,8 +67,11 @@ void main() {
     test('anchor table covers all 12 placements', () {
       expect(antPlacementAnchors.length, 12);
       for (final p in AntPlacement.values) {
-        expect(antPlacementAnchors.containsKey(p), isTrue,
-            reason: '$p missing');
+        expect(
+          antPlacementAnchors.containsKey(p),
+          isTrue,
+          reason: '$p missing',
+        );
       }
     });
   });

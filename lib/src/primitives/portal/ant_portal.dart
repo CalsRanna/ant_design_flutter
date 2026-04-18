@@ -136,7 +136,8 @@ class _AntPortalState extends State<AntPortal> {
       AntPlacement.bottomRight,
     };
     if (verticalAxis.contains(current)) {
-      final isTopSide = current == AntPlacement.top ||
+      final isTopSide =
+          current == AntPlacement.top ||
           current == AntPlacement.topLeft ||
           current == AntPlacement.topRight;
       if (isTopSide && overflowsTop && !overflowsBottom) {
@@ -145,7 +146,8 @@ class _AntPortalState extends State<AntPortal> {
         next = flipAntPlacement(current, vertical: true);
       }
     } else {
-      final isLeftSide = current == AntPlacement.left ||
+      final isLeftSide =
+          current == AntPlacement.left ||
           current == AntPlacement.leftTop ||
           current == AntPlacement.leftBottom;
       if (isLeftSide && overflowsLeft && !overflowsRight) {

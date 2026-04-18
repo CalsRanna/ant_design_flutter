@@ -25,34 +25,35 @@ void main() {
     required bool autoAdjustOverflow,
     required Alignment targetAlignment,
     Size overlaySize = const Size(40, 100),
-  }) =>
-      _host(
-        child: Align(
-          alignment: targetAlignment,
-          child: AntPortal(
-            visible: true,
-            placement: placement,
-            autoAdjustOverflow: autoAdjustOverflow,
-            overlayBuilder: (_) => SizedBox(
-              key: overlayKey,
-              width: overlaySize.width,
-              height: overlaySize.height,
-            ),
-            child: const SizedBox(
-              key: targetKey,
-              width: 40,
-              height: 20,
-            ),
-          ),
+  }) => _host(
+    child: Align(
+      alignment: targetAlignment,
+      child: AntPortal(
+        visible: true,
+        placement: placement,
+        autoAdjustOverflow: autoAdjustOverflow,
+        overlayBuilder: (_) => SizedBox(
+          key: overlayKey,
+          width: overlaySize.width,
+          height: overlaySize.height,
         ),
-      );
+        child: const SizedBox(
+          key: targetKey,
+          width: 40,
+          height: 20,
+        ),
+      ),
+    ),
+  );
 
   testWidgets('flips top→bottom when target hugs screen top', (tester) async {
-    await tester.pumpWidget(buildCase(
-      placement: AntPlacement.top,
-      autoAdjustOverflow: true,
-      targetAlignment: Alignment.topCenter,
-    ));
+    await tester.pumpWidget(
+      buildCase(
+        placement: AntPlacement.top,
+        autoAdjustOverflow: true,
+        targetAlignment: Alignment.topCenter,
+      ),
+    );
     await tester.pumpAndSettle();
 
     final target = tester.getRect(find.byKey(targetKey));
@@ -64,13 +65,14 @@ void main() {
     );
   });
 
-  testWidgets('does not flip when autoAdjustOverflow: false',
-      (tester) async {
-    await tester.pumpWidget(buildCase(
-      placement: AntPlacement.top,
-      autoAdjustOverflow: false,
-      targetAlignment: Alignment.topCenter,
-    ));
+  testWidgets('does not flip when autoAdjustOverflow: false', (tester) async {
+    await tester.pumpWidget(
+      buildCase(
+        placement: AntPlacement.top,
+        autoAdjustOverflow: false,
+        targetAlignment: Alignment.topCenter,
+      ),
+    );
     await tester.pumpAndSettle();
 
     final target = tester.getRect(find.byKey(targetKey));
@@ -83,11 +85,13 @@ void main() {
   });
 
   testWidgets('flips only once per mount', (tester) async {
-    await tester.pumpWidget(buildCase(
-      placement: AntPlacement.top,
-      autoAdjustOverflow: true,
-      targetAlignment: Alignment.topCenter,
-    ));
+    await tester.pumpWidget(
+      buildCase(
+        placement: AntPlacement.top,
+        autoAdjustOverflow: true,
+        targetAlignment: Alignment.topCenter,
+      ),
+    );
     await tester.pumpAndSettle();
     // Extra pumps must not trigger re-flipping.
     await tester.pump();
@@ -98,14 +102,15 @@ void main() {
     expect(overlay.top, closeTo(target.bottom, 0.5));
   });
 
-  testWidgets('flips left→right when target hugs screen left',
-      (tester) async {
-    await tester.pumpWidget(buildCase(
-      placement: AntPlacement.left,
-      autoAdjustOverflow: true,
-      targetAlignment: Alignment.centerLeft,
-      overlaySize: const Size(120, 20),
-    ));
+  testWidgets('flips left→right when target hugs screen left', (tester) async {
+    await tester.pumpWidget(
+      buildCase(
+        placement: AntPlacement.left,
+        autoAdjustOverflow: true,
+        targetAlignment: Alignment.centerLeft,
+        overlaySize: const Size(120, 20),
+      ),
+    );
     await tester.pumpAndSettle();
 
     final target = tester.getRect(find.byKey(targetKey));
