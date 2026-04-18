@@ -10,7 +10,15 @@
       "Bash(flutter analyze *)",
       "Bash(flutter doctor *)",
       "Bash(flutter test *)",
-      "Bash(dart format *)"
+      "Bash(dart format *)",
+      "Read(//c/Users/calsr/.claude/projects/D--Users-user56e1bf7c-projects-ant-design-flutter/**)",
+      "Read(//c/Users/calsr/.claude/projects/**)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "mcp__dart-mcp-server__add_roots",
+      "mcp__dart-mcp-server__run_tests",
+      "mcp__dart-mcp-server__analyze_files"
     ]
   }
 }
