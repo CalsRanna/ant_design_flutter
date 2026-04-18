@@ -27,3 +27,8 @@
 .dart_tool/
 .packages
 build/
+
+# 2.0+
+.claude/
+gallery/pubspec.lock
+gallery/.dart_tool/

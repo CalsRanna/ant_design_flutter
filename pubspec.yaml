@@ -1,22 +1,29 @@
 name: ant_design_flutter
-description: A Flutter UI framework designed for web / pc application, contains some high quality widgets.
-version: 0.0.1+5
-homepage: https://doc.antdf.xyz
+description: >-
+  A Flutter component library aligned with Ant Design v5, designed for web
+  and desktop applications. Pure Dart with zero runtime dependencies.
+version: 2.0.0-dev.1
+homepage: https://github.com/CalsRanna/ant_design_flutter
 repository: https://github.com/CalsRanna/ant_design_flutter
+issue_tracker: https://github.com/CalsRanna/ant_design_flutter/issues
 
 environment:
-  sdk: ">=3.0.3 <4.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.10.0 <4.0.0"
+  flutter: ">=3.38.0"
 
 dependencies:
-  dotted_border: ^2.0.0+2
   flutter:
     sdk: flutter
-  flutter_spinkit: ^5.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  very_good_analysis: ^10.2.0
 
 flutter:
+  # Font declaration is intentionally commented out in Phase 0.
+  # Phase 1 will generate fonts/AntIcons.ttf and uncomment this block.
+  # fonts:
+  #   - family: AntIcons
+  #     fonts:
+  #       - asset: fonts/AntIcons.ttf
