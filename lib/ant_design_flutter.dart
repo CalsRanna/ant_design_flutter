@@ -6,6 +6,8 @@ library;
 
 export 'src/app/ant_app.dart' show AntApp;
 export 'src/app/ant_config_provider.dart' show AntConfigProvider, AntTheme;
+export 'src/components/_shared/component_size.dart' show AntComponentSize;
+export 'src/components/_shared/component_status.dart' show AntStatus;
 export 'src/primitives/interaction/ant_interaction_detector.dart'
     show AntInteractionBuilder, AntInteractionDetector;
 export 'src/primitives/overlay/ant_overlay_manager.dart' show AntOverlayManager;
