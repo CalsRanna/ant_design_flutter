@@ -1,9 +1,14 @@
 /// ant_design_flutter 2.0 - Ant Design v5 aligned component library
 /// for Flutter web and desktop applications.
 ///
-/// This is the 2.0 rewrite scaffold. Components will land in subsequent
-/// phases - see docs/superpowers/plans/ for the roadmap.
+/// Phase 1 exports: Foundation + Theme + App shell.
 library;
 
-// Phase 1 将在此处导出 foundation / theme / primitives
-// Phase 2-6 将在此处导出各组件
+export 'src/app/ant_app.dart' show AntApp;
+export 'src/app/ant_config_provider.dart' show AntConfigProvider, AntTheme;
+export 'src/theme/algorithm/default_algorithm.dart' show DefaultAlgorithm;
+export 'src/theme/algorithm/theme_algorithm.dart' show AntThemeAlgorithm;
+export 'src/theme/alias_token.dart' show AntAliasToken;
+export 'src/theme/map_token.dart' show AntMapToken;
+export 'src/theme/seed_token.dart' show AntSeedToken;
+export 'src/theme/theme_data.dart' show AntThemeData;

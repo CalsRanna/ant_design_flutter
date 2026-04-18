@@ -1,3 +1,28 @@
+## 2.0.0-dev.2
+
+Phase 1 delivery: Design Token system.
+
+### Added
+- `AntSeedToken` / `AntMapToken` / `AntAliasToken` three-layer tokens (14 / 19 / 25 fields).
+- `AntThemeAlgorithm` interface and `DefaultAlgorithm` implementation.
+- `AntThemeData` aggregate with eager map/alias computation (factory constructor).
+- `AntConfigProvider` InheritedWidget + `AntTheme` syntax sugar.
+- `AntApp` minimal shell (WidgetsApp + AntConfigProvider).
+- Foundation color utilities (HSV conversion, weighted mix, 10-shade palette generation). Palette output matches `@ant-design/colors` v7 for `#1677FF` / `#52C41A` / `#FAAD14` within 1 RGB unit per channel.
+- `example/main.dart` renders a primary color demo.
+
+### Naming convention
+- All public fields use full English words (`Background`, `Small`, `Large`, `ExtraLarge`) rather than AntD's abbreviated forms (`Bg`, `SM`, `LG`, `XL`). dartdoc on each alias / map field cross-references the original AntD name.
+
+### API surface (new Color API)
+- Implementation uses Flutter 3.38's new Color API (`.r/.g/.b/.a` double + `.toARGB32()`). No `.red/.green/.blue/.alpha/.value` usage.
+
+### Reference
+- Spec: `docs/superpowers/specs/2026-04-18-phase-1-token-system-design.md`
+- Plan: `docs/superpowers/plans/2026-04-18-phase-1-token-system.md`
+
+---
+
 ## 2.0.0-dev.1
 
 Phase 0 scaffold. No components yet — this release delivers the rewrite's

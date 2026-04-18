@@ -37,12 +37,21 @@ void main() {
       for (final input in inputs) {
         final original = Color(input);
         final rebuilt = Hsv.fromColor(original).toColor();
-        expect(((rebuilt.r - original.r) * 255).abs(), lessThanOrEqualTo(1),
-            reason: 'red drift for ${input.toRadixString(16)}');
-        expect(((rebuilt.g - original.g) * 255).abs(), lessThanOrEqualTo(1),
-            reason: 'green drift for ${input.toRadixString(16)}');
-        expect(((rebuilt.b - original.b) * 255).abs(), lessThanOrEqualTo(1),
-            reason: 'blue drift for ${input.toRadixString(16)}');
+        expect(
+          ((rebuilt.r - original.r) * 255).abs(),
+          lessThanOrEqualTo(1),
+          reason: 'red drift for ${input.toRadixString(16)}',
+        );
+        expect(
+          ((rebuilt.g - original.g) * 255).abs(),
+          lessThanOrEqualTo(1),
+          reason: 'green drift for ${input.toRadixString(16)}',
+        );
+        expect(
+          ((rebuilt.b - original.b) * 255).abs(),
+          lessThanOrEqualTo(1),
+          reason: 'blue drift for ${input.toRadixString(16)}',
+        );
       }
     });
 

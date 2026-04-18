@@ -18,7 +18,7 @@ class AntConfigProvider extends InheritedWidget {
     assert(
       widget != null,
       'No AntConfigProvider found. '
-          'Wrap your app in AntApp or AntConfigProvider.',
+      'Wrap your app in AntApp or AntConfigProvider.',
     );
     return widget!.theme;
   }
@@ -36,8 +36,7 @@ class AntConfigProvider extends InheritedWidget {
 /// 语法糖：`AntTheme.aliasOf(context).colorPrimary` 比
 /// `AntConfigProvider.of(context).alias.colorPrimary` 简短。
 abstract final class AntTheme {
-  static AntThemeData of(BuildContext context) =>
-      AntConfigProvider.of(context);
+  static AntThemeData of(BuildContext context) => AntConfigProvider.of(context);
 
   static AntAliasToken aliasOf(BuildContext context) => of(context).alias;
 }
