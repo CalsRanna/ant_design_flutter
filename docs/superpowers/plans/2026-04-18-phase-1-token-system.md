@@ -125,19 +125,19 @@ void main() {
       for (final input in inputs) {
         final original = Color(input);
         final rebuilt = Hsv.fromColor(original).toColor();
-        expect((rebuilt.red - original.red).abs(), lessThanOrEqualTo(1),
+        expect(((rebuilt.r - original.r) * 255).abs(), lessThanOrEqualTo(1),
             reason: 'red drift for ${input.toRadixString(16)}');
-        expect((rebuilt.green - original.green).abs(), lessThanOrEqualTo(1),
+        expect(((rebuilt.g - original.g) * 255).abs(), lessThanOrEqualTo(1),
             reason: 'green drift for ${input.toRadixString(16)}');
-        expect((rebuilt.blue - original.blue).abs(), lessThanOrEqualTo(1),
+        expect(((rebuilt.b - original.b) * 255).abs(), lessThanOrEqualTo(1),
             reason: 'blue drift for ${input.toRadixString(16)}');
       }
     });
 
     test('alpha defaults to 1 and can be overridden', () {
-      final hsv = const Hsv(0, 1, 1);
-      expect(hsv.toColor().alpha, 255);
-      expect(hsv.toColor(alpha: 0.5).alpha, 128);
+      const hsv = Hsv(0, 1, 1);
+      expect(hsv.toColor().a, closeTo(1, 0.001));
+      expect(hsv.toColor(alpha: 0.5).a, closeTo(128 / 255, 0.01));
     });
   });
 }
@@ -162,15 +162,11 @@ import 'dart:ui';
 class Hsv {
   const Hsv(this.hue, this.saturation, this.value);
 
-  final double hue;
-  final double saturation;
-  final double value;
-
   /// 从 [Color] 提取 HSV。实现与 AntD TinyColor2 对齐。
   factory Hsv.fromColor(Color c) {
-    final r = c.red / 255.0;
-    final g = c.green / 255.0;
-    final b = c.blue / 255.0;
+    final r = c.r;
+    final g = c.g;
+    final b = c.b;
     final max = math.max(r, math.max(g, b));
     final min = math.min(r, math.min(g, b));
     final delta = max - min;
@@ -190,6 +186,10 @@ class Hsv {
     final saturation = max == 0 ? 0.0 : delta / max;
     return Hsv(hue, saturation, max);
   }
+
+  final double hue;
+  final double saturation;
+  final double value;
 
   /// 转回 [Color]。[alpha] ∈ [0, 1]，默认 1。
   Color toColor({double alpha = 1}) {
@@ -280,9 +280,9 @@ void main() {
         const Color(0xFFFFFFFF),
         50,
       );
-      expect(result.red, closeTo(128, 1));
-      expect(result.green, closeTo(128, 1));
-      expect(result.blue, closeTo(128, 1));
+      expect((result.r * 255).round(), closeTo(128, 1));
+      expect((result.g * 255).round(), closeTo(128, 1));
+      expect((result.b * 255).round(), closeTo(128, 1));
     });
 
     test('preserves alpha from base color', () {
@@ -291,7 +291,7 @@ void main() {
         const Color(0xFF00FF00),
         50,
       );
-      expect(result.alpha, 128);
+      expect((result.a * 255).round(), 128);
     });
   });
 }
@@ -314,10 +314,10 @@ import 'dart:ui';
 Color mixColor(Color base, Color mixed, double weight) {
   final w = (weight / 100).clamp(0.0, 1.0);
   return Color.fromARGB(
-    base.alpha,
-    (base.red * (1 - w) + mixed.red * w).round(),
-    (base.green * (1 - w) + mixed.green * w).round(),
-    (base.blue * (1 - w) + mixed.blue * w).round(),
+    (base.a * 255).round(),
+    ((base.r * (1 - w) + mixed.r * w) * 255).round(),
+    ((base.g * (1 - w) + mixed.g * w) * 255).round(),
+    ((base.b * (1 - w) + mixed.b * w) * 255).round(),
   );
 }
 ```
@@ -358,7 +358,7 @@ import 'package:flutter_test/flutter_test.dart';
 void _expectPaletteMatches(List<Color> actual, List<int> expected) {
   expect(actual, hasLength(10));
   for (var i = 0; i < 10; i++) {
-    final actualRgb = actual[i].value & 0xFFFFFF;
+    final actualRgb = actual[i].toARGB32() & 0xFFFFFF;
     final expectedRgb = expected[i] & 0xFFFFFF;
     final actualR = (actualRgb >> 16) & 0xFF;
     final actualG = (actualRgb >> 8) & 0xFF;
@@ -1501,8 +1501,8 @@ void main() {
       final map = algorithm.mapFromSeed(seed);
       expect(map.colorNeutral, hasLength(13));
       // 首尾接近白 / 黑
-      expect(map.colorNeutral.first.red, greaterThanOrEqualTo(250));
-      expect(map.colorNeutral.last.red, lessThanOrEqualTo(20));
+      expect((map.colorNeutral.first.r * 255).round(), greaterThanOrEqualTo(250));
+      expect((map.colorNeutral.last.r * 255).round(), lessThanOrEqualTo(20));
     });
 
     test('control heights follow AntD defaults', () {
@@ -1549,12 +1549,12 @@ void main() {
       expect(alias.colorError, seed.colorError);
       expect(alias.colorInfo, seed.colorInfo);
 
-      expect(alias.colorText.alpha, greaterThan(200));
-      expect(alias.colorTextSecondary.alpha, lessThan(alias.colorText.alpha));
-      expect(alias.colorTextTertiary.alpha,
-          lessThan(alias.colorTextSecondary.alpha));
-      expect(alias.colorTextDisabled.alpha,
-          lessThan(alias.colorTextTertiary.alpha));
+      expect(alias.colorText.a, greaterThan(200 / 255));
+      expect(alias.colorTextSecondary.a, lessThan(alias.colorText.a));
+      expect(alias.colorTextTertiary.a,
+          lessThan(alias.colorTextSecondary.a));
+      expect(alias.colorTextDisabled.a,
+          lessThan(alias.colorTextTertiary.a));
 
       expect(alias.colorBackgroundContainer, seed.colorBackgroundBase);
       expect(alias.colorBackgroundElevated, seed.colorBackgroundBase);
@@ -1705,9 +1705,9 @@ class DefaultAlgorithm implements AntThemeAlgorithm {
   static Color _withAlpha(Color base, double alpha) {
     return Color.fromARGB(
       (alpha * 255).round().clamp(0, 255),
-      base.red,
-      base.green,
-      base.blue,
+      (base.r * 255).round(),
+      (base.g * 255).round(),
+      (base.b * 255).round(),
     );
   }
 }
