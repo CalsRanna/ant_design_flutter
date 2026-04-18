@@ -12,3 +12,5 @@ export 'src/theme/alias_token.dart' show AntAliasToken;
 export 'src/theme/map_token.dart' show AntMapToken;
 export 'src/theme/seed_token.dart' show AntSeedToken;
 export 'src/theme/theme_data.dart' show AntThemeData;
+export 'src/primitives/interaction/ant_interaction_detector.dart'
+    show AntInteractionDetector, AntInteractionBuilder;
