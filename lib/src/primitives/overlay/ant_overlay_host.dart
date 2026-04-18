@@ -49,18 +49,54 @@ class AntOverlayHostState extends State<AntOverlayHost> {
   @override
   Widget build(BuildContext context) {
     if (_entries.isEmpty) return const SizedBox.shrink();
-    // Task 12 will switch to slot-specific layout (message / notification
-    // vertical stack, modal / drawer with barrier). For now, plain Stack
-    // is enough to render inserted entries so the lifecycle tests pass.
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        for (final e in _entries)
-          KeyedSubtree(
-            key: ValueKey('ant-overlay-${widget.slot.name}-${e.id}'),
-            child: e.builder(context),
+    final children = <Widget>[
+      for (final e in _entries)
+        KeyedSubtree(
+          key: ValueKey('ant-overlay-${widget.slot.name}-${e.id}'),
+          child: e.builder(context),
+        ),
+    ];
+
+    switch (widget.slot) {
+      case AntOverlaySlot.message:
+        return Positioned.fill(
+          child: SafeArea(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 24),
+                child: _verticalStack(children),
+              ),
+            ),
           ),
-      ],
-    );
+        );
+      case AntOverlaySlot.notification:
+        return Positioned.fill(
+          child: SafeArea(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 24, right: 24),
+                child: _verticalStack(children),
+              ),
+            ),
+          ),
+        );
+      case AntOverlaySlot.modal:
+      case AntOverlaySlot.drawer:
+        // Task 13 replaces with barrier + positioned content.
+        return Positioned.fill(
+          child: Stack(alignment: Alignment.center, children: children),
+        );
+    }
+  }
+
+  static Widget _verticalStack(List<Widget> children) {
+    final interleaved = <Widget>[];
+    for (var i = 0; i < children.length; i++) {
+      if (i > 0) interleaved.add(const SizedBox(height: 8));
+      interleaved.add(children[i]);
+    }
+    return Column(mainAxisSize: MainAxisSize.min, children: interleaved);
   }
 }
