@@ -1,5 +1,6 @@
 import 'package:ant_design_flutter/ant_design_flutter.dart';
 import 'package:flutter/gestures.dart' show PointerDeviceKind;
+import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -260,6 +261,110 @@ void main() {
       expect(captured, contains(WidgetState.disabled));
 
       await gesture.up();
+    });
+  });
+
+  group('AntInteractionDetector — focus & keyboard', () {
+    testWidgets('focused state tracks FocusNode', (tester) async {
+      final node = FocusNode();
+      addTearDown(node.dispose);
+      var captured = <WidgetState>{};
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Center(
+            child: AntInteractionDetector(
+              focusNode: node,
+              builder: (_, states) {
+                captured = states;
+                return const SizedBox(width: 50, height: 50);
+              },
+            ),
+          ),
+        ),
+      );
+
+      node.requestFocus();
+      await tester.pump();
+      expect(captured, contains(WidgetState.focused));
+
+      node.unfocus();
+      await tester.pump();
+      expect(captured, isNot(contains(WidgetState.focused)));
+    });
+
+    testWidgets('Enter and Space trigger onTap while focused',
+        (tester) async {
+      final node = FocusNode();
+      addTearDown(node.dispose);
+      var taps = 0;
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Center(
+            child: AntInteractionDetector(
+              focusNode: node,
+              onTap: () => taps++,
+              builder: (_, _) => const SizedBox(width: 50, height: 50),
+            ),
+          ),
+        ),
+      );
+
+      node.requestFocus();
+      await tester.pump();
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pump();
+      expect(taps, 1);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.space);
+      await tester.pump();
+      expect(taps, 2);
+    });
+
+    testWidgets('focusable: false skips tab traversal', (tester) async {
+      final node = FocusNode();
+      addTearDown(node.dispose);
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: AntInteractionDetector(
+            focusNode: node,
+            focusable: false,
+            builder: (_, _) => const SizedBox(width: 10, height: 10),
+          ),
+        ),
+      );
+      node.requestFocus();
+      await tester.pump();
+      expect(node.hasFocus, isFalse);
+    });
+
+    testWidgets('disabled widget drops focus and ignores key events',
+        (tester) async {
+      final node = FocusNode();
+      addTearDown(node.dispose);
+      var taps = 0;
+      await tester.pumpWidget(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: AntInteractionDetector(
+            focusNode: node,
+            enabled: false,
+            onTap: () => taps++,
+            builder: (_, _) => const SizedBox(width: 10, height: 10),
+          ),
+        ),
+      );
+
+      node.requestFocus();
+      await tester.pump();
+      expect(node.hasFocus, isFalse);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pump();
+      expect(taps, 0);
     });
   });
 }
