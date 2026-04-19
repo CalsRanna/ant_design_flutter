@@ -2,7 +2,7 @@ name: ant_design_flutter
 description: >-
   A Flutter component library aligned with Ant Design v5, designed for web
   and desktop applications. Pure Dart with zero runtime dependencies.
-version: 2.0.0-dev.1
+version: 2.0.0-dev.4
 homepage: https://github.com/CalsRanna/ant_design_flutter
 repository: https://github.com/CalsRanna/ant_design_flutter
 issue_tracker: https://github.com/CalsRanna/ant_design_flutter/issues
