@@ -50,9 +50,7 @@ class AntRadio<T> extends StatelessWidget {
             const SizedBox(width: 8),
             DefaultTextStyle.merge(
               style: TextStyle(
-                color: disabled
-                    ? alias.colorTextDisabled
-                    : alias.colorText,
+                color: disabled ? alias.colorTextDisabled : alias.colorText,
               ),
               child: label!,
             ),

@@ -3,8 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('AntParagraph renders text with 1em bottom padding',
-      (tester) async {
+  testWidgets('AntParagraph renders text with 1em bottom padding', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       const AntApp(home: AntParagraph('body')),
     );
@@ -22,8 +23,7 @@ void main() {
     );
   });
 
-  testWidgets('AntParagraph danger type propagates to AntText',
-      (tester) async {
+  testWidgets('AntParagraph danger type propagates to AntText', (tester) async {
     await tester.pumpWidget(
       const AntApp(home: AntParagraph('err', type: AntTextType.danger)),
     );

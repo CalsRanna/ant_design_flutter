@@ -25,8 +25,9 @@ class TagStyle {
         borderColor: alias.colorBorder,
       );
     }
-    final foreground =
-        _luminance(color) > 0.5 ? alias.colorText : const Color(0xFFFFFFFF);
+    final foreground = _luminance(color) > 0.5
+        ? alias.colorText
+        : const Color(0xFFFFFFFF);
     return TagStyle(
       background: color,
       foreground: foreground,

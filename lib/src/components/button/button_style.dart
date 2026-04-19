@@ -54,13 +54,13 @@ class ButtonStyle {
             foreground: pressed
                 ? primaryActive
                 : hovered
-                    ? primaryHover
-                    : primary,
+                ? primaryHover
+                : primary,
             borderColor: pressed
                 ? primaryActive
                 : hovered
-                    ? primaryHover
-                    : primary,
+                ? primaryHover
+                : primary,
             dashedBorder: false,
           );
         }
@@ -68,8 +68,8 @@ class ButtonStyle {
           background: pressed
               ? primaryActive
               : hovered
-                  ? primaryHover
-                  : primary,
+              ? primaryHover
+              : primary,
           foreground: const Color(0xFFFFFFFF),
           borderColor: null,
           dashedBorder: false,
@@ -92,13 +92,13 @@ class ButtonStyle {
           foreground: pressed
               ? primaryActive
               : hovered
-                  ? primaryHover
-                  : alias.colorText,
+              ? primaryHover
+              : alias.colorText,
           borderColor: pressed
               ? primaryActive
               : hovered
-                  ? primaryHover
-                  : alias.colorBorder,
+              ? primaryHover
+              : alias.colorBorder,
           dashedBorder: isDashed,
         );
 
@@ -107,8 +107,8 @@ class ButtonStyle {
           background: pressed
               ? alias.colorFill
               : hovered
-                  ? alias.colorFillSecondary
-                  : const Color(0x00000000),
+              ? alias.colorFillSecondary
+              : const Color(0x00000000),
           foreground: alias.colorText,
           borderColor: null,
           dashedBorder: false,
@@ -120,8 +120,8 @@ class ButtonStyle {
           foreground: pressed
               ? primaryActive
               : hovered
-                  ? primaryHover
-                  : primary,
+              ? primaryHover
+              : primary,
           borderColor: null,
           dashedBorder: false,
         );
@@ -147,20 +147,20 @@ class ButtonStyle {
   }) {
     return switch (size) {
       AntComponentSize.small => ButtonSizeSpec(
-          height: resolveControlHeight(alias, AntComponentSize.small),
-          horizontalPadding: 7,
-          fontSize: 14,
-        ),
+        height: resolveControlHeight(alias, AntComponentSize.small),
+        horizontalPadding: 7,
+        fontSize: 14,
+      ),
       AntComponentSize.middle => ButtonSizeSpec(
-          height: resolveControlHeight(alias, AntComponentSize.middle),
-          horizontalPadding: 15,
-          fontSize: 14,
-        ),
+        height: resolveControlHeight(alias, AntComponentSize.middle),
+        horizontalPadding: 15,
+        fontSize: 14,
+      ),
       AntComponentSize.large => ButtonSizeSpec(
-          height: resolveControlHeight(alias, AntComponentSize.large),
-          horizontalPadding: 15,
-          fontSize: 16,
-        ),
+        height: resolveControlHeight(alias, AntComponentSize.large),
+        horizontalPadding: 15,
+        fontSize: 16,
+      ),
     };
   }
 }

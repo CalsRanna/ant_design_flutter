@@ -30,15 +30,15 @@ class SwitchStyle {
   static SwitchSizeSpec sizeSpec(AntComponentSize size) {
     return switch (size) {
       AntComponentSize.small => const SwitchSizeSpec(
-          width: 22,
-          height: 14,
-          thumbDiameter: 12,
-        ),
+        width: 22,
+        height: 14,
+        thumbDiameter: 12,
+      ),
       AntComponentSize.middle || AntComponentSize.large => const SwitchSizeSpec(
-          width: 28,
-          height: 16,
-          thumbDiameter: 14,
-        ),
+        width: 28,
+        height: 16,
+        thumbDiameter: 14,
+      ),
     };
   }
 }

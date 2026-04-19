@@ -119,7 +119,8 @@ class _AntInputState extends State<AntInput> {
       fontSize: sizeSpec.fontSize,
     );
 
-    final showClear = widget.allowClear &&
+    final showClear =
+        widget.allowClear &&
         _hovered &&
         !widget.disabled &&
         _controller.text.isNotEmpty;

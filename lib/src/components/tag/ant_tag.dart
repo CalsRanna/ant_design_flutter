@@ -107,9 +107,7 @@ class _TagShell extends StatelessWidget {
       decoration: BoxDecoration(
         color: background,
         borderRadius: BorderRadius.circular(4),
-        border: borderColor == null
-            ? null
-            : Border.all(color: borderColor!),
+        border: borderColor == null ? null : Border.all(color: borderColor!),
       ),
       alignment: Alignment.center,
       child: child,

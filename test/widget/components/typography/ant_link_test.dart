@@ -17,7 +17,9 @@ void main() {
 
     testWidgets('hover switches to colorPrimaryHover', (tester) async {
       await tester.pumpWidget(
-        AntApp(home: Center(child: AntLink('h', onPressed: () {}))),
+        AntApp(
+          home: Center(child: AntLink('h', onPressed: () {})),
+        ),
       );
 
       final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
@@ -33,8 +35,9 @@ void main() {
       expect(text.style?.color, alias.colorPrimaryHover);
     });
 
-    testWidgets('disabled uses colorTextDisabled and swallows taps',
-        (tester) async {
+    testWidgets('disabled uses colorTextDisabled and swallows taps', (
+      tester,
+    ) async {
       var tapped = false;
       await tester.pumpWidget(
         AntApp(

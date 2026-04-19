@@ -57,9 +57,7 @@ class AntSwitch extends StatelessWidget {
             child: AnimatedAlign(
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeOut,
-              alignment: checked
-                  ? Alignment.centerRight
-                  : Alignment.centerLeft,
+              alignment: checked ? Alignment.centerRight : Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.all(
                   (spec.height - spec.thumbDiameter) / 2,

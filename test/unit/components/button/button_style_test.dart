@@ -42,19 +42,21 @@ void main() {
   });
 
   group('ButtonStyle.resolve — default', () {
-    test('normal has border=colorBorder, background=colorBackgroundContainer',
-        () {
-      final s = ButtonStyle.resolve(
-        alias: alias,
-        type: AntButtonType.defaultStyle,
-        states: const {},
-        danger: false,
-        ghost: false,
-      );
-      expect(s.background, alias.colorBackgroundContainer);
-      expect(s.foreground, alias.colorText);
-      expect(s.borderColor, alias.colorBorder);
-    });
+    test(
+      'normal has border=colorBorder, background=colorBackgroundContainer',
+      () {
+        final s = ButtonStyle.resolve(
+          alias: alias,
+          type: AntButtonType.defaultStyle,
+          states: const {},
+          danger: false,
+          ghost: false,
+        );
+        expect(s.background, alias.colorBackgroundContainer);
+        expect(s.foreground, alias.colorText);
+        expect(s.borderColor, alias.colorBorder);
+      },
+    );
     test('hover: border=primaryHover, foreground=primaryHover', () {
       final s = ButtonStyle.resolve(
         alias: alias,

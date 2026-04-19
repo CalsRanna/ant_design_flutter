@@ -35,7 +35,10 @@
       "Bash(flutter --print-flutter-sdk-path)",
       "Bash(dart --version)",
       "Bash(flutter --print-cache-dir)",
-      "Bash(dart info:*)"
+      "Bash(dart info:*)",
+      "Bash(xargs -I{} echo \"{} Phase 2 commits\")",
+      "Bash(wc:*)",
+      "Bash(git tag:*)"
     ]
   }
 }

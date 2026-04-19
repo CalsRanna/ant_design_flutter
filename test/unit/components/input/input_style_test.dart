@@ -6,19 +6,21 @@ void main() {
   final alias = AntThemeData().alias;
 
   group('InputStyle.resolve', () {
-    test('normal: borderColor=colorBorder, background=colorBackgroundContainer',
-        () {
-      final s = InputStyle.resolve(
-        alias: alias,
-        status: AntStatus.defaultStatus,
-        hovered: false,
-        focused: false,
-        disabled: false,
-      );
-      expect(s.borderColor, alias.colorBorder);
-      expect(s.background, alias.colorBackgroundContainer);
-      expect(s.focusRing, isNull);
-    });
+    test(
+      'normal: borderColor=colorBorder, background=colorBackgroundContainer',
+      () {
+        final s = InputStyle.resolve(
+          alias: alias,
+          status: AntStatus.defaultStatus,
+          hovered: false,
+          focused: false,
+          disabled: false,
+        );
+        expect(s.borderColor, alias.colorBorder);
+        expect(s.background, alias.colorBackgroundContainer);
+        expect(s.focusRing, isNull);
+      },
+    );
 
     test('hover → borderColor=colorPrimaryHover', () {
       final s = InputStyle.resolve(
