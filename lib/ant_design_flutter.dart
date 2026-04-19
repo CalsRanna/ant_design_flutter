@@ -16,6 +16,8 @@ export 'src/components/checkbox/ant_checkbox_group.dart'
 export 'src/components/checkbox/ant_option.dart' show AntOption;
 export 'src/components/icon/ant_icon.dart' show AntIcon;
 export 'src/components/input/ant_input.dart' show AntInput;
+export 'src/components/radio/ant_radio.dart' show AntRadio;
+export 'src/components/radio/ant_radio_group.dart' show AntRadioGroup;
 export 'src/components/typography/ant_link.dart' show AntLink;
 export 'src/components/typography/ant_paragraph.dart' show AntParagraph;
 export 'src/components/typography/ant_text.dart' show AntText, AntTextType;
