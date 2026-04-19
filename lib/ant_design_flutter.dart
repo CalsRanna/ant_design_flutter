@@ -19,6 +19,7 @@ export 'src/components/input/ant_input.dart' show AntInput;
 export 'src/components/radio/ant_radio.dart' show AntRadio;
 export 'src/components/radio/ant_radio_group.dart' show AntRadioGroup;
 export 'src/components/switch/ant_switch.dart' show AntSwitch;
+export 'src/components/tag/ant_tag.dart' show AntCheckableTag, AntTag;
 export 'src/components/typography/ant_link.dart' show AntLink;
 export 'src/components/typography/ant_paragraph.dart' show AntParagraph;
 export 'src/components/typography/ant_text.dart' show AntText, AntTextType;
