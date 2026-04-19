@@ -1,3 +1,38 @@
+## 2.0.0-dev.4
+
+Phase 3 delivery: Round 1 + Round 2 atomic components.
+
+### Added
+- `_shared`: `AntComponentSize` / `AntStatus` enums; `resolveControlHeight()` utility; internal `LoadingSpinner` reused by Button/Switch.
+- `AntIcon`: thin `IconData` wrapper with 3 size tiers (14 / 16 / 20). No icon font shipped — users supply their own (see README).
+- `AntTitle` (h1-h5), `AntText` (7 semantic types + strong/italic/underline/delete/code), `AntParagraph` (1em bottom gap), `AntLink` (hover / focus / disabled states).
+- `AntButton`: 5 types (primary / default / dashed / text / link), 3 sizes, 3 shapes, flags `danger` / `ghost` / `block` / `disabled` / `loading`. `ButtonStyle` pure-function derivation with exhaustive unit tests.
+- `AntInput`: built on `package:flutter/widgets.dart`'s `EditableText` (no `material.dart` dependency). Supports `prefix` / `suffix` / `allowClear` / `maxLength` / `status` (default/error/warning) / `disabled` / `readOnly`.
+- `AntOption<T>` data class (shared by Checkbox/Radio groups).
+- `AntCheckbox` + `AntCheckboxGroup<T>` (options-list API).
+- `AntRadio<T>` + `AntRadioGroup<T>`.
+- `AntSwitch`: 2 visible sizes, `loading` with embedded spinner, 200ms toggle animation.
+- `AntTag` (color / bordered / closable) + `AntCheckableTag` (checked / onChanged) — split intentionally to avoid mutually-exclusive properties on one class.
+- Gallery: 24+ widgetbook use cases across 8 components.
+- Example: rewrote `example/main.dart` into a registration form spanning 7 components.
+
+### Deviations from parent spec
+- **No bundled icon font.** Parent spec §0/§6.1/§7.1 called for a shipped AntIcons TrueType subset; deferred indefinitely. `AntIcon` accepts any user-provided `IconData`; README recommends community packages such as `ant_icons_plus`.
+- **AntCheckableTag split** from `AntTag` (parent spec §6.1 counted Tag as one component). The two semantics (onClose vs checked) would otherwise need mutually-exclusive flags on a single class.
+- **Phase 3 budget widened** from 45h/6 weeks to 53h/7 weeks to cover 3-tier size variants, balanced property pack, gallery 24 stories, and example rewrite.
+- **AntButton.icon deferred to 2.1** — users compose icons via `child: Row(children: [AntIcon(...), SizedBox, text])`.
+
+### Constraints
+- Components only consume `AntTheme.aliasOf(context)` — never seed / map tokens.
+- Components do not import `package:flutter/material.dart`.
+- Form integration uses classic controlled API (`value` + `onChanged`). `AntFormField` mixin deferred to Phase 6.
+
+### Reference
+- Spec: `docs/superpowers/specs/2026-04-19-phase-3-atoms-design.md`
+- Plan: `docs/superpowers/plans/2026-04-19-phase-3-atoms.md`
+
+---
+
 ## 2.0.0-dev.3
 
 Phase 2 delivery: Primitives (Interaction / Portal / Overlay).
