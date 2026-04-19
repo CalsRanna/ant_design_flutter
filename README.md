@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">ant_design_flutter 2.0</h1>
+<h1 align="center">Ant Design Flutter 2.0</h1>
 
 <div align="center">
 
@@ -55,6 +55,34 @@ Once `2.0.0-dev.2` ships (Phase 3 complete) it will be published to pub.dev.
 
 Components land in subsequent phases — see
 [`doc/PROGRESS.md`](doc/PROGRESS.md) for current status.
+
+## 🎨 Using icon fonts
+
+`ant_design_flutter` **does not bundle an icon font**. `AntIcon` accepts any
+`IconData` you pass in. Two common options:
+
+- Install a community icon package — e.g. `ant_icons_plus`:
+
+  ```yaml
+  dependencies:
+    ant_design_flutter: ^2.0.0-dev.4
+    ant_icons_plus: ^x.y.z
+  ```
+
+  ```dart
+  import 'package:ant_icons_plus/ant_icons_plus.dart';
+
+  AntIcon(AntIcons.home);
+  ```
+
+- Author your own `IconData` constants against a custom TrueType subset and
+  pass them to `AntIcon`. Remember to set `fontPackage` on the `IconData`
+  so your package's font ships to downstream users.
+
+This trade-off is intentional: shipping a frozen icon subset turned out to
+be maintenance-heavy for the project's spare-time budget. See
+[`docs/superpowers/specs/2026-04-19-phase-3-atoms-design.md`](docs/superpowers/specs/2026-04-19-phase-3-atoms-design.md)
+§4 for the full decision record.
 
 ## 🖥 Requirements
 
