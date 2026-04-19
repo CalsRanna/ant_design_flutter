@@ -1,3 +1,12 @@
+import 'package:ant_design_flutter/ant_design_flutter.dart';
+import 'package:ant_design_flutter_gallery/components/button_stories.dart';
+import 'package:ant_design_flutter_gallery/components/checkbox_stories.dart';
+import 'package:ant_design_flutter_gallery/components/icon_stories.dart';
+import 'package:ant_design_flutter_gallery/components/input_stories.dart';
+import 'package:ant_design_flutter_gallery/components/radio_stories.dart';
+import 'package:ant_design_flutter_gallery/components/switch_stories.dart';
+import 'package:ant_design_flutter_gallery/components/tag_stories.dart';
+import 'package:ant_design_flutter_gallery/components/typography_stories.dart';
 import 'package:flutter/widgets.dart';
 import 'package:widgetbook/widgetbook.dart';
 
@@ -13,31 +22,29 @@ class GalleryApp extends StatelessWidget {
     return Widgetbook(
       directories: [
         WidgetbookCategory(
-          name: 'Placeholder',
+          name: 'Round 1 — Atoms',
+          children: [iconStories(), typographyStories()],
+        ),
+        WidgetbookCategory(
+          name: 'Round 2 — Form controls',
           children: [
-            WidgetbookComponent(
-              name: 'Empty',
-              useCases: [
-                WidgetbookUseCase(
-                  name: 'Scaffold',
-                  builder: _emptyUseCase,
-                ),
-              ],
-            ),
+            buttonStories(),
+            inputStories(),
+            checkboxStories(),
+            radioStories(),
+            switchStories(),
+            tagStories(),
           ],
         ),
       ],
+      appBuilder: (context, child) => AntConfigProvider(
+        theme: AntThemeData(),
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: child,
+        ),
+      ),
       addons: const [],
     );
   }
-}
-
-Widget _emptyUseCase(BuildContext context) {
-  return const Center(
-    child: Text(
-      'ant_design_flutter 2.0 gallery — add components here from Phase 1.',
-      textDirection: TextDirection.ltr,
-      style: TextStyle(fontSize: 16, color: Color(0xFF262626)),
-    ),
-  );
 }
