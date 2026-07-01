@@ -9,7 +9,6 @@ class AntDescriptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final alias = AntTheme.aliasOf(context);
-    final borderSide = BorderSide(color: alias.colorSplit);
     final rows = <List<AntDescriptionItem>>[];
     for (var i = 0; i < items.length; i += column) {
       rows.add(items.sublist(i, i + column > items.length ? items.length : i + column));

@@ -1,4 +1,3 @@
-import 'package:ant_design_flutter/src/theme/alias_token.dart';
 import 'package:ant_design_flutter/src/app/ant_config_provider.dart';
 import 'package:ant_design_flutter/src/primitives/portal/ant_placement.dart';
 import 'package:ant_design_flutter/src/primitives/portal/ant_portal.dart';

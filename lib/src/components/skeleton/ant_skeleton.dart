@@ -18,7 +18,6 @@ class AntSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     final alias = AntTheme.aliasOf(context);
     final baseColor = alias.colorFillSecondary;
-    final highlightColor = alias.colorFill;
 
     return Column(
       mainAxisSize: MainAxisSize.min,

@@ -1,4 +1,3 @@
-import 'package:ant_design_flutter/src/app/ant_config_provider.dart';
 import 'package:ant_design_flutter/src/form/form_controller.dart';
 import 'package:ant_design_flutter/src/form/form_inherited.dart';
 import 'package:flutter/widgets.dart';

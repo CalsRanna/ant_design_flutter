@@ -16,7 +16,6 @@ class AntFormController extends ChangeNotifier {
   bool _submitting = false;
 
   /// 注册字段（由 AntFormItem 自动调用）。
-  @visibleForTesting
   void registerField(String name, List<AntValidator> rules) {
     if (!_fields.containsKey(name)) {
       _fields[name] = _FieldState(rules: rules);
@@ -25,7 +24,6 @@ class AntFormController extends ChangeNotifier {
   }
 
   /// 注销字段。
-  @visibleForTesting
   void unregisterField(String name) {
     _fields.remove(name);
     _errors.remove(name);

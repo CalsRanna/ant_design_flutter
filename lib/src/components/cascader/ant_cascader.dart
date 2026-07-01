@@ -14,17 +14,16 @@ class AntCascader extends StatefulWidget {
 
 class _AntCascaderState extends State<AntCascader> {
   bool _open = false;
-  List<AntCascaderOption> _currentLevel = [];
   AntCascaderOption? _selected1;
   AntCascaderOption? _selected2;
 
   @override
-  void initState() { super.initState(); _currentLevel = widget.options; }
+  void initState() { super.initState(); }
 
   void _select(int idx, AntCascaderOption opt) {
     if (opt.children != null && opt.children!.isNotEmpty) {
       setState(() {
-        if (idx == 0) { _selected1 = opt; _currentLevel = opt.children!; }
+        if (idx == 0) { _selected1 = opt; }
         else if (idx == 1) { _selected2 = opt; }
       });
     } else {
@@ -45,7 +44,7 @@ class _AntCascaderState extends State<AntCascader> {
     return AntPortal(
       placement: AntPlacement.bottomLeft, visible: _open,
       child: GestureDetector(
-        onTap: () => setState(() { _open = !_open; _currentLevel = widget.options; _selected1 = null; _selected2 = null; }),
+        onTap: () => setState(() { _open = !_open; _selected1 = null; _selected2 = null; }),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(border: Border.all(color: alias.colorBorder), borderRadius: BorderRadius.circular(alias.borderRadius)),
