@@ -11,7 +11,7 @@ void main() {
     });
   });
   group('AntProgress', () {
-    testWidgets('renders percent', (tester) async {
+    testWidgets('percent', (tester) async {
       await tester.pumpWidget(const AntApp(home: AntProgress(percent: 50)));
       expect(find.text('50%'), findsOneWidget);
     });
@@ -34,6 +34,30 @@ void main() {
     testWidgets('text', (tester) async {
       await tester.pumpWidget(const AntApp(home: AntAvatar(text: 'Bob')));
       expect(find.text('B'), findsOneWidget);
+    });
+  });
+  group('AntCard', () {
+    testWidgets('renders title', (tester) async {
+      await tester.pumpWidget(const AntApp(home: AntCard(title: Text('Card'), child: Text('Content'))));
+      expect(find.text('Card'), findsOneWidget);
+      expect(find.text('Content'), findsOneWidget);
+    });
+  });
+  group('AntCollapse', () {
+    testWidgets('renders header', (tester) async {
+      await tester.pumpWidget(const AntApp(home: AntCollapse(items: [AntCollapsePanel(header: 'H1', child: Text('C1'))])));
+      expect(find.text('H1'), findsOneWidget);
+    });
+    testWidgets('expands on tap', (tester) async {
+      await tester.pumpWidget(const AntApp(home: AntCollapse(items: [AntCollapsePanel(header: 'H1', child: Text('C1'))])));
+      await tester.tap(find.text('H1'));
+      await tester.pump();
+      expect(find.text('C1'), findsOneWidget);
+    });
+  });
+  group('AntSkeleton', () {
+    testWidgets('renders', (tester) async {
+      await tester.pumpWidget(const AntApp(home: AntSkeleton()));
     });
   });
 }

@@ -63,3 +63,6 @@ export 'src/components/spin/ant_spin.dart' show AntSpin;
 export 'src/components/progress/ant_progress.dart' show AntProgress;
 export 'src/components/badge/ant_badge.dart' show AntBadge;
 export 'src/components/avatar/ant_avatar.dart' show AntAvatar, AntAvatarShape;
+export 'src/components/card/ant_card.dart' show AntCard;
+export 'src/components/collapse/ant_collapse.dart' show AntCollapse, AntCollapsePanel;
+export 'src/components/skeleton/ant_skeleton.dart' show AntSkeleton;
