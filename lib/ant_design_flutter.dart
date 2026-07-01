@@ -85,3 +85,6 @@ export 'src/components/upload/ant_upload.dart' show AntUpload;
 export 'src/components/anchor/ant_anchor.dart' show AntAnchor, AntAnchorItem;
 export 'src/components/affix/ant_affix.dart' show AntAffix;
 export 'src/components/back_top/ant_back_top.dart' show AntBackTop;
+export 'src/components/segmented/ant_segmented.dart' show AntSegmented, AntSegmentedOption;
+export 'src/components/statistic/ant_statistic.dart' show AntStatistic;
+export 'src/components/float_button/ant_float_button.dart' show AntFloatButton, AntFloatShape;
