@@ -54,3 +54,4 @@ export 'src/form/ant_form_item.dart' show AntFormItem;
 export 'src/form/form_controller.dart'
     show AntFormController, AntValidator, AntValidators;
 export 'src/components/date_picker/ant_date_picker.dart' show AntDatePicker;
+export 'src/components/table/ant_table.dart' show AntTable, AntColumn;
