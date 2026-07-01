@@ -1,35 +1,36 @@
 # 2.0 Development Progress
 
-**Last updated:** 2026-07-01 (all components complete, excluding navigation)
+**Last updated:** 2026-07-01 (complete library)
 
-## Phase status
+## All components implemented (59 total)
 
-| Phase | Scope | Status |
-|---|---|---|
-| 0-3 | Core infrastructure + 8 atomic components | complete |
-| 4 | Feedback (Tooltip, Message, Notification, Modal) | complete |
-| 5 | Composites (Tabs, Menu, Select, DatePicker, Table) | complete |
-| 6 | Form engine (Form, FormItem, Controller, Validators) | complete |
-| 7 | Extended components | complete |
+**Core:** Icon, Typography (Title/Text/Paragraph/Link), Button, Input,
+InputNumber, AutoComplete, Mentions, Checkbox+Group, Radio+Group, Switch,
+Select, TreeSelect, Cascader, Transfer, Rate, Slider, ColorPicker,
+DatePicker, TimePicker, Upload, Form, FormItem, FormController, Validators
 
-## All components implemented (17 MVP + 25 extended = 42 total)
+**Display:** Table, List, Tree, Calendar, Card, Collapse, Descriptions,
+Timeline, Tag, Badge, Avatar, Image, Carousel, Statistic, Segmented, Empty,
+Result, Skeleton
 
-**MVP Core (17):** Icon, Typography, Button, Input, Checkbox, Radio, Switch, Tag,
-Tooltip, Message, Notification, Modal, Tabs, Menu, Select, DatePicker, Table
+**Feedback:** Tooltip, Popover, Popconfirm, Alert, Message, Notification,
+Modal, Drawer, Progress, Spin, Tour
 
-**Form Engine (4):** Form, FormItem, FormController, Validators
+**Layout:** Divider, Space, Row/Col, Layout (Header/Sider/Content/Footer)
 
-**Extended Components (25):**
-Divider, Space, Empty, Alert, Spin, Progress, Badge, Avatar, Card, Collapse,
-Skeleton, InputNumber, Slider, Rate, Popover, Popconfirm, Drawer, Row/Col (Grid),
-Layout (Header/Sider/Content/Footer), List, Timeline, Descriptions, Tree, Result,
-Calendar, TimePicker, Upload, Anchor, Affix, BackTop
+**Navigation:** Menu, Tabs, Anchor, Affix, BackTop
 
-**Not implemented (navigation category):**
-Breadcrumb, Dropdown, Steps, Pagination
+**Other:** FloatButton, Watermark
+
+## Not implemented
+
+- **QRCode** — requires third-party QR encoding library, conflicts with
+  zero-dependency principle
+- **Breadcrumb, Dropdown, Steps, Pagination** — navigation excluded per user
 
 ## Stats
 
-- **293 tests**, all passing
+- **304 tests**, all passing
 - `flutter analyze lib/` — zero errors/warnings
-- Components are zero `material.dart` dependency
+- Zero `material.dart` dependency
+- 19 commits this session
