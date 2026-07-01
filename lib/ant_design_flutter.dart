@@ -77,3 +77,11 @@ export 'src/components/layout/ant_layout.dart' show AntLayout, AntHeader, AntSid
 export 'src/components/list/ant_list.dart' show AntList;
 export 'src/components/timeline/ant_timeline.dart' show AntTimeline, AntTimelineItem;
 export 'src/components/descriptions/ant_descriptions.dart' show AntDescriptions, AntDescriptionItem;
+export 'src/components/tree/ant_tree.dart' show AntTree, AntTreeNode;
+export 'src/components/result/ant_result.dart' show AntResult, AntResultStatus;
+export 'src/components/calendar/ant_calendar.dart' show AntCalendar;
+export 'src/components/time_picker/ant_time_picker.dart' show AntTimePicker;
+export 'src/components/upload/ant_upload.dart' show AntUpload;
+export 'src/components/anchor/ant_anchor.dart' show AntAnchor, AntAnchorItem;
+export 'src/components/affix/ant_affix.dart' show AntAffix;
+export 'src/components/back_top/ant_back_top.dart' show AntBackTop;
