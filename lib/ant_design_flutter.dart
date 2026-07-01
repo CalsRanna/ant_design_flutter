@@ -99,3 +99,7 @@ export 'src/components/transfer/ant_transfer.dart' show AntTransfer, AntTransfer
 export 'src/components/tree_select/ant_tree_select.dart' show AntTreeSelect, AntTreeSelectNode;
 export 'src/components/qrcode/ant_qrcode.dart' show AntQRCode;
 export 'src/components/qrcode/qr_encoder.dart' show QrEcc;
+export 'src/components/breadcrumb/ant_breadcrumb.dart' show AntBreadcrumb, AntBreadcrumbItem;
+export 'src/components/dropdown/ant_dropdown.dart' show AntDropdown, AntDropdownItem, AntDropdownTrigger;
+export 'src/components/pagination/ant_pagination.dart' show AntPagination;
+export 'src/components/steps/ant_steps.dart' show AntSteps, AntStepItem, AntStepsDirection;
