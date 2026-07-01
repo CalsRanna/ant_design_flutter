@@ -72,3 +72,8 @@ export 'src/components/rate/ant_rate.dart' show AntRate;
 export 'src/components/popover/ant_popover.dart' show AntPopover;
 export 'src/components/popover/ant_popconfirm.dart' show AntPopconfirm;
 export 'src/components/drawer/ant_drawer.dart' show AntDrawer;
+export 'src/components/grid/ant_grid.dart' show AntRow, AntCol;
+export 'src/components/layout/ant_layout.dart' show AntLayout, AntHeader, AntSider, AntContent, AntFooter;
+export 'src/components/list/ant_list.dart' show AntList;
+export 'src/components/timeline/ant_timeline.dart' show AntTimeline, AntTimelineItem;
+export 'src/components/descriptions/ant_descriptions.dart' show AntDescriptions, AntDescriptionItem;
