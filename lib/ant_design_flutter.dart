@@ -93,3 +93,7 @@ export 'src/components/color_picker/ant_color_picker.dart' show AntColorPicker;
 export 'src/components/mentions/ant_mentions.dart' show AntMentions;
 export 'src/components/image/ant_image.dart' show AntImage;
 export 'src/components/watermark/ant_watermark.dart' show AntWatermark;
+export 'src/components/carousel/ant_carousel.dart' show AntCarousel;
+export 'src/components/cascader/ant_cascader.dart' show AntCascader, AntCascaderOption;
+export 'src/components/transfer/ant_transfer.dart' show AntTransfer, AntTransferItem;
+export 'src/components/tree_select/ant_tree_select.dart' show AntTreeSelect, AntTreeSelectNode;
