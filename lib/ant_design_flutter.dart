@@ -20,6 +20,7 @@ export 'src/components/menu/ant_menu.dart' show AntMenu, AntMenuItem, AntMenuIte
 export 'src/components/modal/ant_modal.dart' show AntModal;
 export 'src/components/notification/ant_notification.dart' show AntNotification;
 export 'src/components/radio/ant_radio.dart' show AntRadio;
+export 'src/components/select/ant_select.dart' show AntSelect, AntSelectOption;
 export 'src/components/radio/ant_radio_group.dart' show AntRadioGroup;
 export 'src/components/switch/ant_switch.dart' show AntSwitch;
 export 'src/components/tabs/ant_tabs.dart' show AntTabItem, AntTabs;
