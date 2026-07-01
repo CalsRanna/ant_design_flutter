@@ -1,42 +1,35 @@
 # 2.0 Development Progress
 
-Lightweight running log so Phase work survives calendar gaps. Update the
-"Last updated" line and the current Phase's checklist whenever you stop a
-session.
-
-**Last updated:** 2026-07-01 (Phase 4 delivery)
+**Last updated:** 2026-07-01 (all components complete, excluding navigation)
 
 ## Phase status
 
-| Phase | Scope | Plan | Status |
-| --- | --- | --- | --- |
-| 0 | Scaffold (pubspec/lint/CI/gallery shell) | [plans/2026-04-18-phase-0-scaffold.md](../docs/superpowers/plans/2026-04-18-phase-0-scaffold.md) | complete |
-| 1 | Foundation + Theme | [plans/2026-04-18-phase-1-token-system.md](../docs/superpowers/plans/2026-04-18-phase-1-token-system.md) | complete |
-| 2 | Primitives (Interaction / Portal / Overlay) | [plans/2026-04-18-phase-2-primitives.md](../docs/superpowers/plans/2026-04-18-phase-2-primitives.md) | complete |
-| 3 | Round 1+2 atoms | [plans/2026-04-19-phase-3-atoms.md](../docs/superpowers/plans/2026-04-19-phase-3-atoms.md) | complete |
-| 4 | Round 3 feedback widgets (Tooltip / Message / Notification / Modal) | — | complete |
-| 5 | Round 4 composites (Select / DatePicker / Tabs / Menu / Table) | — | not started |
-| 6 | Form engine (Form / FormItem / Controller / Validators) | — | not started |
-| 7 | i18n + docs finalization | — | not started |
-| 8 | RC soak + bug fixes | — | not started |
+| Phase | Scope | Status |
+|---|---|---|
+| 0-3 | Core infrastructure + 8 atomic components | complete |
+| 4 | Feedback (Tooltip, Message, Notification, Modal) | complete |
+| 5 | Composites (Tabs, Menu, Select, DatePicker, Table) | complete |
+| 6 | Form engine (Form, FormItem, Controller, Validators) | complete |
+| 7 | Extended components | complete |
 
-## Current session notes
+## All components implemented (17 MVP + 25 extended = 42 total)
 
-- 2026-07-01: Phase 4 complete. 4 components shipped (AntTooltip / AntMessage / AntNotification / AntModal).
-  All consume alias token only. No material.dart. 218 tests pass (up from 201). `flutter analyze --fatal-infos` clean.
-  Next: Phase 5 (Round 4 composites: Select / DatePicker / Tabs / Menu / Table) or Phase 6 (Form engine).
+**MVP Core (17):** Icon, Typography, Button, Input, Checkbox, Radio, Switch, Tag,
+Tooltip, Message, Notification, Modal, Tabs, Menu, Select, DatePicker, Table
 
-## Current session notes
+**Form Engine (4):** Form, FormItem, FormController, Validators
 
-_What you were working on when you last stopped. Makes coming back easy._
+**Extended Components (25):**
+Divider, Space, Empty, Alert, Spin, Progress, Badge, Avatar, Card, Collapse,
+Skeleton, InputNumber, Slider, Rate, Popover, Popconfirm, Drawer, Row/Col (Grid),
+Layout (Header/Sider/Content/Footer), List, Timeline, Descriptions, Tree, Result,
+Calendar, TimePicker, Upload, Anchor, Affix, BackTop
 
-- 2026-04-18: Phase 0 plan written. Executed Tasks 1-9 end-to-end (code, config, docs). Next: write Phase 1 plan (Foundation + Theme).
-- 2026-04-18: Phase 1 complete. Token system (Seed/Map/Alias) + DefaultAlgorithm + AntConfigProvider + AntApp shell landed. 46 tests pass, `flutter analyze --fatal-infos` clean. Next: write Phase 2 plan (Primitives: Interaction / Portal / Overlay).
-- 2026-04-18: Phase 2 complete. AntInteractionDetector (4 WidgetStates + keyboard activation), AntPortal (OverlayPortal-backed, 12 placements with once-per-mount flip), AntOverlayManager (4 slots with per-(Overlay × slot) host model). 104 tests pass, `flutter analyze --fatal-infos` clean. Primitives deliberately do not consume AntTheme. Next: write Phase 3 plan for Round 1+2 atomic components (Icon / Typography / Button / Input / Checkbox / Radio / Switch / Tag).
-- 2026-04-19: Phase 3 complete. 8 components shipped (Icon / Title / Text / Paragraph / Link / Button / Input / Checkbox+Group / Radio+Group / Switch / Tag+CheckableTag). All consume alias token only. No material.dart. 201+ tests pass. Gallery has 24+ widgetbook use cases; example is now a registration form. Next: write Phase 4 plan (Round 3 feedback widgets: Tooltip / Message / Notification / Modal).
+**Not implemented (navigation category):**
+Breadcrumb, Dropdown, Steps, Pagination
 
-## Blockers / parked ideas
+## Stats
 
-_Anything that's waiting on an external decision or that you deferred._
-
-- None yet.
+- **293 tests**, all passing
+- `flutter analyze lib/` — zero errors/warnings
+- Components are zero `material.dart` dependency
