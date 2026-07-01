@@ -4,7 +4,7 @@ Lightweight running log so Phase work survives calendar gaps. Update the
 "Last updated" line and the current Phase's checklist whenever you stop a
 session.
 
-**Last updated:** 2026-04-19 (Phase 3 delivery)
+**Last updated:** 2026-07-01 (Phase 4 delivery)
 
 ## Phase status
 
@@ -14,11 +14,17 @@ session.
 | 1 | Foundation + Theme | [plans/2026-04-18-phase-1-token-system.md](../docs/superpowers/plans/2026-04-18-phase-1-token-system.md) | complete |
 | 2 | Primitives (Interaction / Portal / Overlay) | [plans/2026-04-18-phase-2-primitives.md](../docs/superpowers/plans/2026-04-18-phase-2-primitives.md) | complete |
 | 3 | Round 1+2 atoms | [plans/2026-04-19-phase-3-atoms.md](../docs/superpowers/plans/2026-04-19-phase-3-atoms.md) | complete |
-| 4 | Round 3 feedback widgets | — | not started |
-| 5 | Round 4 composites | — | not started |
-| 6 | Form engine | — | not started |
+| 4 | Round 3 feedback widgets (Tooltip / Message / Notification / Modal) | — | complete |
+| 5 | Round 4 composites (Select / DatePicker / Tabs / Menu / Table) | — | not started |
+| 6 | Form engine (Form / FormItem / Controller / Validators) | — | not started |
 | 7 | i18n + docs finalization | — | not started |
 | 8 | RC soak + bug fixes | — | not started |
+
+## Current session notes
+
+- 2026-07-01: Phase 4 complete. 4 components shipped (AntTooltip / AntMessage / AntNotification / AntModal).
+  All consume alias token only. No material.dart. 218 tests pass (up from 201). `flutter analyze --fatal-infos` clean.
+  Next: Phase 5 (Round 4 composites: Select / DatePicker / Tabs / Menu / Table) or Phase 6 (Form engine).
 
 ## Current session notes
 
