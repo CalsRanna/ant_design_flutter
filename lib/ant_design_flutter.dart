@@ -16,6 +16,7 @@ export 'src/components/checkbox/ant_option.dart' show AntOption;
 export 'src/components/icon/ant_icon.dart' show AntIcon;
 export 'src/components/input/ant_input.dart' show AntInput;
 export 'src/components/message/ant_message.dart' show AntMessage;
+export 'src/components/menu/ant_menu.dart' show AntMenu, AntMenuItem, AntMenuItemData, AntSubMenuData;
 export 'src/components/modal/ant_modal.dart' show AntModal;
 export 'src/components/notification/ant_notification.dart' show AntNotification;
 export 'src/components/radio/ant_radio.dart' show AntRadio;
