@@ -88,3 +88,8 @@ export 'src/components/back_top/ant_back_top.dart' show AntBackTop;
 export 'src/components/segmented/ant_segmented.dart' show AntSegmented, AntSegmentedOption;
 export 'src/components/statistic/ant_statistic.dart' show AntStatistic;
 export 'src/components/float_button/ant_float_button.dart' show AntFloatButton, AntFloatShape;
+export 'src/components/auto_complete/ant_auto_complete.dart' show AntAutoComplete;
+export 'src/components/color_picker/ant_color_picker.dart' show AntColorPicker;
+export 'src/components/mentions/ant_mentions.dart' show AntMentions;
+export 'src/components/image/ant_image.dart' show AntImage;
+export 'src/components/watermark/ant_watermark.dart' show AntWatermark;
