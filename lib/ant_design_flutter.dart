@@ -97,3 +97,5 @@ export 'src/components/carousel/ant_carousel.dart' show AntCarousel;
 export 'src/components/cascader/ant_cascader.dart' show AntCascader, AntCascaderOption;
 export 'src/components/transfer/ant_transfer.dart' show AntTransfer, AntTransferItem;
 export 'src/components/tree_select/ant_tree_select.dart' show AntTreeSelect, AntTreeSelectNode;
+export 'src/components/qrcode/ant_qrcode.dart' show AntQRCode;
+export 'src/components/qrcode/qr_encoder.dart' show QrEcc;
