@@ -66,3 +66,6 @@ export 'src/components/avatar/ant_avatar.dart' show AntAvatar, AntAvatarShape;
 export 'src/components/card/ant_card.dart' show AntCard;
 export 'src/components/collapse/ant_collapse.dart' show AntCollapse, AntCollapsePanel;
 export 'src/components/skeleton/ant_skeleton.dart' show AntSkeleton;
+export 'src/components/input_number/ant_input_number.dart' show AntInputNumber;
+export 'src/components/slider/ant_slider.dart' show AntSlider;
+export 'src/components/rate/ant_rate.dart' show AntRate;
