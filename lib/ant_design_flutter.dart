@@ -59,3 +59,7 @@ export 'src/components/divider/ant_divider.dart' show AntDivider, AntDividerOrie
 export 'src/components/space/ant_space.dart' show AntSpace;
 export 'src/components/empty/ant_empty.dart' show AntEmpty;
 export 'src/components/alert/ant_alert.dart' show AntAlert, AntAlertType;
+export 'src/components/spin/ant_spin.dart' show AntSpin;
+export 'src/components/progress/ant_progress.dart' show AntProgress;
+export 'src/components/badge/ant_badge.dart' show AntBadge;
+export 'src/components/avatar/ant_avatar.dart' show AntAvatar, AntAvatarShape;
